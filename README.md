@@ -36,3 +36,4 @@ Add dishes from the game to a favorites list.
 Get picture of ingredients from a different api.
 Add a timer, either give a personal timer or chose from 3 choices.
 Add three chances to give a correct answer.
+Add a chat function
