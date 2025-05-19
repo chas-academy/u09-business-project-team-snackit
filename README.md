@@ -36,3 +36,13 @@ Add dishes from the game to a favorites list.
 Get picture of ingredients from a different api.
 Add a timer, either give a personal timer or chose from 3 choices.
 Add three chances to give a correct answer.
+Add Win/Losses ratio.
+
+## Installing this project
++ ```git clone https://github.com/chas-academy/u09-business-project-team-snackit.git```
+
+## Backend
+To see more specific documentation of backend go [here](backend\README.md)
+
+## Frontend
+To see more specific documentation of frontend go [here](frontend\README.md)
