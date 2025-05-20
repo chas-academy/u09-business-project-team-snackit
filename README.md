@@ -37,6 +37,8 @@ Get picture of ingredients from a different api.
 Add a timer, either give a personal timer or chose from 3 choices.
 Add three chances to give a correct answer.
 Add Win/Losses ratio.
+Add a chat function
+Add a taunting emoji possibility during game
 
 ## Installing this project
 + ```git clone https://github.com/chas-academy/u09-business-project-team-snackit.git```
