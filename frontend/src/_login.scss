@@ -3,7 +3,7 @@
     @include L.lilita;
 }
 body {
-    background-image: url(kitchen.background.desktop.png);
+    background-image: url(./assets/kitchen.background.desktop.png);
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -16,11 +16,12 @@ body {
     border: solid L.$brown 6px;
     font-size: 40px;
     text-decoration: none;
-    color: black;
+    color: L.$brown;
     background-color: L.$green;
     display: flex;
     justify-content: center;
     align-items: center;
+    @include L.lilita;
 }
 .logo {
     width: 216px;
