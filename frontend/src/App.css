@@ -4,7 +4,7 @@
   font-style: normal;
 }
 
-body {
+#login-body {
   background-image: url(./assets/kitchen.background.desktop.png);
   background-repeat: no-repeat;
   background-size: cover;
