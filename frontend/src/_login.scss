@@ -1,0 +1,35 @@
+@use "library" as L;
+
+body {
+    background-image: url(kitchen.background.desktop.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    overflow-y: hidden;
+}
+.start-btn {
+    width: 280px;
+    height: 78px;
+    border-radius: 48px;
+    border: solid L.$brown 6px;
+    font-size: 40px;
+    text-decoration: none;
+    color: black;
+    background-color: L.$green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo {
+    width: 216px;
+    border: solid L.$brown 6px;
+    border-radius: 25px;
+}
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 5rem;
+}
