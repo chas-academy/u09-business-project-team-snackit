@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 function Login() {
+  document.getElementById('root-body')?.setAttribute('id', 'login-body');
   return (
     <>
       <main>

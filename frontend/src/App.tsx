@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
+  document.getElementById('login-body')?.setAttribute('id', 'root-body')
   const [count, setCount] = useState(0)
 
   return (

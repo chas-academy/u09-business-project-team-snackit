@@ -1,5 +1,11 @@
-body {
-  background-image: url(kitchen.background.desktop.png);
+* {
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#login-body {
+  background-image: url(./assets/kitchen.background.desktop.png);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -13,11 +19,14 @@ body {
   border: solid #4C2D1A 6px;
   font-size: 40px;
   text-decoration: none;
-  color: black;
+  color: #4C2D1A;
   background-color: #979E37;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .logo {
