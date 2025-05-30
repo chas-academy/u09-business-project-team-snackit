@@ -73,7 +73,7 @@ export const updateUser = async (req: Request, res: Response) => {
 export const deleteUser = async (req: Request, res: Response) => {
     try {
         // Change to logged in userId
-        const user = await User.findByIdAndDelete(req.params.id);
+        const user = await User.findByIdAndDelete(req.params.userId);
         if(!user) {
             res.status(404).json({message: "User not found"});
             return;
