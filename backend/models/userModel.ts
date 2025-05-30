@@ -6,7 +6,7 @@ export interface IUser extends Document {
     password: string;
     wins: number;
     losses: number;
-    superadmin: boolean;
+    googleid: string;
     // gamesPlayed?: number;
 }
 
@@ -16,7 +16,7 @@ const userSchema: Schema = new Schema ({
     password: {type: String, required: true},
     wins: {Type: Number, default: 0},
     losses: {Type: Number, default: 0},
-    superadmin: { type: Boolean, default: false},
+    googleid: {Type: String},
     // gamesPlayed: { type: Number, default: 0 }
 })
 
