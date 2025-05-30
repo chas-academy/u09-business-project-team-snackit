@@ -1,3 +1,4 @@
+import { GoogleLogin } from "@react-oauth/google";
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -12,6 +13,13 @@ function Login() {
             alt="who is the foodie logo"
           />
           <Link to={'/lobby'} className="start-btn">START</Link>
+          <GoogleLogin
+          onSuccess={() => {
+
+          }}
+          onError={()=>{
+            console.log("Login failed")
+          }}/>
         </div>
       </main>
     </>
