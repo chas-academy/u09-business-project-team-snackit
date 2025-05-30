@@ -46,7 +46,7 @@ export const createUser = async (req: Request, res: Response) => {
         const newUser = new User ({ name, email, password, confirmed_password })
         await newUser.save();
         res.status(201).json({message: "New user created."});
-        
+
     } catch (err: unknown) {
         if(err instanceof Error) {
             res.status(500).json({error: err.message});
@@ -56,7 +56,13 @@ export const createUser = async (req: Request, res: Response) => {
 }
 export const updateUser = async (req: Request, res: Response) => {
     try {
-
+        // Change to the userId is fetched from logged in user
+        const user = await User.findByIdAndUpdate(req.params.userId, req.body, {new: true});
+        if(!user) {
+            res.status(404).json({message: "User not found"});
+            return;
+        }
+        res.json({message: "User updated"});
     } catch (err: unknown) {
         if(err instanceof Error) {
             res.status(500).json({error: err.message});
