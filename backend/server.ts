@@ -8,10 +8,13 @@ import dotenv from "dotenv";
 dotenv.config();
 
 
-const clientID = process.env.GOOGLE_CLIENT_ID!;
-const clientSecret =process.env.GOOGLE_CLIENT_SECRET!;
+const clientID= process.env.GOOGLE_CLIENT_ID!;
+const clientSecret= process.env.GOOGLE_CLIENT_SECRET!;
+console.log("GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID)
+console.log("GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET)
 
-passport.use( new GoogleStrategy(
+passport.use( 
+    new GoogleStrategy(
         {
         clientID: clientID,
         clientSecret: clientSecret,
@@ -72,7 +75,7 @@ app.get("/auth/google", passport.authenticate("google", {
 app.get("/auth/google/callback", 
     passport.authenticate("google", {
         failureRedirect: "http://localhost:5173",
-        successRedirect: "htpp:/localhost:5173"
+        successRedirect: "http://localhost:5173"
     })
 );
 
