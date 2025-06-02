@@ -14,7 +14,7 @@
     height: 78px;
     border-radius: 48px;
     border: solid L.$brown 6px;
-    font-size: 40px;
+    font-size: 30px;
     text-decoration: none;
     color: L.$brown;
     background-color: L.$green;
@@ -35,4 +35,26 @@
     align-items: center;
     height: 100vh;
     gap: 5rem;
+}
+.register {
+    display: flex;
+    justify-content: center;
+    margin-top: 20rem;
+}
+.register-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    >input {
+        width: 324px;
+        height: 49px;
+        border-radius: 20px;
+        font-size: 20px;
+        padding: 10px;
+    }
+}
+#register-btn {
+    background-color: L.$maroon;
 }
