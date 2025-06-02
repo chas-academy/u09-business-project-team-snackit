@@ -25,7 +25,7 @@ function App() {
       fetchUser();
     }, []);
     
-    // console.log(user)
+    console.log(user)
     if(user){
       msg = user.message
     }

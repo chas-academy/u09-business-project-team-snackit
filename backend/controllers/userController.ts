@@ -20,7 +20,7 @@ export const getUsers = async (req: Request, res: Response) => {
 export const getUser = async (req: Request, res: Response) => {
     try {
         //change this to get userId from the logged in information
-        const user = await User.findById(req.params.userId);
+        const user = await User.findOne({googleId: req.params.userId});
         if(!user) {
             res.status(404).json({message: "User not found."});
             return;

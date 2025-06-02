@@ -12,6 +12,8 @@ dotenv.config();
 connectDB();
 const app: Express = express();
 
+const PORT: string | number = process.env.PORT || 3003;
+app.use(express.json());
 const clientID= process.env.GOOGLE_CLIENT_ID!;  // med "!" så säger det till TypeScript att variabeln definitivt finns
 const clientSecret= process.env.GOOGLE_CLIENT_SECRET!;
 
@@ -24,6 +26,7 @@ passport.use(
         },
         async (accesstoken, refreshToken, profile, done) => {
             try{
+
                 return done(null, profile);
             }catch (err) {
                 return done(err, false);
@@ -39,7 +42,7 @@ passport.serializeUser(function (user,done) {
 
 
 passport.deserializeUser(function (object, done) {
-    console.log(object);
+    // console.log(object);
     done(null, object as Express.User)    
 })
 
@@ -91,8 +94,6 @@ app.get("/auth/user", (req: Request, res: Response) => {
 
 app.use('/users', userRouter)
 
-const PORT: string | number = process.env.PORT || 3003;
-app.use(express.json());
 app.listen(PORT, () => {
     console.log(`Application is running at http://localhost:${PORT}`);
 });
