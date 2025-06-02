@@ -1,7 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { redirect } from "react-router-dom";
 
 function Register() {
+    const [user, setUser] = useState("");
+  
+    const fetchUser = async () => {
+      const res = await fetch ("http://localhost:3003/auth/user", {
+        credentials: "include"
+      });
+      
+      const data = await res.json();
+      setUser(data);
+    };
+    
+    useEffect(() => {
+      fetchUser();
+    }, []);
+    // console.log(user.id)
+    const googleId = user.id;
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -15,17 +31,17 @@ function Register() {
 
     const registerUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(formData)
+
         try{
             const res = await fetch ("http://localhost:3003/users/", {
                 credentials: "include",
                 method:"POST",
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(formData)
+                body: JSON.stringify({...formData, googleId: googleId})
             })
             const data = await res.json();
             console.log(data)
-            return redirect("/lobby")
+            redirect("/lobby")
 
         } catch(err: unknown) {
             if(err instanceof Error) {

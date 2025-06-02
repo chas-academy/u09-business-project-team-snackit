@@ -26,7 +26,6 @@ passport.use(
         },
         async (accesstoken, refreshToken, profile, done) => {
             try{
-
                 return done(null, profile);
             }catch (err) {
                 return done(err, false);

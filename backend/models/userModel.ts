@@ -14,9 +14,9 @@ const userSchema: Schema = new Schema ({
     name: { type: String, required: true,},
     email: {type: String, required: true},
     password: {type: String, required: true},
-    wins: {Type: Number},
-    losses: {Type: Number},
-    googleID: {Type: String},
+    wins: {type: Number, default: 0},
+    losses: {type: Number, default: 0},
+    googleId: {type: String, required: true},
     // gamesPlayed: { type: Number, default: 0 }
 })
 

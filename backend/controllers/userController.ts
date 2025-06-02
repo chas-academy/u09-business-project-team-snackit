@@ -36,14 +36,14 @@ export const getUser = async (req: Request, res: Response) => {
 }
 export const createUser = async (req: Request, res: Response) => {
     try {
-        const { name, email, password, confirmed_password } = req.body;
-
+        const { name, email, password, confirmed_password, googleId } = req.body;
         const userExists = await User.findOne({ email: email });
         if(userExists) {
             res.status(400).json({message: "User already exists."});
             return;
         }
-        const newUser = new User ({ name, email, password, confirmed_password })
+        const newUser = new User ({ name, email, password, confirmed_password, googleId })
+        console.log(newUser)
         await newUser.save();
         res.status(201).json({message: "New user created."});
 
