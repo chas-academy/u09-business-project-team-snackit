@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import './App.css'
 import Register from './Register'
+import Lobby from './Lobby';
 
 function App() {
   document.getElementById('login-body')?.setAttribute('id', 'root-body')
@@ -35,7 +36,7 @@ function App() {
   {msg ? (
     <div> <Register /></div>
   ) : (
-    <div>welcome</div>
+    <div><Lobby /></div>
   ) }
   </main>
     </>

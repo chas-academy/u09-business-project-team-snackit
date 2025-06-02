@@ -41,7 +41,7 @@ function Register() {
             })
             const data = await res.json();
             console.log(data)
-            redirect("/lobby")
+            window.location.href = `/lobby?userid=${googleId}`
 
         } catch(err: unknown) {
             if(err instanceof Error) {
