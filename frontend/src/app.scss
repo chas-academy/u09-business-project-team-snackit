@@ -1,1 +1,32 @@
 @use "login" as *;
+@use "library" as L;
+
+.lobby-btn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 334px;
+    height: 82px;
+    text-decoration: none;
+    color: L.$font-white;
+    font-size: 37px;
+    border-radius: 20px;
+
+}
+.lobby-img {
+    width: 54px;
+}
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+#start-game {
+    background-color: L.$green;
+}
+#leaderboard {
+    background-color: L.$yellow;
+}
+#profile {
+    background-color: L.$maroon;
+}
