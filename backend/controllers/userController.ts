@@ -1,5 +1,6 @@
 import { Request, Response} from 'express';
 import { User } from '../models/userModel';
+import { hashPassword } from '../utils/bcrypt';
 
 export const getUsers = async (req: Request, res: Response) => {
     try {
@@ -34,15 +35,24 @@ export const getUser = async (req: Request, res: Response) => {
         }
     }
 }
-export const createUser = async (req: Request, res: Response) => {
+
+
+export const createUser = async (req: Request, res: Response): Promise<Response | void> => {
     try {
         const { name, email, password, confirmed_password, googleId } = req.body;
+        
         const userExists = await User.findOne({ email: email });
         if(userExists) {
             res.status(400).json({message: "User already exists."});
             return;
         }
-        const newUser = new User ({ name, email, password, confirmed_password, googleId })
+        
+        if (password !==confirmed_password) {    // checks if password and confirmation match
+            return res.status(400).json({ message: "Your passwords does not match"})
+        }
+        const hashedPassword = await hashPassword(password);
+
+        const newUser = new User ({ name, email, password: hashedPassword, confirmed_password, googleId })
         console.log(newUser)
         await newUser.save();
         res.status(201).json({message: "New user created."});
