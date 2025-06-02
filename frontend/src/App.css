@@ -67,4 +67,38 @@
 
 #register-btn {
   background-color: #9A4D52;
+}
+
+.lobby-btn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 334px;
+  height: 82px;
+  text-decoration: none;
+  color: #E0E2C3;
+  font-size: 37px;
+  border-radius: 20px;
+}
+
+.lobby-img {
+  width: 54px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#start-game {
+  background-color: #979E37;
+}
+
+#leaderboard {
+  background-color: #F6B255;
+}
+
+#profile {
+  background-color: #9A4D52;
 }/*# sourceMappingURL=app.css.map */
