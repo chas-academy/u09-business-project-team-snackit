@@ -6,6 +6,8 @@ import passport from "passport";
 import { Strategy as GoogleStrategy} from "passport-google-oauth20";
 import session from "express-session";
 import cors from "cors";
+import spooncularRoutes from "../routes/spooncular"
+
 
 
 dotenv.config();
@@ -96,5 +98,11 @@ app.use('/users', userRouter)
 app.listen(PORT, () => {
     console.log(`Application is running at http://localhost:${PORT}`);
 });
+
+
+
+app.use("/api", spooncularRoutes); 
+
+
 
 export default app;
