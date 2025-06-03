@@ -1,0 +1,96 @@
+@use "library" as L;
+* {
+    @include L.lilita;
+}
+
+html, body {
+  margin: 0;
+  overflow: hidden; 
+}
+
+.instructions-container { 
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: L.$font-white;
+  overflow: hidden;
+  padding: 2rem;
+
+  h1 {
+    @include L.lilita;
+    font-size: 2.5rem;
+    color: L.$brown;
+    margin-bottom: 2rem;
+  }
+
+    .vs-icon {
+      font-size: 2.2rem;
+      color: L.$maroon;
+      font-weight: bold;
+      @include L.lilita;
+    }
+  
+
+  .instruction-text {
+  max-width: 500px;
+  margin: 2rem auto;
+  text-align: center;
+  color: L.$brown;
+  font-size: 1rem;
+
+  strong {
+    display: block;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+}
+
+.start-btn {
+  all: unset;   // tar bort design som redan finns förbestämde
+  background-color: L.$green;
+  color: L.$font-white;
+  @include L.lilita;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.2rem 2rem;
+  border: 3px solid L.$brown;
+  border-radius: 2rem;
+  text-align: center;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+
+.back-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: #D2613C;
+  color: L.$brown;
+  @include L.lilita;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.6rem 1rem;
+  border-radius: 2rem;
+  border: 5px solid L.$brown;
+  cursor: pointer;
+}
+
+
+ .game-id {
+  background-color: L.$font-white;
+  color: L.$brown;
+  font-weight: bold;
+  font-size: 1rem;
+  @include L.lilita;
+  border: 3px solid L.$brown;
+  padding: 0.2rem 0.8rem;
+  border-radius: 2rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 9rem;
+}
+
+}
