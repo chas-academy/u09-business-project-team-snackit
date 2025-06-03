@@ -7,6 +7,7 @@ export interface IUser extends Document {
     wins: number;
     losses: number;
     googleId: string;
+    profilePic: string;
     // gamesPlayed?: number;
 }
 
@@ -17,6 +18,7 @@ const userSchema: Schema = new Schema ({
     wins: {type: Number, default: 0},
     losses: {type: Number, default: 0},
     googleId: {type: String, required: true},
+    profilePic: {type: String, default: "backend\assets\img_1.svg"}
     // gamesPlayed: { type: Number, default: 0 }
 })
 
