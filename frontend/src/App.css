@@ -85,8 +85,12 @@
 
 header {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   margin: 32px;
+}
+
+img {
+  width: 220px;
 }
 
 .lobby-btn {
