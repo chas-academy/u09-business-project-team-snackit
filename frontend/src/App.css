@@ -95,7 +95,6 @@ header {
 
 .lobby-btn {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 334px;
   height: 82px;
@@ -103,7 +102,6 @@ header {
   color: #E0E2C3;
   font-size: 37px;
   border-radius: 20px;
-  margin: 1rem;
 }
 
 .lobby-img {

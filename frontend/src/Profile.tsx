@@ -1,30 +1,19 @@
 import { Link } from "react-router-dom";
 import BackBtn from "./components/back-btn";
 import { useEffect, useState } from "react";
+import { useFetchUser } from "./hooks/useFetchUser";
 
 function Profile() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+  });
   const API_URL =
     import.meta.env.NODE_ENV === "prod"
       ? import.meta.env.VITE_API_BASE_URL_PROD
       : import.meta.env.VITE_API_BASE_URL_LOCAL;
-  const [user, setUser] = useState("");
 
-  const fetchUser = async () => {
-    const res = await fetch(`${API_URL}/auth/user`, {
-      credentials: "include",
-    });
-
-    const data = await res.json();
-    console.log(data);
-    const userData = await fetch(`${API_URL}/users/${data.id}`);
-    const user = await userData.json();
-    setUser(user);
-  };
-
-  useEffect(() => {
-    fetchUser();
-  }, []);
-
+  const { user, loading, error } = useFetchUser();
   useEffect(() => {
     if (user) {
       setFormData({
@@ -33,18 +22,21 @@ function Profile() {
       });
     }
   }, [user]);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error</p>;
+  if (!user) return <p>User not found</p>;
 
   const deleteUser = async () => {
     try {
-        await fetch(`${API_URL}/users/${user._id}`, {
+      await fetch(`${API_URL}/users/${user._id}`, {
         credentials: "include",
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
 
-      await fetch ("http://localhost:3003/auth/logout", {
-          credentials: "include"
-        });
+      await fetch(`${API_URL}/auth/logout`, {
+        credentials: "include",
+      });
       window.location.href = "/";
     } catch (err: unknown) {
       if (err instanceof Error) {
@@ -53,10 +45,6 @@ function Profile() {
       }
     }
   };
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-  });
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -82,7 +70,7 @@ function Profile() {
   return (
     <>
       <header>
-        <Link to={""} className="back-btn" onClick={deleteUser}>
+        <Link to={"/"} className="back-btn" onClick={deleteUser}>
           DELETE
         </Link>
         <BackBtn />
@@ -90,7 +78,11 @@ function Profile() {
       <main>
         <section>
           <h1>Welcome {user.name}!</h1>
-          <img className="profile-pic" src="img_1.svg" alt="fox in a chefshat" />
+          <img
+            className="profile-pic"
+            src="img_1.svg"
+            alt="fox in a chefshat"
+          />
         </section>
         <article>
           <form className="update-form" onSubmit={updateUser}>
@@ -112,8 +104,8 @@ function Profile() {
           </form>
         </article>
         <div>
-            <p>{user.wins}</p>
-            <p>{user.losses}</p>
+          <p>{user.wins}</p>
+          <p>{user.losses}</p>
         </div>
       </main>
     </>
