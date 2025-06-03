@@ -89,13 +89,13 @@ header {
   margin: 32px;
 }
 
-img {
+.profile-pic {
   width: 220px;
 }
 
 .lobby-btn {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 334px;
   height: 82px;
@@ -103,10 +103,12 @@ img {
   color: #E0E2C3;
   font-size: 37px;
   border-radius: 20px;
+  margin: 1rem;
 }
 
 .lobby-img {
   width: 54px;
+  margin: 1rem;
 }
 
 nav {

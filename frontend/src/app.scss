@@ -4,7 +4,7 @@
 
 .lobby-btn {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 334px;
     height: 82px;
@@ -12,10 +12,12 @@
     color: L.$font-white;
     font-size: 37px;
     border-radius: 20px;
+    margin: 1rem;
 
 }
 .lobby-img {
     width: 54px;
+    margin: 1rem;
 }
 nav {
     display: flex;

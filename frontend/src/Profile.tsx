@@ -90,7 +90,7 @@ function Profile() {
       <main>
         <section>
           <h1>Welcome {user.name}!</h1>
-          <img src="img_1.svg" alt="fox in a chefshat" />
+          <img className="profile-pic" src="img_1.svg" alt="fox in a chefshat" />
         </section>
         <article>
           <form className="update-form" onSubmit={updateUser}>
@@ -111,6 +111,10 @@ function Profile() {
             <button>UPDATE</button>
           </form>
         </article>
+        <div>
+            <p>{user.wins}</p>
+            <p>{user.losses}</p>
+        </div>
       </main>
     </>
   );
