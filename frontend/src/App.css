@@ -69,6 +69,26 @@
   background-color: #9A4D52;
 }
 
+.back-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E25937;
+  border-radius: 48px;
+  border: solid #4C2D1A 6px;
+  font-size: 2.25rem;
+  width: 132px;
+  height: 84px;
+  text-decoration: none;
+  color: #4C2D1A;
+}
+
+header {
+  display: flex;
+  justify-content: end;
+  margin: 32px;
+}
+
 .lobby-btn {
   display: flex;
   justify-content: space-around;
