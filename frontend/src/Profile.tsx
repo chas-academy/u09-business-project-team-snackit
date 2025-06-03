@@ -36,13 +36,12 @@ function Profile() {
 
   const deleteUser = async () => {
     try {
-      const res = await fetch(`${API_URL}/users/${user._id}`, {
+        await fetch(`${API_URL}/users/${user._id}`, {
         credentials: "include",
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
-    //   const data = await res.json();
-    //   console.log(data)
+
       await fetch ("http://localhost:3003/auth/logout", {
           credentials: "include"
         });
