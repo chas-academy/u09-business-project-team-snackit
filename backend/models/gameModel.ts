@@ -17,7 +17,7 @@ const gameSchema: Schema = new Schema ({
     currentIngredient: { type: String, required: true},
     lives: {type: Map, of: Number, required: true},  // visar antalet liv spelare har kvar 
     status: {type: String, enum: ["playing", "finished"], default: "playing"},  // visar spelets tilstånd 
-    winner: { type: String, requred: true},
+    winner: { type: String, required: true},
     loser: {type: String, required: true},
 })
 
