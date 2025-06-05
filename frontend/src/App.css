@@ -74,20 +74,6 @@
   background-color: #9a4d52;
 }
 
-.back-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #e25937;
-  border-radius: 48px;
-  border: solid #4c2d1a 6px;
-  font-size: 2.25rem;
-  width: 132px;
-  height: 84px;
-  text-decoration: none;
-  color: #4c2d1a;
-}
-
 header {
   display: flex;
   justify-content: space-between;
@@ -130,7 +116,6 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #e0e2c3;
   overflow: hidden;
   padding: 2rem;
 }
@@ -191,22 +176,6 @@ html, body {
   margin-top: 1rem;
   cursor: pointer;
 }
-.instructions-container .back-btn {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  background-color: #D2613C;
-  color: #4c2d1a;
-  font-family: "Lilita One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1.3rem;
-  font-weight: bold;
-  padding: 0.6rem 1rem;
-  border-radius: 2rem;
-  border: 5px solid #4c2d1a;
-  cursor: pointer;
-}
 .instructions-container .game-id {
   background-color: #e0e2c3;
   color: #4c2d1a;
@@ -221,6 +190,12 @@ html, body {
   position: absolute;
   bottom: 1rem;
   right: 9rem;
+}
+
+header {
+  display: flex;
+  justify-content: end;
+  margin: 32px;
 }
 
 * {
@@ -286,4 +261,18 @@ nav {
   display: flex;
   justify-content: end;
   margin: 32px;
+}
+
+.back-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e25937;
+  border-radius: 48px;
+  border: solid #4c2d1a 6px;
+  font-size: 2.25rem;
+  width: 132px;
+  height: 84px;
+  text-decoration: none;
+  color: #4c2d1a;
 }/*# sourceMappingURL=app.css.map */

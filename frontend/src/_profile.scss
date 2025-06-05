@@ -1,18 +1,6 @@
 @use "library" as L;
 
-.back-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: L.$red ;
-    border-radius: 48px;
-    border: solid L.$brown 6px;
-    font-size: 2.25rem;
-    width: 132px;
-    height: 84px;
-    text-decoration: none;
-    color: L.$brown;
-}
+
 header {
     display: flex;
     justify-content: space-between;
