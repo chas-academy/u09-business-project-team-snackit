@@ -103,7 +103,20 @@ function Profile() {
             <button>UPDATE</button>
           </form>
         </article>
-        <div>
+        <div id="statistics">
+          <div>
+            <div>
+              <div id="left-1"></div>
+              <div id="left-2"></div>
+              <div id="win"></div>
+              <p id="win-title">WINS</p>
+            </div>
+            <div id="right">
+              <div id="right-1"></div>
+              <div id="right-2"></div>
+              <div id="win-2"></div>
+            </div>
+          </div>
           <p>{user.wins}</p>
           <p>{user.losses}</p>
         </div>
