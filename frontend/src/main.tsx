@@ -7,6 +7,7 @@ import Game from './Game.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Leaderboard from './Leaderboard.tsx'
 import Profile from './Profile.tsx'
+import Instructions from './Instructions.tsx'
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/lobby",
     element: <App />
+  },
+  {
+  path: "/instructions",
+  element: <Instructions />
   },
   {
     path: "/game",
