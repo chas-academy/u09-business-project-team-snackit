@@ -60,20 +60,20 @@ html, body {
   }
 }
 
-  .start-btn {
-    all: unset;   // tar bort design som redan finns förbestämde
-    background-color: L.$green;
-    color: L.$font-white;
-    @include L.lilita;
-    font-size: 1.3rem;
-    font-weight: bold;
-    padding: 0.2rem 2rem;
-    border: 3px solid L.$brown;
-    border-radius: 2rem;
-    text-align: center;
-    margin-top: 1rem;
-    cursor: pointer;
-  }
+  // .start-btn {
+  //   all: unset;   // tar bort design som redan finns förbestämde
+  //   background-color: L.$green;
+  //   color: L.$font-white;
+  //   @include L.lilita;
+  //   font-size: 1.3rem;
+  //   font-weight: bold;
+  //   padding: 0.2rem 2rem;
+  //   border: 3px solid L.$brown;
+  //   border-radius: 2rem;
+  //   text-align: center;
+  //   margin-top: 1rem;
+  //   cursor: pointer;
+  // }
 
 
   // .back-btn {

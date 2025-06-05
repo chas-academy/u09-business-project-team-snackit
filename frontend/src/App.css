@@ -160,22 +160,6 @@ html, body {
   font-size: 1.2rem;
   margin-bottom: 0.8rem;
 }
-.instructions-container .start-btn {
-  all: unset;
-  background-color: #979e37;
-  color: #e0e2c3;
-  font-family: "Lilita One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1.3rem;
-  font-weight: bold;
-  padding: 0.2rem 2rem;
-  border: 3px solid #4c2d1a;
-  border-radius: 2rem;
-  text-align: center;
-  margin-top: 1rem;
-  cursor: pointer;
-}
 .instructions-container .game-id {
   background-color: #e0e2c3;
   color: #4c2d1a;

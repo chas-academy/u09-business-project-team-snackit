@@ -75,7 +75,7 @@ function Instructions() {
                 <p>Ready to find out who is the foodie?</p>
             </section>
 
-            <button className="start-btn" onClick={() => navigate("/game")}>START</button>
+            <button className="primary-btn" onClick={() => navigate("/game")}>START</button>
             <p className="game-id">GAME ID: 123</p>
         </main>
         </>
