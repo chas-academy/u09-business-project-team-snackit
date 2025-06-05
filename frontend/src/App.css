@@ -93,6 +93,115 @@ header {
   width: 220px;
 }
 
+* {
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.instructions-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #E0E2C3;
+  overflow: hidden;
+  padding: 2rem;
+}
+.instructions-container h1 {
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2.5rem;
+  color: #4C2D1A;
+  margin-bottom: 2rem;
+}
+.instructions-container .players {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+.instructions-container .players .player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.instructions-container .players .vs-icon {
+  font-size: 2.2rem;
+  color: #9A4D52;
+  font-weight: bold;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.instructions-container .instruction-text {
+  max-width: 500px;
+  margin: 2rem auto;
+  text-align: center;
+  color: #4C2D1A;
+  font-size: 1rem;
+}
+.instructions-container .instruction-text strong {
+  display: block;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+.instructions-container .start-btn {
+  all: unset;
+  background-color: #979E37;
+  color: #E0E2C3;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.2rem 2rem;
+  border: 3px solid #4C2D1A;
+  border-radius: 2rem;
+  text-align: center;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+.instructions-container .back-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: #D2613C;
+  color: #4C2D1A;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.6rem 1rem;
+  border-radius: 2rem;
+  border: 5px solid #4C2D1A;
+  cursor: pointer;
+}
+.instructions-container .game-id {
+  background-color: #E0E2C3;
+  color: #4C2D1A;
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  border: 3px solid #4C2D1A;
+  padding: 0.2rem 0.8rem;
+  border-radius: 2rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 9rem;
+}
+
 .lobby-btn {
   display: flex;
   align-items: center;

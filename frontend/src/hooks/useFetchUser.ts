@@ -28,12 +28,9 @@ export const useFetchUser = () => {
       const data = await res.json();
       console.log(data);
       const userData = await fetch(`${API_URL}/users/${data.id}`);
-      if (!userData.ok){
-        setUser(null);
-      } else {
-        const user = await userData.json();
-        setUser(user);
-      }
+      if (!userData.ok) throw new Error("Failed to fetch user.");
+      const user = await userData.json();
+      setUser(user);
     } catch (err: unknown) {
         if(err instanceof Error) {
             console.error(err);

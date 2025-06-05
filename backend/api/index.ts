@@ -6,7 +6,8 @@ import passport from "passport";
 import { Strategy as GoogleStrategy} from "passport-google-oauth20";
 import session from "express-session";
 import cors from "cors";
-import spooncularRoutes from "../routes/spooncular"
+import spooncularRoutes from "../routes/spooncular";
+import gameRoutes from "../routes/gameRoutes";
 
 
 
@@ -103,6 +104,7 @@ app.listen(PORT, () => {
 
 app.use("/api", spooncularRoutes); 
 
+app.use("/api/v1/games", gameRoutes);
 
 
 export default app;
