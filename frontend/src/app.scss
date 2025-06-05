@@ -3,6 +3,22 @@
 @use "profile" as *;
 @use "instructions" as *;
 
+body {
+    background-color: L.$beige;
+}
+main {
+    max-width: 80%;
+    margin: 0 auto;
+}
+.title {
+    font-size: 4rem;
+    opacity: 70%;
+}
+.lobby {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .lobby-btn {
     display: flex;
     // justify-content: space-between;
@@ -13,8 +29,6 @@
     color: L.$font-white;
     font-size: 37px;
     border-radius: 20px;
-
-
 }
 .lobby-img {
     width: 54px;

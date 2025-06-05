@@ -70,8 +70,8 @@ function Profile() {
   return (
     <>
       <header>
-        <Link to={"/"} className="back-btn" onClick={deleteUser}>
-          DELETE
+        <Link to={"/"} className="back-btn" onClick={deleteUser} id="delete-account">
+          DELETE ACCOUNT
         </Link>
         <BackBtn />
       </header>
