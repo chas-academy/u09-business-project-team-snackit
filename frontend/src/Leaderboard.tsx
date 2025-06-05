@@ -7,6 +7,10 @@ interface Player {   // föklarar för TS hur datan ska se ut (GER BÄTTRE KONTR
 }
 
 function Leaderboard() {
+    const API_URL =
+    import.meta.env.NODE_ENV === "prod"
+      ? import.meta.env.VITE_API_BASE_URL_PROD
+      : import.meta.env.VITE_API_BASE_URL_LOCAL;
 
     const [players, setPlayers] = useState<Player[]>([]);
     const [loading, setLoading] = useState(true);
@@ -14,7 +18,7 @@ function Leaderboard() {
     useEffect(()=> {
         const fetchLeaderboard = async () => {
             try{
-                const res = await fetch("/api/v1/games/leaderboard");
+                const res = await fetch(`${API_URL}/api/v1/games/leaderboard`);
                 const data = await res.json();
                 console.log("Fetched players:", data);
                 setPlayers(data);
