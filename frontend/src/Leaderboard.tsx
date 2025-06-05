@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import BackBtn from "./components/back-btn";
 
 interface Player {   // föklarar för TS hur datan ska se ut (GER BÄTTRE KONTROLL )
     _id: string,
@@ -36,6 +37,10 @@ function Leaderboard() {
     if (loading) return <p>Loading leaderboard...</p>
 
     return(
+        <>
+        <header>
+            <BackBtn />
+        </header>
         <main className="leaderboard">
             <div className="leaderboard-header">
                 <h1>Leaderboard</h1>
@@ -58,6 +63,7 @@ function Leaderboard() {
                 </tbody>
             </table>
         </main>
+        </>
 
     );
 }

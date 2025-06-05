@@ -13,6 +13,7 @@ function ExitBtn() {
       credentials: "include",
     });
     navigate("/")
+    window.location.reload();
   };
 
   return (

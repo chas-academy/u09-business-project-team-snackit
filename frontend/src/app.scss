@@ -2,10 +2,31 @@
 @use "library" as L;
 @use "profile" as *;
 @use "instructions" as *;
+* {
+    margin: 0;
+    box-sizing: border-box;
+    @include L.lilita;
+    overflow: hidden;
+}
 
+body {
+    background-color: L.$beige;
+}
+main {
+    max-width: 80%;
+    margin: 0 auto;
+}
+.title {
+    font-size: 4rem;
+    opacity: 70%;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .lobby-btn {
     display: flex;
-    // justify-content: space-between;
     align-items: center;
     width: 334px;
     height: 82px;
@@ -13,8 +34,6 @@
     color: L.$font-white;
     font-size: 37px;
     border-radius: 20px;
-
-
 }
 .lobby-img {
     width: 54px;
@@ -34,61 +53,40 @@ nav {
 #profile {
     background-color: L.$maroon;
 }
-#left-1 {
-    position: relative;
-    width: 20px;
-    border: solid black 2px;
-    transform: rotate(45deg);
-    top: -2px;
-}
-#left-2 {
-    position: relative;
-    width: 20px;
-    border: solid black 2px;
-    transform: rotate(-45deg);
-    top: 10px;
-}
-#right-1 {
-    position: relative;
-    width: 20px;
-    border: solid black 2px;
-    left: 103px;
-    bottom: 64px;
-    transform: rotate(135deg);
-}
-#right-2 {
-    position: relative;
-    width: 20px;
-    border: solid black 2px;
-    transform: rotate(225deg);
-    left: 103px;
-    bottom: 54px;
-}
-
-#win {
-    border-top: solid black 4px;
-    width: 120px;
-    position: relative;
-    left: 5px;
-    bottom: 18px;
-}
-article {
-    margin-bottom: 20px;
-}
-#win-2 {
-    border-bottom: solid black 4px;
-    width: 120px;
-    position: relative;
-    left: 5px;
-    bottom: 49px;
-}
-#win-title {
-    position: relative;
-    left: 40px;
-    bottom: 28px;
-}
 #exit-btn {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin: 32px;
+}
+.back-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: L.$red ;
+    border-radius: 48px;
+    border: solid L.$brown 6px;
+    font-size: 2.25rem;
+    width: 132px;
+    height: 84px;
+    text-decoration: none;
+    color: L.$brown;
+}
+#error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    >img {
+        width: 800px;
+    }
+
+}
+#error-title{
+    width: 25rem;
+    font-size: 80px;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: L.$brown;
+    text-align: center;
 }

@@ -1,28 +1,27 @@
 @use "library" as L;
-* {
-    @include L.lilita;
-}
+// * {
+//     @include L.lilita;
+// }
 
-html, body {
-  margin: 0;
-  overflow: hidden;
-}
+// html, body {
+//   margin: 0;
+//   overflow: hidden;
+// }
 
 .instructions-container { 
   height: 100vh; 
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: L.$font-white;
   overflow: hidden;
   padding: 2rem;
 
-    h1 {
-      @include L.lilita;
-      font-size: 2.5rem;
-      color: L.$brown;
-      margin-bottom: 2rem;
-    }
+    // h1 {
+    //   // @include L.lilita;
+    //   font-size: 2.5rem;
+    //   color: L.$brown;
+    //   margin-bottom: 2rem;
+    // }
 
     .players {
     display: flex;
@@ -61,36 +60,36 @@ html, body {
   }
 }
 
-  .start-btn {
-    all: unset;   // tar bort design som redan finns förbestämde
-    background-color: L.$green;
-    color: L.$font-white;
-    @include L.lilita;
-    font-size: 1.3rem;
-    font-weight: bold;
-    padding: 0.2rem 2rem;
-    border: 3px solid L.$brown;
-    border-radius: 2rem;
-    text-align: center;
-    margin-top: 1rem;
-    cursor: pointer;
-  }
+  // .start-btn {
+  //   all: unset;   // tar bort design som redan finns förbestämde
+  //   background-color: L.$green;
+  //   color: L.$font-white;
+  //   @include L.lilita;
+  //   font-size: 1.3rem;
+  //   font-weight: bold;
+  //   padding: 0.2rem 2rem;
+  //   border: 3px solid L.$brown;
+  //   border-radius: 2rem;
+  //   text-align: center;
+  //   margin-top: 1rem;
+  //   cursor: pointer;
+  // }
 
 
-  .back-btn {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    background-color: #D2613C;
-    color: L.$brown;
-    @include L.lilita;
-    font-size: 1.3rem;
-    font-weight: bold;
-    padding: 0.6rem 1rem;
-    border-radius: 2rem;
-    border: 5px solid L.$brown;
-    cursor: pointer;
-  }
+  // .back-btn {
+  //   position: absolute;
+  //   top: 1.5rem;
+  //   right: 1.5rem;
+  //   background-color: #D2613C;
+  //   color: L.$brown;
+  //   @include L.lilita;
+  //   font-size: 1.3rem;
+  //   font-weight: bold;
+  //   padding: 0.6rem 1rem;
+  //   border-radius: 2rem;
+  //   border: 5px solid L.$brown;
+  //   cursor: pointer;
+  // }
 
 
   .game-id {
@@ -107,4 +106,9 @@ html, body {
     right: 9rem;
   }
 
+}
+header {
+  display: flex;
+  justify-content: flex-end;
+  margin: 32px;
 }

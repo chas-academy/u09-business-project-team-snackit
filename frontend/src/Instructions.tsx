@@ -1,6 +1,7 @@
 import {useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFetchUser } from "./hooks/useFetchUser";
+import BackBtn from "./components/back-btn";
 
 function Instructions() {
     const navigate = useNavigate();
@@ -9,11 +10,6 @@ function Instructions() {
         name:"",
         email:"",
     });
-
-    const API_URL = 
-        import.meta.env.NODE_ENV === "prod"
-        ? import.meta.env.VITE_API_BASE_URL_PROD
-        : import.meta.env.VITE_API_BASE_URL_LOCAL;
 
     const { user, loading, error} = useFetchUser();
 
@@ -37,10 +33,14 @@ function Instructions() {
     };
 
     return (
+        <>
+        <header>
+            {/* <button className="back-btn" onClick={() => navigate("/lobby")}>BACK</button> */}
+            {/* La in komponenten ist */}
+            <BackBtn />
+        </header>
         <main className="instructions-container">
-            <button className="back-btn" onClick={() => navigate("/lobby")}>BACK</button>
-
-            <h1>Welcome {formData.name}!</h1>
+            <h1 className="title">Welcome {formData.name}!</h1>
             <img src="" alt="" />
 
             <section className="players"> 
@@ -69,10 +69,11 @@ function Instructions() {
                 <p>If the recipe does not exist, or the ingredient is not included in the submitted recipe you lose!</p>
                 <p>Ready to find out who is the foodie?</p>
             </section>
-
-            <button className="start-btn" onClick={() => navigate("/game")}>START</button>
+            {/* ändra till Link */}
+            <button className="primary-btn" onClick={() => navigate("/game")}>START</button>
             <p className="game-id">GAME ID: 123</p>
         </main>
+        </>
     );
 }
 

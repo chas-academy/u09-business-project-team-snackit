@@ -22,9 +22,9 @@ function Profile() {
       });
     }
   }, [user]);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error</p>;
-  if (!user) return <p>User not found</p>;
+  if (loading) return <h3>Loading...</h3>;
+  if (error) return <h3>Error</h3>;
+  if (!user) return <h3>User not found</h3>;
 
   const deleteUser = async () => {
     try {
@@ -69,22 +69,25 @@ function Profile() {
   };
   return (
     <>
-      <header>
-        <Link to={"/"} className="back-btn" onClick={deleteUser}>
-          DELETE
+      <header id="profile-header">
+        <Link
+          to={"/"}
+          className="back-btn"
+          onClick={deleteUser}
+          id="delete-account"
+        >
+          DELETE ACCOUNT
         </Link>
         <BackBtn />
       </header>
       <main>
         <section>
-          <h1>Welcome {user.name}!</h1>
+          <h1 className="title">Welcome {user.name}!</h1>
           <img
             className="profile-pic"
             src="img_1.svg"
             alt="fox in a chefshat"
           />
-        </section>
-        <article>
           <form className="update-form" onSubmit={updateUser}>
             <input
               type="text"
@@ -100,26 +103,24 @@ function Profile() {
               value={formData.email}
               onChange={handleInput}
             />
-            <button>UPDATE</button>
+            <button className="primary-btn">UPDATE</button>
           </form>
-        </article>
-        <div id="statistics">
-          <div>
-            <div>
-              <div id="left-1"></div>
-              <div id="left-2"></div>
-              <div id="win"></div>
-              <p id="win-title">WINS</p>
+          <article id="stats">
+            <h2>Statistics</h2>
+            <div className="stats-container">
+            <div className="stats-box">
+              <img src="trophy.svg" alt="trophy"  className="stats-trophy"/>
+              <img src="win-label.svg" alt="yellow label with text wins"  className="stats-label"/>
+              <h3>{user.wins}</h3>
             </div>
-            <div id="right">
-              <div id="right-1"></div>
-              <div id="right-2"></div>
-              <div id="win-2"></div>
+            <div className="stats-box">
+              <img src="loss.svg" alt="theater sad mask" className="stats-trophy"/>
+              <img src="loss-label.svg" alt="red label with text losses" className="stats-label"/>
+              <h3>{user.losses}</h3>
             </div>
-          </div>
-          <p>{user.wins}</p>
-          <p>{user.losses}</p>
-        </div>
+            </div>
+          </article>
+        </section>
       </main>
     </>
   );

@@ -5,10 +5,8 @@ function App() {
   document.getElementById('login-body')?.setAttribute('id', 'root-body')
 
   return (
-    <div><Lobby /></div>
+    <body><Lobby /></body>
   )
 }
 
 export default App
-
-
