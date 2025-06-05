@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Leaderboard from './Leaderboard.tsx'
 import Profile from './Profile.tsx'
 import Instructions from './Instructions.tsx'
+import ErrorElement from './404.tsx'
 
 
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <Profile />
+  },
+  {
+    path: "*",
+    element: <ErrorElement />
   }
 ])
 
