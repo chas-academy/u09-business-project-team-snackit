@@ -185,4 +185,10 @@ article {
   position: relative;
   left: 40px;
   bottom: 28px;
+}
+
+#exit-btn {
+  display: flex;
+  justify-content: end;
+  margin: 32px;
 }/*# sourceMappingURL=app.css.map */

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useFetchUser } from "./hooks/useFetchUser";
 import Register from "./Register";
+import ExitBtn from "./components/exit-btn";
 
 function Lobby() {
     const { user, loading, error} = useFetchUser();
@@ -17,7 +18,8 @@ function Lobby() {
     if(user) {
         return (
         <>
-               <h1>Welcome {user!.name}!</h1>
+        <header id="exit-btn"><ExitBtn /></header>
+        <h1>Welcome {user!.name}!</h1>
        <nav>
        <Link to={"/game"} id="start-game" className="lobby-btn"><img src="start-btn.svg" alt=""  className="lobby-img"/>START</Link>
        <Link to={"/leaderboard"} id="leaderboard" className="lobby-btn"><img src="iconoir_leaderboard-star.svg" alt="" className="lobby-img"/>LEADERBOARD</Link>
