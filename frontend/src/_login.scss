@@ -41,7 +41,7 @@
     justify-content: center;
     margin-top: 20rem;
 }
-.register-form {
+.register-form, .update-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,6 +53,8 @@
         border-radius: 20px;
         font-size: 20px;
         padding: 10px;
+        background-color: L.$grey;
+        @include L.baloo
     }
 }
 #register-btn {

@@ -16,11 +16,11 @@
   width: 280px;
   height: 78px;
   border-radius: 48px;
-  border: solid #4C2D1A 6px;
+  border: solid #4c2d1a 6px;
   font-size: 30px;
   text-decoration: none;
-  color: #4C2D1A;
-  background-color: #979E37;
+  color: #4c2d1a;
+  background-color: #979e37;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +31,7 @@
 
 .logo {
   width: 216px;
-  border: solid #4C2D1A 6px;
+  border: solid #4c2d1a 6px;
   border-radius: 25px;
 }
 
@@ -50,37 +50,42 @@
   margin-top: 20rem;
 }
 
-.register-form {
+.register-form, .update-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
 }
-.register-form > input {
+.register-form > input, .update-form > input {
   width: 324px;
   height: 49px;
   border-radius: 20px;
   font-size: 20px;
   padding: 10px;
+  background-color: #d9d9d9;
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #register-btn {
-  background-color: #9A4D52;
+  background-color: #9a4d52;
 }
 
 .back-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #E25937;
+  background-color: #e25937;
   border-radius: 48px;
-  border: solid #4C2D1A 6px;
+  border: solid #4c2d1a 6px;
   font-size: 2.25rem;
   width: 132px;
   height: 84px;
   text-decoration: none;
-  color: #4C2D1A;
+  color: #4c2d1a;
 }
 
 header {
@@ -99,6 +104,16 @@ header {
   text-align: center;
 }
 
+.primary-btn {
+  width: 155px;
+  height: 43px;
+  border: solid #4c2d1a 4px;
+  border-radius: 26px;
+  font-size: 1.25rem;
+  background-color: #979e37;
+  color: #e0e2c3;
+}
+
 * {
   font-family: "Lilita One", sans-serif;
   font-weight: 400;
@@ -115,7 +130,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #E0E2C3;
+  background-color: #e0e2c3;
   overflow: hidden;
   padding: 2rem;
 }
@@ -124,7 +139,7 @@ html, body {
   font-weight: 400;
   font-style: normal;
   font-size: 2.5rem;
-  color: #4C2D1A;
+  color: #4c2d1a;
   margin-bottom: 2rem;
 }
 .instructions-container .players {
@@ -141,7 +156,7 @@ html, body {
 }
 .instructions-container .players .vs-icon {
   font-size: 2.2rem;
-  color: #9A4D52;
+  color: #9a4d52;
   font-weight: bold;
   font-family: "Lilita One", sans-serif;
   font-weight: 400;
@@ -151,7 +166,7 @@ html, body {
   max-width: 500px;
   margin: 2rem auto;
   text-align: center;
-  color: #4C2D1A;
+  color: #4c2d1a;
   font-size: 1rem;
 }
 .instructions-container .instruction-text strong {
@@ -162,15 +177,15 @@ html, body {
 }
 .instructions-container .start-btn {
   all: unset;
-  background-color: #979E37;
-  color: #E0E2C3;
+  background-color: #979e37;
+  color: #e0e2c3;
   font-family: "Lilita One", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 1.3rem;
   font-weight: bold;
   padding: 0.2rem 2rem;
-  border: 3px solid #4C2D1A;
+  border: 3px solid #4c2d1a;
   border-radius: 2rem;
   text-align: center;
   margin-top: 1rem;
@@ -181,7 +196,7 @@ html, body {
   top: 1.5rem;
   right: 1.5rem;
   background-color: #D2613C;
-  color: #4C2D1A;
+  color: #4c2d1a;
   font-family: "Lilita One", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -189,18 +204,18 @@ html, body {
   font-weight: bold;
   padding: 0.6rem 1rem;
   border-radius: 2rem;
-  border: 5px solid #4C2D1A;
+  border: 5px solid #4c2d1a;
   cursor: pointer;
 }
 .instructions-container .game-id {
-  background-color: #E0E2C3;
-  color: #4C2D1A;
+  background-color: #e0e2c3;
+  color: #4c2d1a;
   font-weight: bold;
   font-size: 1rem;
   font-family: "Lilita One", sans-serif;
   font-weight: 400;
   font-style: normal;
-  border: 3px solid #4C2D1A;
+  border: 3px solid #4c2d1a;
   padding: 0.2rem 0.8rem;
   border-radius: 2rem;
   position: absolute;
@@ -214,7 +229,7 @@ html, body {
 }
 
 body {
-  background-color: #F3E0C8;
+  background-color: #f3e0c8;
 }
 
 main {
@@ -227,7 +242,7 @@ main {
   opacity: 70%;
 }
 
-.lobby {
+section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -239,7 +254,7 @@ main {
   width: 334px;
   height: 82px;
   text-decoration: none;
-  color: #E0E2C3;
+  color: #e0e2c3;
   font-size: 37px;
   border-radius: 20px;
 }
@@ -256,75 +271,15 @@ nav {
 }
 
 #start-game {
-  background-color: #979E37;
+  background-color: #979e37;
 }
 
 #leaderboard {
-  background-color: #F6B255;
+  background-color: #f6b255;
 }
 
 #profile {
-  background-color: #9A4D52;
-}
-
-#left-1 {
-  position: relative;
-  width: 20px;
-  border: solid black 2px;
-  transform: rotate(45deg);
-  top: -2px;
-}
-
-#left-2 {
-  position: relative;
-  width: 20px;
-  border: solid black 2px;
-  transform: rotate(-45deg);
-  top: 10px;
-}
-
-#right-1 {
-  position: relative;
-  width: 20px;
-  border: solid black 2px;
-  left: 103px;
-  bottom: 64px;
-  transform: rotate(135deg);
-}
-
-#right-2 {
-  position: relative;
-  width: 20px;
-  border: solid black 2px;
-  transform: rotate(225deg);
-  left: 103px;
-  bottom: 54px;
-}
-
-#win {
-  border-top: solid black 4px;
-  width: 120px;
-  position: relative;
-  left: 5px;
-  bottom: 18px;
-}
-
-article {
-  margin-bottom: 20px;
-}
-
-#win-2 {
-  border-bottom: solid black 4px;
-  width: 120px;
-  position: relative;
-  left: 5px;
-  bottom: 49px;
-}
-
-#win-title {
-  position: relative;
-  left: 40px;
-  bottom: 28px;
+  background-color: #9a4d52;
 }
 
 #exit-btn {

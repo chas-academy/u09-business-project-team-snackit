@@ -1,14 +1,20 @@
-$brown: #4C2D1A;
-$green: #979E37;
-$maroon: #9A4D52;
-$yellow: #F6B255;
-$font-white: #E0E2C3;
-$red: #E25937;
-$beige: #F3E0C8;
+$brown: #4c2d1a;
+$green: #979e37;
+$maroon: #9a4d52;
+$yellow: #f6b255;
+$font-white: #e0e2c3;
+$red: #e25937;
+$beige: #f3e0c8;
+$grey: #d9d9d9;
 
 @mixin lilita {
-        font-family: "Lilita One", sans-serif;
-        font-weight: 400;
-        font-style: normal;
-    
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin baloo {
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }

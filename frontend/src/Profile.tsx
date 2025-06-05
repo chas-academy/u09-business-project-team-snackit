@@ -70,7 +70,12 @@ function Profile() {
   return (
     <>
       <header>
-        <Link to={"/"} className="back-btn" onClick={deleteUser} id="delete-account">
+        <Link
+          to={"/"}
+          className="back-btn"
+          onClick={deleteUser}
+          id="delete-account"
+        >
           DELETE ACCOUNT
         </Link>
         <BackBtn />
@@ -83,8 +88,6 @@ function Profile() {
             src="img_1.svg"
             alt="fox in a chefshat"
           />
-        </section>
-        <article>
           <form className="update-form" onSubmit={updateUser}>
             <input
               type="text"
@@ -100,25 +103,14 @@ function Profile() {
               value={formData.email}
               onChange={handleInput}
             />
-            <button>UPDATE</button>
+            <button className="primary-btn">UPDATE</button>
           </form>
-        </article>
+        </section>
         <div id="statistics">
           <div>
-            <div>
-              <div id="left-1"></div>
-              <div id="left-2"></div>
-              <div id="win"></div>
-              <p id="win-title">WINS</p>
-            </div>
-            <div id="right">
-              <div id="right-1"></div>
-              <div id="right-2"></div>
-              <div id="win-2"></div>
-            </div>
+            <p>{user.wins}</p>
+            <p>{user.losses}</p>
           </div>
-          <p>{user.wins}</p>
-          <p>{user.losses}</p>
         </div>
       </main>
     </>

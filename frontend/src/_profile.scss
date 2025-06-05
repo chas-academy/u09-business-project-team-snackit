@@ -26,3 +26,12 @@ header {
     font-size: 1.5rem;
     text-align: center;
 }
+.primary-btn {
+    width: 155px;
+    height: 43px;
+    border: solid L.$brown 4px;
+    border-radius: 26px;
+    font-size: 1.25rem;
+    background-color: L.$green;
+    color: L.$font-white;
+}
