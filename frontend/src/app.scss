@@ -5,7 +5,10 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    @include L.lilita;
+    overflow: hidden;
 }
+
 body {
     background-color: L.$beige;
 }
@@ -24,7 +27,6 @@ section {
 }
 .lobby-btn {
     display: flex;
-    // justify-content: space-between;
     align-items: center;
     width: 334px;
     height: 82px;

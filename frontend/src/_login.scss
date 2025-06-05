@@ -1,7 +1,5 @@
 @use "library" as L;
-* {
-    @include L.lilita;
-}
+
 #login-body {
     background-image: url(./assets/kitchen.background.desktop.png);
     background-repeat: no-repeat;

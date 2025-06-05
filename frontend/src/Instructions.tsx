@@ -40,7 +40,7 @@ function Instructions() {
             <BackBtn />
         </header>
         <main className="instructions-container">
-            <h1>Welcome {formData.name}!</h1>
+            <h1 className="title">Welcome {formData.name}!</h1>
             <img src="" alt="" />
 
             <section className="players"> 

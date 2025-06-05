@@ -1,12 +1,12 @@
 @use "library" as L;
-* {
-    @include L.lilita;
-}
+// * {
+//     @include L.lilita;
+// }
 
-html, body {
-  margin: 0;
-  overflow: hidden;
-}
+// html, body {
+//   margin: 0;
+//   overflow: hidden;
+// }
 
 .instructions-container { 
   height: 100vh; 
@@ -16,12 +16,12 @@ html, body {
   overflow: hidden;
   padding: 2rem;
 
-    h1 {
-      @include L.lilita;
-      font-size: 2.5rem;
-      color: L.$brown;
-      margin-bottom: 2rem;
-    }
+    // h1 {
+    //   // @include L.lilita;
+    //   font-size: 2.5rem;
+    //   color: L.$brown;
+    //   margin-bottom: 2rem;
+    // }
 
     .players {
     display: flex;

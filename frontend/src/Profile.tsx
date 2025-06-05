@@ -22,9 +22,9 @@ function Profile() {
       });
     }
   }, [user]);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error</p>;
-  if (!user) return <p>User not found</p>;
+  if (loading) return <h3>Loading...</h3>;
+  if (error) return <h3>Error</h3>;
+  if (!user) return <h3>User not found</h3>;
 
   const deleteUser = async () => {
     try {
@@ -69,7 +69,7 @@ function Profile() {
   };
   return (
     <>
-      <header>
+      <header id="profile-header">
         <Link
           to={"/"}
           className="back-btn"
@@ -82,7 +82,7 @@ function Profile() {
       </header>
       <main>
         <section>
-          <h1>Welcome {user.name}!</h1>
+          <h1 className="title">Welcome {user.name}!</h1>
           <img
             className="profile-pic"
             src="img_1.svg"
@@ -105,13 +105,22 @@ function Profile() {
             />
             <button className="primary-btn">UPDATE</button>
           </form>
+          <article id="stats">
+            <h2>Statistics</h2>
+            <div className="stats-container">
+            <div className="stats-box">
+              <img src="trophy.svg" alt="trophy"  className="stats-trophy"/>
+              <img src="win-label.svg" alt="yellow label with text wins"  className="stats-label"/>
+              <h3>{user.wins}</h3>
+            </div>
+            <div className="stats-box">
+              <img src="loss.svg" alt="theater sad mask" className="stats-trophy"/>
+              <img src="loss-label.svg" alt="red label with text losses" className="stats-label"/>
+              <h3>{user.losses}</h3>
+            </div>
+            </div>
+          </article>
         </section>
-        <div id="statistics">
-          <div>
-            <p>{user.wins}</p>
-            <p>{user.losses}</p>
-          </div>
-        </div>
       </main>
     </>
   );
