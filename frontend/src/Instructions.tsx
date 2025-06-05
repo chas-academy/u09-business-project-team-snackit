@@ -69,7 +69,7 @@ function Instructions() {
                 <p>If the recipe does not exist, or the ingredient is not included in the submitted recipe you lose!</p>
                 <p>Ready to find out who is the foodie?</p>
             </section>
-
+            {/* ändra till Link */}
             <button className="primary-btn" onClick={() => navigate("/game")}>START</button>
             <p className="game-id">GAME ID: 123</p>
         </main>
