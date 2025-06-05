@@ -91,6 +91,7 @@ header {
 
 .profile-pic {
   width: 220px;
+  margin-bottom: 2rem;
 }
 
 #delete-account {
@@ -205,6 +206,11 @@ html, body {
   position: absolute;
   bottom: 1rem;
   right: 9rem;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {

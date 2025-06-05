@@ -2,7 +2,10 @@
 @use "library" as L;
 @use "profile" as *;
 @use "instructions" as *;
-
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
 body {
     background-color: L.$beige;
 }

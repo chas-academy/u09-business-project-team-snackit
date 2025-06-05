@@ -24,6 +24,11 @@ function Lobby() {
           </header>
           <section className="lobby">
           <h1 className="title">Welcome {user!.name}!</h1>
+          <img
+            className="profile-pic"
+            src="img_1.svg"
+            alt="fox in a chefshat"
+          />
           <nav>
             <Link to={"/instructions"} id="start-game" className="lobby-btn">
               <img
