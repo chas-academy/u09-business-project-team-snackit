@@ -18,10 +18,10 @@ function Lobby() {
   if (user) {
     return (
       <>
-        <main>
           <header id="exit-btn">
             <ExitBtn />
           </header>
+        <main>
           <section className="lobby">
           <h1 className="title">Welcome {user!.name}!</h1>
           <img
