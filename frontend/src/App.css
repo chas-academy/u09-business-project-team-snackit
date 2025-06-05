@@ -68,6 +68,7 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  border: solid #4c2d1a 4px;
 }
 
 #register-btn {

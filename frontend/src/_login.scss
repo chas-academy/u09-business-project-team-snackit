@@ -54,7 +54,8 @@
         font-size: 20px;
         padding: 10px;
         background-color: L.$grey;
-        @include L.baloo
+        @include L.baloo;
+        border: solid L.$brown 4px;
     }
 }
 #register-btn {

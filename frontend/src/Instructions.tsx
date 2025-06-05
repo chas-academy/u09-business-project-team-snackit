@@ -11,11 +11,6 @@ function Instructions() {
         email:"",
     });
 
-    const API_URL = 
-        import.meta.env.NODE_ENV === "prod"
-        ? import.meta.env.VITE_API_BASE_URL_PROD
-        : import.meta.env.VITE_API_BASE_URL_LOCAL;
-
     const { user, loading, error} = useFetchUser();
 
     useEffect(() => {
