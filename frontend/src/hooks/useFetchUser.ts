@@ -26,7 +26,7 @@ export const useFetchUser = () => {
       if (!res.ok) throw new Error("Failed to fetch user from auth.");
 
       const data = await res.json();
-      // console.log(data);
+      console.log(data);
       const userData = await fetch(`${API_URL}/users/${data.id}`);
       if (!userData.ok){
         setUser(null);
