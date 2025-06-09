@@ -1,13 +1,10 @@
 import express, {Request, Response} from "express";
-import dotenv  from "dotenv";
 import fetch from 'cross-fetch';
 
 
-dotenv.config();
 
-const router = express.Router();
 
-router.get("/recipes", async (req: Request, res: Response ) => {
+export const getRandomIngredients = async (): Promise<{title: string; image: string; usedIngredient: string;}> => {
     const apiKey= process.env.SPOONCULAR_API_KEY;
 
     try {
@@ -34,29 +31,30 @@ router.get("/recipes", async (req: Request, res: Response ) => {
             "ice cream", "tea spoon of vanilla extract", "cake mix", "oreo", "ice water", "chocolate vanilla swirl marshmallows", 
             "sea salt", "non-fat milk", "chocolate", "milk", "until deep golden brown. remove bread from pan", "s&p", 
             "ground", "vegetable bouillon cube", "margarine", "maple syrup", "pan drippings from roast beef preferably", 
-            "whipping cream", "nuts such as walnuts", "lemon juice","at least of turkey bacon", "vanilla bean", "walnuts" ]
+            "whipping cream", "nuts such as walnuts", "lemon juice","at least of turkey bacon", "vanilla bean", "walnuts", "of", "pepper flakes", "flour", "rolled oats", "chocolate bar", "may not be heavy handed" ]
 
-        const filteredIngredients = ingredients.filter((ing: {name: string}) => {    //Filtrerar bort basic ingredienser som skrivet uppe.
+            const filteredIngredients = ingredients.filter((ing: {name: string}) => {    //Filtrerar bort basic ingredienser som skrivet uppe.
             const name = ing.name.toLowerCase().trim();                              // Gör om namnet på ingredienseran till småbokstäver och tarbort mellanrumm
             return !excludedIngredients.includes(name);                              // Returerar true om namnet inte finns med i excludedIngredients annars falsk. 
         });
 
 
         if(filteredIngredients.length ===0) {
-            return res.status(404).json({error: "This ingredient is not valid in this recipe"})
+            throw new Error("This ingredient is not valid, try again!");
         }
 
         
         const lastIngredient = filteredIngredients[filteredIngredients.length -1].name    // Hämtar namnet på sista ingrediensen i från listan
 
-        res.json({title: recipe.title, image: recipe.image, usedIngredient: lastIngredient});
+        return {
+            title: recipe.title,
+            image: recipe.image,
+            usedIngredient: lastIngredient
+        };
 
     }catch (error) { 
         console.error("Theres been an error with Spooncular API", error);
-        res.status(500).json({error: "We failed to fetch random recipe"})
+        throw new Error("We failed to fetch random recipe");
     }
-});
+};
 
-
-
-export default router;
