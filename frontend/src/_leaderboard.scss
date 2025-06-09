@@ -1,0 +1,109 @@
+@use "library" as L;
+
+.top3-pics {
+    top: 14rem;
+    height: 11rem;
+ position: absolute;
+    > :first-child {
+        position: relative;
+        top: 32px;
+    }
+    > :last-child {
+        position: relative;
+        top: 60px;
+    }
+    @include L.mobile {
+        top: 10rem;
+    }
+}
+.leaderboard {
+    width: 400px;
+    margin: 0 auto;
+}
+.leader-pic {
+    width: 100px;
+    margin: 0.4rem;
+    border-radius: 50px;
+    box-shadow: inset 0px 0px 10px #504f4f;
+}
+.leader-stage {
+    margin-top: 8rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.leader-block{
+    width: 106px;
+    border-radius: 20px 20px 0 0;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 40px;
+    color: L.$brown;
+}
+#block-green {
+    height: 108px;
+    background-color: L.$green;
+}
+#block-yellow {
+    height: 149px;
+    background-color: L.$yellow;
+}
+#block-maroon {
+    height: 60px;
+    background-color: L.$maroon;
+}
+.total-wins-label {
+    color: L.$brown;
+    width: 100%;
+    margin-right: 3rem;
+    text-align: end;
+    margin-top: 1rem;
+}
+.player-card {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+.rank-nr {
+    border: solid 4px L.$brown;
+    border-radius: 20px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: L.$brown;
+    background-color: L.$grey;
+}
+#rank-badge-nr1 {
+    background-color: L.$yellow;
+}
+#rank-badge-nr2 {
+    background-color: L.$green;
+}
+#rank-badge-nr3 {
+    background-color: L.$maroon;
+}
+.player-name {
+    border-radius: 20px;
+    border: solid L.$brown 4px;
+    color: L.$brown;
+    width: 174px;
+    margin-left: 2rem;
+    text-align: left;
+    padding: 0 0.8rem;
+    display: flex;
+    align-items: center;
+    background-color: L.$grey;
+}
+.player-wins {
+    margin-left: 2rem;
+    width: 48px;
+    border-radius: 20px;
+    border: solid L.$brown 4px;
+    color: L.$brown;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: L.$grey;
+}

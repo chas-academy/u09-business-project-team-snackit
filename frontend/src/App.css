@@ -75,12 +75,22 @@
 
 .profile-pic {
   width: 220px;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
+}
+@media (max-width: 400px) {
+  .profile-pic {
+    width: 165px;
+  }
 }
 
 #delete-account {
   font-size: 1.5rem;
   text-align: center;
+}
+@media (max-width: 400px) {
+  #delete-account {
+    font-size: 1rem;
+  }
 }
 
 .primary-btn {
@@ -191,10 +201,129 @@ h2 {
   right: 9rem;
 }
 
-header {
+.top3-pics {
+  top: 14rem;
+  height: 11rem;
+  position: absolute;
+}
+.top3-pics > :first-child {
+  position: relative;
+  top: 32px;
+}
+.top3-pics > :last-child {
+  position: relative;
+  top: 60px;
+}
+@media (max-width: 400px) {
+  .top3-pics {
+    top: 10rem;
+  }
+}
+
+.leaderboard {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.leader-pic {
+  width: 100px;
+  margin: 0.4rem;
+  border-radius: 50px;
+  box-shadow: inset 0px 0px 10px #504f4f;
+}
+
+.leader-stage {
+  margin-top: 8rem;
   display: flex;
-  justify-content: flex-end;
-  margin: 32px;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.leader-block {
+  width: 106px;
+  border-radius: 20px 20px 0 0;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 40px;
+  color: #4c2d1a;
+}
+
+#block-green {
+  height: 108px;
+  background-color: #979e37;
+}
+
+#block-yellow {
+  height: 149px;
+  background-color: #f6b255;
+}
+
+#block-maroon {
+  height: 60px;
+  background-color: #9a4d52;
+}
+
+.total-wins-label {
+  color: #4c2d1a;
+  width: 100%;
+  margin-right: 3rem;
+  text-align: end;
+  margin-top: 1rem;
+}
+
+.player-card {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.rank-nr {
+  border: solid 4px #4c2d1a;
+  border-radius: 20px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4c2d1a;
+  background-color: #d9d9d9;
+}
+
+#rank-badge-nr1 {
+  background-color: #f6b255;
+}
+
+#rank-badge-nr2 {
+  background-color: #979e37;
+}
+
+#rank-badge-nr3 {
+  background-color: #9a4d52;
+}
+
+.player-name {
+  border-radius: 20px;
+  border: solid #4c2d1a 4px;
+  color: #4c2d1a;
+  width: 174px;
+  margin-left: 2rem;
+  text-align: left;
+  padding: 0 0.8rem;
+  display: flex;
+  align-items: center;
+  background-color: #d9d9d9;
+}
+
+.player-wins {
+  margin-left: 2rem;
+  width: 48px;
+  border-radius: 20px;
+  border: solid #4c2d1a 4px;
+  color: #4c2d1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d9d9d9;
 }
 
 * {
@@ -211,19 +340,44 @@ body {
 }
 
 main {
-  max-width: 80%;
   margin: 0 auto;
+}
+@media (min-width: 660px) {
+  main {
+    max-width: 80%;
+  }
+}
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  margin: 32px;
+}
+@media (max-width: 400px) {
+  header {
+    margin: 32px 16px 32px 16px;
+  }
 }
 
 .title {
   font-size: 4rem;
   opacity: 70%;
 }
+@media (max-width: 400px) {
+  .title {
+    font-size: 2rem;
+  }
+}
 
 section {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media (max-width: 400px) {
+  section {
+    width: 400px;
+  }
 }
 
 .lobby-btn {
@@ -233,8 +387,9 @@ section {
   height: 82px;
   text-decoration: none;
   color: #e0e2c3;
-  font-size: 37px;
+  font-size: 35px;
   border-radius: 20px;
+  border: solid #4c2d1a 6px;
 }
 
 .lobby-img {
@@ -265,6 +420,11 @@ nav {
   justify-content: flex-end;
   margin: 32px;
 }
+@media (max-width: 400px) {
+  #exit-btn {
+    margin: 16px;
+  }
+}
 
 .back-btn {
   display: flex;
@@ -278,6 +438,13 @@ nav {
   height: 84px;
   text-decoration: none;
   color: #4c2d1a;
+}
+@media (max-width: 400px) {
+  .back-btn {
+    width: 90px;
+    height: 54px;
+    font-size: 24px;
+  }
 }
 
 #error {

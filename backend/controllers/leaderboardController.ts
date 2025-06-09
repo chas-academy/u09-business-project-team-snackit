@@ -5,7 +5,7 @@ export const getLeaderboard = async (req: Request, res: Response) => {
     try{
         const topPlayers = await User.find()
         .sort({wins: -1})
-        .limit(10);
+        .limit(6);
         res.status(200).json(topPlayers);
     } catch (err: unknown) {
         if(err instanceof Error) {

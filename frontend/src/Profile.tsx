@@ -25,7 +25,7 @@ function Profile() {
   if (loading) return <h3>Loading...</h3>;
   if (error) return <h3>Error</h3>;
   if (!user) return <h3>User not found</h3>;
-
+  console.log(user)
   const deleteUser = async () => {
     try {
       await fetch(`${API_URL}/users/${user._id}`, {
@@ -85,7 +85,7 @@ function Profile() {
           <h1 className="title">Welcome {user.name}!</h1>
           <img
             className="profile-pic"
-            src="img_1.svg"
+            src={`${user.profilePic}.svg`}
             alt="fox in a chefshat"
           />
           <form className="update-form" onSubmit={updateUser}>

@@ -11,6 +11,7 @@ type User = {
     email: string;
     wins: number;
     losses: number;
+    profilePic: string;
 
 }
 export const useFetchUser = () => {
