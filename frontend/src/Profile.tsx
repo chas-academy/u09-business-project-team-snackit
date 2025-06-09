@@ -25,7 +25,7 @@ function Profile() {
   if (loading) return <h3>Loading...</h3>;
   if (error) return <h3>Error</h3>;
   if (!user) return <h3>User not found</h3>;
-  console.log(user)
+  // console.log(user)
   const deleteUser = async () => {
     try {
       await fetch(`${API_URL}/users/${user._id}`, {

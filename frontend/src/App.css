@@ -76,6 +76,8 @@
 .profile-pic {
   width: 220px;
   margin: 2rem 0;
+  box-shadow: inset 0px 0px 10px #504f4f;
+  border-radius: 80px;
 }
 @media (max-width: 400px) {
   .profile-pic {

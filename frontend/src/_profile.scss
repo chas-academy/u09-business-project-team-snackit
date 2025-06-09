@@ -10,6 +10,8 @@
     @include L.mobile {
         width: 165px;
     }
+    box-shadow: inset 0px 0px 10px #504f4f;
+    border-radius: 80px;
 }
 #delete-account {
     font-size: 1.5rem;

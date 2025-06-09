@@ -1,29 +1,38 @@
 import { useEffect, useState } from "react";
-import { redirect } from "react-router-dom";
+import { useFetchGoogleUser } from "./hooks/useFetchGoogleUser";
 
 function Register() {
-    const [user, setUser] = useState("");
-  
-    const fetchUser = async () => {
-      const res = await fetch ("http://localhost:3003/auth/user", {
-        credentials: "include"
-      });
-      
-      const data = await res.json();
-      setUser(data);
-    };
-    
-    useEffect(() => {
-      fetchUser();
-    }, []);
-    // console.log(user.id)
-    const googleId = user.id;
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         password: "",
         confirmed_password: ""
     })
+      const { user, loading, error } = useFetchGoogleUser();
+      useEffect(() => {
+
+      }, [user]);
+      if (loading) return <h3>Loading...</h3>;
+      if (error) return <h3>Error</h3>;
+      if (!user) return <h3>User not found</h3>;
+      console.log(user)
+    // const [user, setUser] = useState("");
+  
+    // const fetchUser = async () => {
+    //   const res = await fetch ("http://localhost:3003/auth/user", {
+    //     credentials: "include"
+    //   });
+      
+    //   const data = await res.json();
+    //   setUser(data);
+    // };
+    
+    // useEffect(() => {
+    //   fetchUser();
+    // }, []);
+    // console.log(user.id)
+    const googleId = user.id;
+
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const{ name, value } = e.target;
         setFormData({...formData, [name]: value})
