@@ -9,20 +9,21 @@ export const createGame = async (req: Request, res: Response) => {
     try {
         const { player1, player2 } = req.body;
 
-        const user1 = await User.findById(player1);
-        const user2 = await User.findById(player2);
+        // Hämtar spelarna från databasen med deras id:en
+        const user1 = await User.findById(player1);       
+        const user2 = await User.findById(player2);       
 
         if (!user1 || !user2) {
             return res.status(404).json({error: "One or both players not found"});
         }
 
         const newGame = await Game.create({
-            players: [player1,  player2],          // Använder spelarnas id:n från databasen
+            players: [player1,  player2],              // Använder spelarnas id:n från databasen
             currentTurn: player1,
-            currentIngredient: "",                    // tomt tills startGame kallas
+            currentIngredient: "",                     // tomt tills startGame kallas
             lives: {
-                [player1]: 3,
-                [player2]: 3,
+                [player1.toString()]: 3,      //ÄNDRA HÄR OCKSÅ!!
+                [player2.toString()]: 3,      //ÄNDRA HÄR OCKSÅ!!
             },
             score: 0,                                 // räknar hur många gånger spelarna har svarat rätt
             status: "waiting",                        // visar spelets status, tills startGame hämtas
@@ -45,13 +46,15 @@ export const createGame = async (req: Request, res: Response) => {
 
 
 export const startGame = async (req: Request, res: Response) => {
+
     try {
+        
         const gameId = req.params.gameId;
-        const spoonData = await getRandomIngredients();
+        const spoonData = await getRandomIngredients();        // hämtar en ny ingrediens från Spooncluar api:et
         const game = await Game.findByIdAndUpdate ( gameId, {
             currentIngredient: spoonData.usedIngredient, status: "playing",
         }, 
-            {new: true}
+            {new: true}                                        // returnerar det uppdaterade spelet
         );
 
         if (!game) {
@@ -72,7 +75,7 @@ export const startGame = async (req: Request, res: Response) => {
 
 export const checkSubmission = async (req: Request, res: Response) => {
 
-    console.log("")
+    // console.log("Checking Submissions")
 
     const { gameId } = req.params;
     const { playerId, submittedRecipe } = req.body;
@@ -82,55 +85,78 @@ export const checkSubmission = async (req: Request, res: Response) => {
     }
     
     try {
-        const game = await Game.findById(gameId);     // Hämtar spelet med spelId
+        const game = await Game.findById(gameId);                    // Hämtar spelet med spelId
         if (!game) {
             return res.status(404).json({error: "This game not found"});
         }
 
-        if (game.currentTurn.toString() !== playerId) {           // Kollar om det är spelaranes tur
+        if (game.currentTurn.toString() !== playerId) {             // Kollar om det är spelaranes tur
             return res.status(403).json({ error: "It's not your turn!"});
         }
         
-        const apiKey = process.env.SPOONCULAR_API_KEY;             
-        const recipeSerachUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${submittedRecipe}&apiKey=${apiKey}`;    // Söker recept i api:et med spelarens inmatning!
-        const recipeSerachResponse = await fetch(recipeSerachUrl);      // Hämtar receptet från api:et
-        const recipeSerachData = await recipeSerachResponse.json(); 
+        
+        const apiKey = process.env.SPOONCULAR_API_KEY;        
+        const recipeSearchUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${submittedRecipe}&apiKey=${apiKey}`;    // Söker recept i api:et med spelarens inmatning!
+        const recipeSearchResponse = await fetch(recipeSearchUrl);      // Hämtar receptet från api:et
+        const recipeSearchData = await recipeSearchResponse.json(); 
 
-        if (!recipeSerachData.results || recipeSerachData.results.length ===0) {
+        // console.log("Recipe search data:")
+        // console.table(recipeSearchData)
+
+        // console.log("Recipe results data:")
+        // console.table(recipeSearchData.results)
+
+        if (!recipeSearchData.results || recipeSearchData.results.length ===0) {
             return res.status(404).json({ error: " Whap whap, you wrote in a wrong recipe!"})
         }
 
-        const recipeId = recipeSerachData.results[0].id;     // Hämtar id:et på receptet som spelaren matat in
+        const recipeId = recipeSearchData.results[0].id;     // Hämtar id:et på receptet som spelaren matat in
+
+        // console.log("recipeSearchData.results[0].id: " + recipeSearchData.results[0].id)
 
         // Hämtar detaljerad info om receptet med alla ingredienser
         const recipeInfoUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;
         const recipeInfoResponse = await fetch(recipeInfoUrl); 
         const recipeInfoData = await recipeInfoResponse.json();
 
-        const ingredients = recipeInfoData.extendedIngredients.map((ing: any) => ing.name.toLowerCase().trim());
-        const requiredIngredient = game.currentIngredient.toLowerCase().trim();
-        const ingredientIsCorrect = ingredients.includes(requiredIngredient);
-        
-        const opponentId = game.players.find((id) => id.toString() !== playerId);
+        // console.table(recipeInfoData)
+
+        const ingredients = recipeInfoData.extendedIngredients.map((ing: any) => ing.name.toLowerCase().trim());        // hämtar alla ingredienser i receptet och gör dem till små bokstäver och tar bort mellanslag
+        const requiredIngredient = game.currentIngredient.toLowerCase().trim(); 
+        const ingredientIsCorrect = ingredients.includes(requiredIngredient);                                           // Kollar ifall den inmatade ingrediensen finns i receptet 
+         
+        const opponentId = game.players.find((id) => id.toString() !== playerId);                                       // hämtar motståndarens id 
+
+           
         if (!opponentId) {
-            return res.status(404).json({ error: " This opponent not found!" });
+            // console.log("Opponent not found (ABORTING)")
+            return res.status(404).json({ error: "This opponent not found!" });
         }
 
+        // console.log("After this should check not correct ingredient")
         if (!ingredientIsCorrect) {
-            game.lives[playerId.toString()] -= 1;           // minskar spelarens liv med 1
-            console.log(`Player ${playerId.toString()} lost a life. Lives left: ${game.lives[playerId.toString()]}`);
-            game.markModified('lives');
+            //TODO ÄNDRA IFRÅN ARRAY ÅTKOMST TILL KEY (objekt) ÅTKOMST
+            game.lives[playerId.toString()] -= 1;           // minskar spelarens liv med 1 om det är fel svar
+            
+            // console.log(`Player ${playerId.toString()} lost a life. Lives left: ${game.lives[playerId.toString()]}`);
+            
+            //TODO ÄNDRA IFRÅN ARRAY ÅTKOMST TILL KEY (objekt) ÅTKOMST
+            // console.log("Player lives: " + game.lives.find(id => id === playerId.toString()))
+
+            // console.log("Lives info:")
+            // console.table(game.lives)
+            game.markModified('lives');       // Säger till DB att liv har ändrats och måste sparas
             
 
 
-            if (game.lives[playerId.toString()] <= 0) {
-
-                game.status = "finished";
+            if (game.lives[playerId.toString()] <= 0) {    // ifall spelaren har 0 liv kvar avsluta spelet
+                game.status = "finished";       
                 game.winner = opponentId;
                 game.loser = playerId; 
                         
+                // Uppdaterar spelaranas statisktik i DB
                 await User.findByIdAndUpdate(opponentId, { $inc: { wins: 1 } });           // Ökar spelarens vinst med 1
-                await User.findByIdAndUpdate(playerId, { $inc: { losses: 1 } });       // Ökar motståndarens förlust med 1
+                await User.findByIdAndUpdate(playerId, { $inc: { losses: 1 } });           // Ökar motståndarens förlust med 1
                        
                 game.markModified('lives');
                 await game.save(); 
@@ -138,17 +164,18 @@ export const checkSubmission = async (req: Request, res: Response) => {
             }
     
             await game.save(); 
-            return res.status(200).json({ result: "lost", message: `The recipe doesn't include "${requiredIngredient}! You lost this round!`, winner: opponentId, score: game.score});
+            return res.status(200).json({ result: "lost", message: `The recipe doesn't include "${requiredIngredient}! You lost this round!`, winner: opponentId, score: game.score, lives: game.lives });
         }
 
         game.score += 1;                                   // ökar spelarnas streak med 1
-        game.lives[opponentId.toString()] -=1;             // minskar motståndarens liv med 1
+        //TODO ÄNDRA IFRÅN ARRAY ÅTKOMST TILL KEY (objekt) ÅTKOMST
+        game.lives[opponentId.toString()] -=1;             // minskar motståndarens liv med 1 
 
         game.markModified('lives');
         await game.save();
         return res.status(200).json({ result: "correct", message: `Correct! The ingredient was included.`,lives: game.lives, score: game.score, });
             
-    } catch (err: unknown) {
+    } catch (err: any) {
         if (err instanceof Error) {
             res.status(500).json({error: err.message});
             return;
@@ -172,7 +199,7 @@ export const nextIngredient = async (req: Request, res: Response) => {
             return res.status(404).json({ error: "This game not found"});
         }
 
-        const nextTurn = game.players.find(id => id.toString() !==game.currentTurn.toString());
+        const nextTurn = game.players.find(id => id.toString() !==game.currentTurn.toString());   // Hämtar motståndarens id som ska få nästa tur
         if (!nextTurn) { 
             return res.status(400).json({ error: "Player two is not found"});
         }
@@ -205,7 +232,7 @@ export const forfeitGame = async (req: Request, res: Response) => {
     const { playerId} = req.body;
 
     try{
-        const game = await Game.findById(gameId);
+        const game = await Game.findById(gameId);                       // hittar spelet med spelId
         if(!game) {
             return res.status(200).json({error: "This game not found"});
         }
@@ -250,11 +277,11 @@ export const restartGame = async (req: Request, res: Response) => {
 
     try {
         const oldGame = await Game.findById(gameId);
-        if (!oldGame) {        // Kontrollerar att spelet är avslutat och för att kunna starta om spelet med samma spelare igen
+        if (!oldGame) {                           // Kontrollerar att spelet är avslutat och för att kunna starta om spelet med samma spelare igen
             return res.status(404).json({ error: "This game not found"});
         }
 
-        const players = oldGame.players;
+        const players = oldGame.players;      // Hämtar spelarna för förra gamet
         const startLives = {
             [players[0].toString()]: 3,
             [players[1].toString()]: 3,
@@ -262,7 +289,7 @@ export const restartGame = async (req: Request, res: Response) => {
 
         const spoonData = await getRandomIngredients();
         
-        const newGame = await Game.create({      // Skapar nytt spel
+        const newGame = await Game.create({             // Skapar nytt spel
             players,
             currentTurn: players[0],
             currentIngredient: spoonData.usedIngredient,
