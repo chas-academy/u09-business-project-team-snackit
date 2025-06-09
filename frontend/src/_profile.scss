@@ -5,8 +5,8 @@
     justify-content: space-between;
 }
 .profile-pic {
-    width: 220px;
-    margin: 2rem 0;
+    width: 200px;
+    margin-top: 2rem;
     @include L.mobile {
         width: 165px;
     }
@@ -64,4 +64,14 @@ h2 {
         font-size: 3rem;
         color: L.$brown;
     }
+}
+#edit-profile-pic {
+    border: none;
+    background-color: transparent;
+    position: relative;
+    bottom: 4rem;
+    left: 4rem;
+}
+.chose-pic {
+    margin-bottom: 2rem;
 }

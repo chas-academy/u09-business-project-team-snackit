@@ -23,10 +23,10 @@ function Lobby() {
           </header>
         <main>
           <section className="lobby">
-          <h1 className="title">Welcome {user!.name}!</h1>
+          <h1 className="title">Welcome {user.name}!</h1>
           <img
             className="profile-pic"
-            src="img_1.svg"
+            src={user.profilePic}
             alt="fox in a chefshat"
           />
           <nav>

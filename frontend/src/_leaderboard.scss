@@ -1,7 +1,7 @@
 @use "library" as L;
 
 .top3-pics {
-    top: 14rem;
+    top: 12rem;
     height: 11rem;
  position: absolute;
     > :first-child {
@@ -13,7 +13,7 @@
         top: 60px;
     }
     @include L.mobile {
-        top: 10rem;
+        top: 9rem;
     }
 }
 .leaderboard {

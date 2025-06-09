@@ -4,8 +4,8 @@ import { User } from "../models/userModel"
 export const getLeaderboard = async (req: Request, res: Response) => {
     try{
         const topPlayers = await User.find()
+        .limit(6)
         .sort({wins: -1})
-        .limit(6);
         res.status(200).json(topPlayers);
     } catch (err: unknown) {
         if(err instanceof Error) {

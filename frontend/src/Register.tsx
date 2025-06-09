@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { useFetchGoogleUser } from "./hooks/useFetchGoogleUser";
 import ExitBtn from "./components/exit-btn";
+import ProfilePic from "./components/profilePic";
 
 function Register() {
   const [selectedImage, setSelectedImage] = useState("img_1.svg");
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedImage(e.target.value);
-  };
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,6 +38,7 @@ function Register() {
     e.preventDefault();
 
     try {
+        console.log(selectedImage)
       await fetch("http://localhost:3003/users/", {
         credentials: "include",
         method: "POST",
@@ -67,20 +66,10 @@ function Register() {
         </header>
         <section>
           <h1 className="title">Welcome!</h1>
-          <p className="breadtext">Enter your credentials, chose a profile pic and you're good to go!</p>
-          <div className="chose-pic">
-              <img className="img-preview" src={selectedImage} alt="Preview" />
-            <form>
-              <select name="img1" onChange={handleImageChange}>
-                <option value="img_1.svg">Chef Vulpin</option>
-                <option value="img_2.svg">Chef Barkley</option>
-                <option value="img_3.svg">Chef Gumbo</option>
-                <option value="img_4.svg">Chef Prickles</option>
-                <option value="img_5.svg">Chef Whiskers</option>
-                <option value="img_6.svg">Chef Nibble</option>
-              </select>
-            </form>
-          </div>
+          <p className="breadtext">
+            Enter your credentials, chose a profile pic and you're good to go!
+          </p>
+          <ProfilePic image={setSelectedImage} />
         </section>
         <div className="register">
           <form className="register-form" method="POST" onSubmit={registerUser}>

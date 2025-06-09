@@ -6,37 +6,40 @@ interface Player {
   _id: string;
   name: string;
   wins: number;
+  profilePic: string;
 }
 
 function Leaderboard() {
   const [players, setPlayers] = useState<Player[]>([]);
   const [loading, setLoading] = useState(true);
+//   const [playerOne, setPlayerOne] = useState(players[0].profilePic)
 
   useEffect(() => {
-    const API_URL =
+      const API_URL =
       import.meta.env.NODE_ENV === "prod"
-        ? import.meta.env.VITE_API_BASE_URL_PROD
-        : import.meta.env.VITE_API_BASE_URL_LOCAL;
+      ? import.meta.env.VITE_API_BASE_URL_PROD
+      : import.meta.env.VITE_API_BASE_URL_LOCAL;
+      
+      const fetchLeaderboard = async () => {
+          try {
+              const res = await fetch(`${API_URL}/api/v1/games/leaderboard`);
+              const data = await res.json();
+              console.log("Fetched players:", data);
+              setPlayers(data);
+              setLoading(false);
+            //   setPlayerOne(data[0].profilePic)
+            } catch (err: unknown) {
+                if (err instanceof Error) {
+                    console.error("Leaderboard failed: ", err);
+                }
+                setLoading(false);
+            }
+        };
+        fetchLeaderboard();
+    }, []);
 
-    const fetchLeaderboard = async () => {
-      try {
-        const res = await fetch(`${API_URL}/api/v1/games/leaderboard`);
-        const data = await res.json();
-        console.log("Fetched players:", data);
-        setPlayers(data);
-        setLoading(false);
-      } catch (err: unknown) {
-        if (err instanceof Error) {
-          console.error("Leaderboard failed: ", err);
-        }
-        setLoading(false);
-      }
-    };
-    fetchLeaderboard();
-  }, []);
 
   if (loading) return <p>Loading leaderboard...</p>;
-
   return (
     <>
       <header>
@@ -48,18 +51,18 @@ function Leaderboard() {
           <div className="top3-pics">
             <img
               className="leader-pic"
-              src="img_1.svg"
-              alt="fox in a chefs hat"
+            //   src={players[0].profilePic}
+              alt="players profile pic"
             />
             <img
               className="leader-pic"
-              src="img_2.svg"
-              alt="dog in a chefs hat"
+            //   src={playerOne}
+              alt="players profile pic"
             />
             <img
               className="leader-pic"
-              src="img_3.svg"
-              alt="koala in a chefs hat"
+            //   src={players[2].profilePic}
+              alt="players profile pic"
             />
           </div>
           <div className="leader-stage">
@@ -82,7 +85,7 @@ function Leaderboard() {
                 player,
                 index //loopar igenom varje elemnt i listan
               ) => (
-                <>
+
                   <div className="player-card" key={player._id}>
                     {/* identifierrar varje element i en lista */}
                     <div className="rank-nr" id={`rank-badge-nr${index + 1}`}>
@@ -92,7 +95,6 @@ function Leaderboard() {
                     <p className="player-name">{player.name}</p>
                     <p className="player-wins">{player.wins}</p>
                   </div>
-                </>
               )
             )}
           </article>

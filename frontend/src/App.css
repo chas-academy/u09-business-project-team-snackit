@@ -41,7 +41,6 @@
 .register {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
 }
 
 .register-form, .update-form {
@@ -107,8 +106,8 @@
 }
 
 .profile-pic {
-  width: 220px;
-  margin: 2rem 0;
+  width: 200px;
+  margin-top: 2rem;
 }
 @media (max-width: 400px) {
   .profile-pic {
@@ -177,6 +176,18 @@ h2 {
   color: #4c2d1a;
 }
 
+#edit-profile-pic {
+  border: none;
+  background-color: transparent;
+  position: relative;
+  bottom: 4rem;
+  left: 4rem;
+}
+
+.chose-pic {
+  margin-bottom: 2rem;
+}
+
 .instructions-container {
   height: 100vh;
   display: flex;
@@ -235,7 +246,7 @@ h2 {
 }
 
 .top3-pics {
-  top: 14rem;
+  top: 12rem;
   height: 11rem;
   position: absolute;
 }
@@ -249,7 +260,7 @@ h2 {
 }
 @media (max-width: 400px) {
   .top3-pics {
-    top: 10rem;
+    top: 9rem;
   }
 }
 
@@ -384,11 +395,11 @@ main {
 header {
   display: flex;
   justify-content: flex-end;
-  margin: 32px;
+  margin: 32px 32px 0px 32px;
 }
 @media (max-width: 400px) {
   header {
-    margin: 32px 16px 32px 16px;
+    margin: 32px 16px 16px 16px;
   }
 }
 
@@ -434,6 +445,7 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-top: 2rem;
 }
 
 #start-game {
