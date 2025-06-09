@@ -85,7 +85,7 @@ function Profile() {
           <h1 className="title">Welcome {user.name}!</h1>
           <img
             className="profile-pic"
-            src={`${user.profilePic}.svg`}
+            src={user.profilePic}
             alt="fox in a chefshat"
           />
           <form className="update-form" onSubmit={updateUser}>

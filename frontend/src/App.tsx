@@ -5,7 +5,7 @@ function App() {
   document.getElementById('login-body')?.setAttribute('id', 'root-body')
 
   return (
-    <body><Lobby /></body>
+   <Lobby />
   )
 }
 

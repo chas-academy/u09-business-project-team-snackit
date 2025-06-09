@@ -69,6 +69,20 @@
   background-color: #9a4d52;
 }
 
+.chose-pic {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+.chose-pic > form > select {
+  border-radius: 20px;
+  font-size: 20px;
+  color: #4c2d1a;
+  border: solid #4c2d1a 4px;
+}
+
 #profile-header {
   justify-content: space-between;
 }
@@ -76,8 +90,6 @@
 .profile-pic {
   width: 220px;
   margin: 2rem 0;
-  box-shadow: inset 0px 0px 10px #504f4f;
-  border-radius: 80px;
 }
 @media (max-width: 400px) {
   .profile-pic {
