@@ -37,7 +37,7 @@
 .register {
     display: flex;
     justify-content: center;
-    margin-top: 20rem;
+    margin-top: 2rem;
 }
 .register-form, .update-form {
     display: flex;
@@ -71,6 +71,17 @@
             font-size: 20px;
             color: L.$brown;
             border: solid L.$brown 4px;
+            >option {
+                @include L.baloo;
+            }
         }
     }
+}
+.breadtext {
+    color: L.$brown;
+    @include L.baloo;
+    margin: 1rem;
+}
+.img-preview {
+    width: 165px;
 }

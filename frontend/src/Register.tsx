@@ -67,8 +67,9 @@ function Register() {
         </header>
         <section>
           <h1 className="title">Welcome!</h1>
+          <p className="breadtext">Enter your credentials, chose a profile pic and you're good to go!</p>
           <div className="chose-pic">
-              <img src={selectedImage} alt="Preview" />
+              <img className="img-preview" src={selectedImage} alt="Preview" />
             <form>
               <select name="img1" onChange={handleImageChange}>
                 <option value="img_1.svg">Chef Vulpin</option>
