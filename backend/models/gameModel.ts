@@ -5,7 +5,8 @@ export interface IGame extends Document {
     currentTurn: string;
     currentIngredient: string;
     lives: {[playerId: string]: number};
-    status: "playing" | "finished" ;
+    score: number;  // räknar hur många gånger spelarna har svarat rätt, vid fel 0-ställs streaket
+    status: "waiting" | "playing" | "finished" ;
     winner: string;
     loser: string;
 }
@@ -14,11 +15,12 @@ export interface IGame extends Document {
 const gameSchema: Schema = new Schema ({
     players: {type: [String], required: true},
     currentTurn: { type: String, required: true },
-    currentIngredient: { type: String, required: true},
-    lives: {type: Map, of: Number, required: true},  // visar antalet liv spelare har kvar 
-    status: {type: String, enum: ["playing", "finished"], default: "playing"},  // visar spelets tilstånd 
-    winner: { type: String, required: true},
-    loser: {type: String, required: true},
+    currentIngredient: { type: String, required: false},
+    lives: {type: Object, required: true, default: {}},  // visar antalet liv spelare har kvar 
+    score: {type: Number, required: true, default: 0},
+    status: {type: String, enum: ["waiting", "playing", "finished"], default: "waiting"},  // visar spelets tilstånd 
+    winner: { type: String, default: ""},
+    loser: {type: String, default: ""},
 })
 
 export const Game = mongoose.model<IGame>("Game", gameSchema);
