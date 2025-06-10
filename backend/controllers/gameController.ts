@@ -1,8 +1,8 @@
-import { Request, Response } from "express"
+import { request, Request, Response } from "express"
 import { Game } from "../models/gameModel";
-import { getRandomIngredients } from "../utils/spoonacularFetch";
+import { getRandomIngredients, searchRecipe } from "../utils/spoonacularFetch";
 import { User } from "../models/userModel";
-import fetch from 'cross-fetch';
+
 
 export const createGame = async (req: Request, res: Response) => {
 
@@ -56,11 +56,18 @@ export const startGame = async (req: Request, res: Response) => {
         }, 
             {new: true}                                        // returnerar det uppdaterade spelet
         );
-
+        
         if (!game) {
             return res.json(404).json({error: "This game not found"});
         }
+        // const correctRecipe = spoonData.title
+        // const ingredient = spoonData.usedIngredient;
+        // console.log(spoonData.usedIngredient)
         res.status(200).json(game);
+        // lägga till svarsalternativ
+        // två random
+        // const incorrectRecipe1 = await getRandomRecipe(ingredient);
+        // const incorrectRecipe2 = await getRandomRecipe(ingredient);
     
     } catch (err: unknown) {
         if (err instanceof Error) {
@@ -99,12 +106,8 @@ export const checkSubmission = async (req: Request, res: Response) => {
         const recipeSearchUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${submittedRecipe}&apiKey=${apiKey}`;    // Söker recept i api:et med spelarens inmatning!
         const recipeSearchResponse = await fetch(recipeSearchUrl);      // Hämtar receptet från api:et
         const recipeSearchData = await recipeSearchResponse.json(); 
+     
 
-        // console.log("Recipe search data:")
-        // console.table(recipeSearchData)
-
-        // console.log("Recipe results data:")
-        // console.table(recipeSearchData.results)
 
         if (!recipeSearchData.results || recipeSearchData.results.length ===0) {
             return res.status(404).json({ error: " Whap whap, you wrote in a wrong recipe!"})
@@ -164,7 +167,7 @@ export const checkSubmission = async (req: Request, res: Response) => {
             }
     
             await game.save(); 
-            return res.status(200).json({ result: "lost", message: `The recipe doesn't include "${requiredIngredient}! You lost this round!`, winner: opponentId, score: game.score, lives: game.lives });
+            return res.status(200).json({ result: "lost", message: `The recipe doesn't include ${requiredIngredient}! You lost this round!`, winner: opponentId, score: game.score, lives: game.lives });
         }
 
         game.score += 1;                                   // ökar spelarnas streak med 1
