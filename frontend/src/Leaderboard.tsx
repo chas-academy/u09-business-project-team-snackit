@@ -12,7 +12,9 @@ interface Player {
 function Leaderboard() {
   const [players, setPlayers] = useState<Player[]>([]);
   const [loading, setLoading] = useState(true);
-//   const [playerOne, setPlayerOne] = useState(players[0].profilePic)
+  const [playerOne, setPlayerOne] = useState("img_1.svg")
+  const [playerTwo, setPlayerTwo] = useState("img_1.svg")
+  const [playerThree, setPlayerThree] = useState("img_1.svg")
 
   useEffect(() => {
       const API_URL =
@@ -25,6 +27,9 @@ function Leaderboard() {
               const res = await fetch(`${API_URL}/api/v1/games/leaderboard`);
               const data = await res.json();
               console.log("Fetched players:", data);
+              setPlayerOne(data[0].profilePic)
+              setPlayerTwo(data[1].profilePic)
+              setPlayerThree(data[2].profilePic)
               setPlayers(data);
               setLoading(false);
             //   setPlayerOne(data[0].profilePic)
@@ -49,19 +54,19 @@ function Leaderboard() {
         <section className="leaderboard">
           <h1 className="title">Leaderboard</h1>
           <div className="top3-pics">
-            <img
+            <img id="second-place"
               className="leader-pic"
-            //   src={players[0].profilePic}
+              src={playerTwo}
               alt="players profile pic"
             />
-            <img
+            <img id="first-place"
               className="leader-pic"
-            //   src={playerOne}
+              src={playerOne}
               alt="players profile pic"
             />
-            <img
+            <img id="third-place"
               className="leader-pic"
-            //   src={players[2].profilePic}
+              src={playerThree}
               alt="players profile pic"
             />
           </div>
