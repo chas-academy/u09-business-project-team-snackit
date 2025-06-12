@@ -8,6 +8,7 @@ import session from "express-session";
 import cors from "cors";
 import spooncularRoutes from "../routes/spooncularRoutes";
 import gameRoutes from "../routes/gameRoutes";
+import { searchRecipe } from "../utils/spoonacularFetch";
 
 
 
@@ -106,5 +107,6 @@ app.use("/api", spooncularRoutes);
 
 app.use("/api/games", gameRoutes);
 
+app.use('/test', searchRecipe);
 
 export default app;
