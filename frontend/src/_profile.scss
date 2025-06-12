@@ -1,0 +1,77 @@
+@use "library" as L;
+
+
+#profile-header {
+    justify-content: space-between;
+}
+.profile-pic {
+    width: 200px;
+    margin-top: 2rem;
+    @include L.mobile {
+        width: 165px;
+    }
+
+}
+#delete-account {
+    font-size: 1.5rem;
+    text-align: center;
+    @include L.mobile {
+        font-size: 1rem;
+    }
+}
+.primary-btn {
+    width: 155px;
+    height: 43px;
+    border: solid L.$brown 4px;
+    border-radius: 26px;
+    font-size: 1.25rem;
+    background-color: L.$green;
+    color: L.$font-white;
+}
+#stats {
+    border: solid L.$brown 6px;
+    width: 340px;
+    height: 200px;
+    border-radius: 20px;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h2 {
+    color: L.$brown;
+    border-bottom: solid L.$brown 1px;
+    width: 132px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.stats-container {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+}
+.stats-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    >.stats-trophy {
+        width: 54px;
+    }
+    >.stats-label {
+        width: 120px;
+    }
+    >h3 {
+        font-size: 3rem;
+        color: L.$brown;
+    }
+}
+#edit-profile-pic {
+    border: none;
+    background-color: transparent;
+    position: relative;
+    bottom: 4rem;
+    left: 4rem;
+}
+.chose-pic {
+    margin-bottom: 2rem;
+}

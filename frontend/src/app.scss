@@ -1,1 +1,121 @@
 @use "login" as *;
+@use "library" as L;
+@use "profile" as *;
+@use "instructions" as *;
+@use "leaderboard" as *;
+* {
+    margin: 0;
+    box-sizing: border-box;
+    @include L.lilita;
+    overflow: hidden;
+}
+
+body {
+    background-color: L.$beige;
+}
+main {
+    margin: 0 auto;
+    @include L.desktop {
+        max-width: 80%;
+    }
+}
+header {
+    display: flex;
+    justify-content: flex-end;
+    margin: 32px 32px 0px 32px;
+    @include L.mobile {
+      margin: 32px 16px 16px 16px;
+    }
+  }
+.title {
+    font-size: 4rem;
+    opacity: 70%;
+    @include L.mobile {
+        font-size: 2rem;
+    }
+}
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include L.mobile {
+        width: 400px;
+    }
+}
+.lobby-btn {
+    display: flex;
+    align-items: center;
+    width: 334px;
+    height: 82px;
+    text-decoration: none;
+    color: L.$font-white;
+    font-size: 35px;
+    border-radius: 20px;
+    border: solid L.$brown 6px;
+}
+.lobby-img {
+    width: 54px;
+    margin: 1rem;
+
+}
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+#start-game {
+    background-color: L.$green;
+}
+#leaderboard {
+    background-color: L.$yellow;
+}
+#profile {
+    background-color: L.$maroon;
+}
+#exit-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin: 32px;
+    @include L.mobile {
+        margin: 16px;
+    }
+}
+.back-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: L.$red ;
+    border-radius: 48px;
+    border: solid L.$brown 6px;
+    font-size: 2.25rem;
+    width: 132px;
+    height: 84px;
+    text-decoration: none;
+    color: L.$brown;
+    @include L.mobile {
+        width: 90px;
+        height: 54px;
+        font-size: 24px;
+        
+    }
+}
+#error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    >img {
+        width: 800px;
+    }
+
+}
+#error-title{
+    width: 25rem;
+    font-size: 80px;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: L.$brown;
+    text-align: center;
+}

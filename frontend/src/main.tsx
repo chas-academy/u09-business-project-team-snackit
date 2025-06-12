@@ -3,7 +3,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import Login from './Login.tsx'
+import Game from './Game.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Leaderboard from './Leaderboard.tsx'
+import Profile from './Profile.tsx'
+import Instructions from './Instructions.tsx'
+import ErrorElement from './404.tsx'
 
 
 const router = createBrowserRouter([
@@ -14,6 +19,26 @@ const router = createBrowserRouter([
   {
     path: "/lobby",
     element: <App />
+  },
+  {
+  path: "/instructions",
+  element: <Instructions />
+  },
+  {
+    path: "/game",
+    element: <Game />
+  },
+  {
+    path: "/leaderboard",
+    element: <Leaderboard />
+  },
+  {
+    path: "/profile",
+    element: <Profile />
+  },
+  {
+    path: "*",
+    element: <ErrorElement />
   }
 ])
 

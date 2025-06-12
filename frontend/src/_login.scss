@@ -1,7 +1,5 @@
 @use "library" as L;
-* {
-    @include L.lilita;
-}
+
 #login-body {
     background-image: url(./assets/kitchen.background.desktop.png);
     background-repeat: no-repeat;
@@ -14,7 +12,7 @@
     height: 78px;
     border-radius: 48px;
     border: solid L.$brown 6px;
-    font-size: 40px;
+    font-size: 30px;
     text-decoration: none;
     color: L.$brown;
     background-color: L.$green;
@@ -35,4 +33,54 @@
     align-items: center;
     height: 100vh;
     gap: 5rem;
+}
+.register {
+    display: flex;
+    justify-content: center;
+}
+.register-form, .update-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    >input {
+        width: 324px;
+        height: 49px;
+        border-radius: 20px;
+        font-size: 20px;
+        padding: 10px;
+        background-color: L.$grey;
+        @include L.baloo;
+        border: solid L.$brown 4px;
+    }
+}
+#register-btn {
+    background-color: L.$maroon;
+}
+.chose-pic {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    >form {
+        >select {
+            border-radius: 20px;
+            font-size: 20px;
+            color: L.$brown;
+            border: solid L.$brown 4px;
+            >option {
+                @include L.baloo;
+            }
+        }
+    }
+}
+.breadtext {
+    color: L.$brown;
+    @include L.baloo;
+    margin: 1rem;
+}
+.img-preview {
+    width: 165px;
 }

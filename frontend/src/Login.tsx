@@ -1,7 +1,15 @@
-import { Link } from "react-router-dom";
-
 function Login() {
-  document.getElementById('root-body')?.setAttribute('id', 'login-body');
+  const API_URL =
+    import.meta.env.NODE_ENV === "prod"
+      ? import.meta.env.VITE_API_BASE_URL_PROD
+      : import.meta.env.VITE_API_BASE_URL_LOCAL;
+
+  document.getElementById("root-body")?.setAttribute("id", "login-body");
+
+  const login = () => {
+    window.open(`${API_URL}/auth/google`, "_self");
+  };
+
   return (
     <>
       <main>
@@ -11,10 +19,13 @@ function Login() {
             src="foodie.logo.png"
             alt="who is the foodie logo"
           />
-          <Link to={'/lobby'} className="start-btn">START</Link>
+          <button className="start-btn" onClick={login}>
+            Login with Google
+          </button>
         </div>
       </main>
     </>
   );
 }
+
 export default Login;
