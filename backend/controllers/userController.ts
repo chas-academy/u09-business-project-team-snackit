@@ -39,7 +39,7 @@ export const getUser = async (req: Request, res: Response) => {
 
 export const createUser = async (req: Request, res: Response): Promise<Response | void> => {
     try {
-        const { name, email, password, confirmed_password, googleId } = req.body;
+        const { name, email, password, confirmed_password, googleId, profilePic } = req.body;
         
         const userExists = await User.findOne({ email: email });
         if(userExists) {
@@ -52,7 +52,7 @@ export const createUser = async (req: Request, res: Response): Promise<Response 
         }
         const hashedPassword = await hashPassword(password);
 
-        const newUser = new User ({ name, email, password: hashedPassword, confirmed_password, googleId })
+        const newUser = new User ({ name, email, password: hashedPassword, confirmed_password, googleId, profilePic })
         console.log(newUser)
         await newUser.save();
         res.status(201).json({message: "New user created."});

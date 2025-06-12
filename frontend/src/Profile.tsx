@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import BackBtn from "./components/back-btn";
 import { useEffect, useState } from "react";
 import { useFetchUser } from "./hooks/useFetchUser";
+import ProfilePic from "./components/profilePic";
 
 function Profile() {
+  const [selectedImage, setSelectedImage] = useState("")
+  const [showEditPic, setShowEditPic] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,12 +23,13 @@ function Profile() {
         name: user.name || "",
         email: user.email || "",
       });
+      setSelectedImage(user.profilePic);
     }
   }, [user]);
   if (loading) return <h3>Loading...</h3>;
   if (error) return <h3>Error</h3>;
   if (!user) return <h3>User not found</h3>;
-
+  // console.log(user)
   const deleteUser = async () => {
     try {
       await fetch(`${API_URL}/users/${user._id}`, {
@@ -56,10 +60,11 @@ function Profile() {
         credentials: "include",
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData }),
+        body: JSON.stringify({ ...formData, profilePic: selectedImage }),
       });
       const data = await res.json();
       console.log(data);
+      setShowEditPic(false)
       window.location.reload();
     } catch (err: unknown) {
       if (err instanceof Error) {
@@ -67,6 +72,10 @@ function Profile() {
       }
     }
   };
+  const editPic = () => {
+    setShowEditPic(true)
+    
+  }
   return (
     <>
       <header id="profile-header">
@@ -83,11 +92,16 @@ function Profile() {
       <main>
         <section>
           <h1 className="title">Welcome {user.name}!</h1>
+          {!showEditPic && <>
           <img
             className="profile-pic"
-            src="img_1.svg"
+            src={user.profilePic}
             alt="fox in a chefshat"
-          />
+            />
+            <button id="edit-profile-pic" onClick={editPic}><img src="edit.svg" alt="pencil" /></button>
+          </>
+          }
+          { showEditPic && <ProfilePic image={setSelectedImage}/>}
           <form className="update-form" onSubmit={updateUser}>
             <input
               type="text"

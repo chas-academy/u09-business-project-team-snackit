@@ -2,6 +2,7 @@
 @use "library" as L;
 @use "profile" as *;
 @use "instructions" as *;
+@use "leaderboard" as *;
 * {
     margin: 0;
     box-sizing: border-box;
@@ -13,17 +14,33 @@ body {
     background-color: L.$beige;
 }
 main {
-    max-width: 80%;
     margin: 0 auto;
+    @include L.desktop {
+        max-width: 80%;
+    }
 }
+header {
+    display: flex;
+    justify-content: flex-end;
+    margin: 32px 32px 0px 32px;
+    @include L.mobile {
+      margin: 32px 16px 16px 16px;
+    }
+  }
 .title {
     font-size: 4rem;
     opacity: 70%;
+    @include L.mobile {
+        font-size: 2rem;
+    }
 }
 section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    @include L.mobile {
+        width: 400px;
+    }
 }
 .lobby-btn {
     display: flex;
@@ -32,17 +49,20 @@ section {
     height: 82px;
     text-decoration: none;
     color: L.$font-white;
-    font-size: 37px;
+    font-size: 35px;
     border-radius: 20px;
+    border: solid L.$brown 6px;
 }
 .lobby-img {
     width: 54px;
     margin: 1rem;
+
 }
 nav {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    margin-top: 2rem;
 }
 #start-game {
     background-color: L.$green;
@@ -57,6 +77,9 @@ nav {
     display: flex;
     justify-content: flex-end;
     margin: 32px;
+    @include L.mobile {
+        margin: 16px;
+    }
 }
 .back-btn {
     display: flex;
@@ -70,6 +93,12 @@ nav {
     height: 84px;
     text-decoration: none;
     color: L.$brown;
+    @include L.mobile {
+        width: 90px;
+        height: 54px;
+        font-size: 24px;
+        
+    }
 }
 #error {
     display: flex;

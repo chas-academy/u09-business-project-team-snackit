@@ -11,6 +11,7 @@ type User = {
     email: string;
     wins: number;
     losses: number;
+    profilePic: string;
 
 }
 export const useFetchUser = () => {
@@ -26,11 +27,16 @@ export const useFetchUser = () => {
       if (!res.ok) throw new Error("Failed to fetch user from auth.");
 
       const data = await res.json();
-      console.log(data);
+      // console.log(data)
       const userData = await fetch(`${API_URL}/users/${data.id}`);
-      if (!userData.ok) throw new Error("Failed to fetch user.");
-      const user = await userData.json();
-      setUser(user);
+      // console.log(userData.status)
+      if (userData.status === 404) {
+        setUser(null)
+      } else {
+        const user = await userData.json();
+        setUser(user);
+      }
+      // console.log(user);
     } catch (err: unknown) {
         if(err instanceof Error) {
             console.error(err);

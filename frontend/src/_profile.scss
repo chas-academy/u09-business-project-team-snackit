@@ -5,12 +5,19 @@
     justify-content: space-between;
 }
 .profile-pic {
-    width: 220px;
-    margin-bottom: 2rem;
+    width: 200px;
+    margin-top: 2rem;
+    @include L.mobile {
+        width: 165px;
+    }
+
 }
 #delete-account {
     font-size: 1.5rem;
     text-align: center;
+    @include L.mobile {
+        font-size: 1rem;
+    }
 }
 .primary-btn {
     width: 155px;
@@ -57,4 +64,14 @@ h2 {
         font-size: 3rem;
         color: L.$brown;
     }
+}
+#edit-profile-pic {
+    border: none;
+    background-color: transparent;
+    position: relative;
+    bottom: 4rem;
+    left: 4rem;
+}
+.chose-pic {
+    margin-bottom: 2rem;
 }
