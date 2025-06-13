@@ -78,11 +78,9 @@ export const startGame = async (req: Request, res: Response) => {
     // get a random recipe
     // get a random ingredient from random chosen recipe
     // print out random ingredient
-}
+};
 
 export const checkSubmission = async (req: Request, res: Response) => {
-
-    // console.log("Checking Submissions")
 
     const { gameId } = req.params;
     const { playerId, submittedRecipe } = req.body;
@@ -97,94 +95,90 @@ export const checkSubmission = async (req: Request, res: Response) => {
             return res.status(404).json({error: "This game not found"});
         }
 
-        if (game.currentTurn.toString() !== playerId) {             // Kollar om det är spelaranes tur
+        if (game.currentTurn.toString() !== playerId.toString()) {             // Kollar om det är spelaranes tur
             return res.status(403).json({ error: "It's not your turn!"});
         }
         
+        const opponentId = game.players.find((id) => id.toString() !==playerId);
+        if (!opponentId) {
+            return res.status(404).json({ error: "This opponent not found!" });
+        }
         
         const apiKey = process.env.SPOONCULAR_API_KEY;        
         const recipeSearchUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${submittedRecipe}&apiKey=${apiKey}`;    // Söker recept i api:et med spelarens inmatning!
         const recipeSearchResponse = await fetch(recipeSearchUrl);      // Hämtar receptet från api:et
         const recipeSearchData = await recipeSearchResponse.json(); 
-     
 
+        //--inget recept hittad--
+        if (!recipeSearchData || !recipeSearchData.results || recipeSearchData.results.length ===0) {
+            game.lives[playerId.toString()] -= 1;            // Minskar spelarens liv med 1 om det inte finns något recept
+            game.markModified('lives');                      // Säger till DB att liv har ändrats och måste sparas
 
-        if (!recipeSearchData.results || recipeSearchData.results.length ===0) {
-            return res.status(404).json({ error: " Whap whap, you wrote in a wrong recipe!"})
-        }
-
-        const recipeId = recipeSearchData.results[0].id;     // Hämtar id:et på receptet som spelaren matat in
-
-        // console.log("recipeSearchData.results[0].id: " + recipeSearchData.results[0].id)
-
-        // Hämtar detaljerad info om receptet med alla ingredienser
-        const recipeInfoUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;
-        const recipeInfoResponse = await fetch(recipeInfoUrl); 
-        const recipeInfoData = await recipeInfoResponse.json();
-
-        // console.table(recipeInfoData)
-
-        const ingredients = recipeInfoData.extendedIngredients.map((ing: any) => ing.name.toLowerCase().trim());        // hämtar alla ingredienser i receptet och gör dem till små bokstäver och tar bort mellanslag
-        const requiredIngredient = game.currentIngredient.toLowerCase().trim(); 
-        const ingredientIsCorrect = ingredients.includes(requiredIngredient);                                           // Kollar ifall den inmatade ingrediensen finns i receptet 
-         
-        const opponentId = game.players.find((id) => id.toString() !== playerId);                                       // hämtar motståndarens id 
-
-           
-        if (!opponentId) {
-            // console.log("Opponent not found (ABORTING)")
-            return res.status(404).json({ error: "This opponent not found!" });
-        }
-
-        // console.log("After this should check not correct ingredient")
-        if (!ingredientIsCorrect) {
-            //TODO ÄNDRA IFRÅN ARRAY ÅTKOMST TILL KEY (objekt) ÅTKOMST
-            game.lives[playerId.toString()] -= 1;           // minskar spelarens liv med 1 om det är fel svar
-            
-            // console.log(`Player ${playerId.toString()} lost a life. Lives left: ${game.lives[playerId.toString()]}`);
-            
-            //TODO ÄNDRA IFRÅN ARRAY ÅTKOMST TILL KEY (objekt) ÅTKOMST
-            // console.log("Player lives: " + game.lives.find(id => id === playerId.toString()))
-
-            // console.log("Lives info:")
-            // console.table(game.lives)
-            game.markModified('lives');       // Säger till DB att liv har ändrats och måste sparas
-            
-
-
-            if (game.lives[playerId.toString()] <= 0) {    // ifall spelaren har 0 liv kvar avsluta spelet
-                game.status = "finished";       
+            if( game.lives[playerId.toString()] <= 0) {      // ifall spelaren har 0 liv kvar avsluta spelet
+                game.status = "finished";
                 game.winner = opponentId;
-                game.loser = playerId; 
-                        
-                // Uppdaterar spelaranas statisktik i DB
-                await User.findByIdAndUpdate(opponentId, { $inc: { wins: 1 } });           // Ökar spelarens vinst med 1
-                await User.findByIdAndUpdate(playerId, { $inc: { losses: 1 } });           // Ökar motståndarens förlust med 1
-                       
-                game.markModified('lives');
-                await game.save(); 
-                return res.status(200).json({ result: "finished", message: "Game over! You lost !", winner: opponentId, score: game.score});
+                game.loser = playerId;
+
+                await User.findByIdAndUpdate(opponentId, { $inc: { wins: 1 } });
+                await User.findByIdAndUpdate(playerId, { $inc: { losses: 1 } });
+                await game.save();
+                
+                return res.status(200).json({ result: "finished", message: "Game over! You lost! (Recipe not found)", winner: opponentId, score: game.score
+                });
             }
-    
-            await game.save(); 
-            return res.status(200).json({ result: "lost", message: `The recipe doesn't include ${requiredIngredient}! You lost this round!`, winner: opponentId, score: game.score, lives: game.lives });
+        
+            await game.save();
+            return res.status(200).json({ result: "lost", message: "No recipe found! You lost but try again!", lives: game.lives, score: game.score});
         }
+            const recipeId = recipeSearchData.results[0].id;     // Hämtar id:et på receptet som spelaren matat in
+            
+            // Hämtar detaljerad info om receptet med alla ingredienser
+            const recipeInfoUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;
+            const recipeInfoResponse = await fetch(recipeInfoUrl); 
+            const recipeInfoData = await recipeInfoResponse.json();
 
-        game.score += 1;                                   // ökar spelarnas streak med 1
-        //TODO ÄNDRA IFRÅN ARRAY ÅTKOMST TILL KEY (objekt) ÅTKOMST
-        game.lives[opponentId.toString()] -=1;             // minskar motståndarens liv med 1 
+            const ingredients = recipeInfoData.extendedIngredients.map((ing: any) => ing.name.toLowerCase().trim());        // hämtar alla ingredienser i receptet och gör dem till små bokstäver och tar bort mellanslag
+            const requiredIngredient = game.currentIngredient.toLowerCase().trim(); 
+            const ingredientIsCorrect = ingredients.includes(requiredIngredient);                                           // Kollar ifall den inmatade ingrediensen finns i receptet 
+            
+            // const opponentId = game.players.find((id) => id.toString() !== playerId);                                       // hämtar motståndarens id 
 
-        game.markModified('lives');
+            //------Vid fel ingrediens tappar man liv och behåller turen-----
+            if (!ingredientIsCorrect) {
+                game.lives[playerId.toString()] -= 1;           // minskar spelarens liv med 1 om det är fel svar
+                game.markModified('lives');                     // Säger till DB att liv har ändrats och måste sparas
+                 
+                if (game.lives[playerId.toString()] <= 0) {    // ifall spelaren har 0 liv kvar avsluta spelet
+                    game.status = "finished";       
+                    game.winner = opponentId;
+                    game.loser = playerId; 
+                            
+                    // Uppdaterar spelaranas statisktik i DB
+                    await User.findByIdAndUpdate(opponentId, { $inc: { wins: 1 } });           // Ökar spelarens vinst med 1
+                    await User.findByIdAndUpdate(playerId, { $inc: { losses: 1 } });           // Ökar motståndarens förlust med 1
+                    await game.save();
+                    return res.status(200).json({ result: "finished", message: "Game over! You lost !", winner: opponentId, score: game.score
+                    });
+                } 
+                
+                await game.save(); 
+                return res.status(200).json({ result: "lost", message: `The recipe doesn't include ${requiredIngredient}!Try again`, score: game.score, lives: game.lives
+                });
+           
+            }
+         //---Vid rätt ingrediens byter tur och ökar csore---
+        game.score += 1;         // ökar spelarnas streak med 1
+        game.currentTurn = opponentId;
         await game.save();
         return res.status(200).json({ result: "correct", message: `Correct! The ingredient was included.`,lives: game.lives, score: game.score, });
-            
+           
     } catch (err: any) {
         if (err instanceof Error) {
             res.status(500).json({error: err.message});
             return;
         }
+        
     };
-    
     // find recipe by users entered submission
     // if not found print out "lost" and "winner" to the opponent
     // win++ for user who is winner
@@ -192,7 +186,7 @@ export const checkSubmission = async (req: Request, res: Response) => {
     // give turn to next
 };
 
-export const nextIngredient = async (req: Request, res: Response) => {
+export const nextIngredient = async (req: Request, res: Response) => {                    
 
     const { gameId } = req.params;
 
@@ -224,7 +218,6 @@ export const nextIngredient = async (req: Request, res: Response) => {
     // find recipes by ingredient
     // select a random ingredient from players chosen recipe
     // print out new random ingredient
-
 };
 
     
@@ -271,7 +264,7 @@ export const forfeitGame = async (req: Request, res: Response) => {
 
     // if user press end in the middle of game, redirect to winning page
     // log win++ for user who is winner
-}
+};
 
 
 export const restartGame = async (req: Request, res: Response) => {
@@ -317,4 +310,4 @@ export const restartGame = async (req: Request, res: Response) => {
 
     // if user press play again, restart game
     // if user press end, go to game lobby
-}
+};
