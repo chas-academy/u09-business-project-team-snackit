@@ -8,7 +8,7 @@ import { useGame } from "./hooks/useGame";
 function Instructions() {
     const { user, loadingUser, errorUser} = useFetchUser();
     const playerOne = user?._id;
-    const {game, loadingGame, errorGame} = useGame(playerOne);
+    const {game, loadingGame, errorGame} = useGame(playerOne!);
 
 
     if (loadingUser || loadingGame) return <p> Loading...</p>;

@@ -9,7 +9,7 @@ type Game = {
     gameId: string,
 }
 
-export const useGame = (playerOne: string) => {
+export const useCreateGame = (playerOne: string) => {
     const [game, setGame] = useState<Game | null>(null);
     const [loadingGame, setLoadingGame] = useState(true);
     const [errorGame, setErrorGame] = useState<Error | null>(null);

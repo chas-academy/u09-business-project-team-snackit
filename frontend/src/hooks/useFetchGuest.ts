@@ -26,7 +26,7 @@ export const useFetchGuest = () => {
       });
       if (!res.ok) throw new Error("Failed to fetch guest");
       const data = await res.json();
-      console.log(data);
+    //   console.log(data);
       setGuest(data);
     } catch (err: unknown) {
       if (err instanceof Error) {
