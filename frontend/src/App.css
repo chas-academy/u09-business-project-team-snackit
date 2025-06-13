@@ -136,6 +136,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.primary-btn:hover {
+  color: #4c2d1a;
 }
 
 #stats {
@@ -185,6 +190,7 @@ h2 {
   position: relative;
   bottom: 4rem;
   left: 4rem;
+  cursor: pointer;
 }
 
 .chose-pic {
@@ -217,20 +223,13 @@ h2 {
   font-size: 1.2rem;
   margin-bottom: 0.8rem;
 }
-.instructions-container .game-id {
-  background-color: #e0e2c3;
-  color: #4c2d1a;
-  font-weight: bold;
-  font-size: 1rem;
-  font-family: "Lilita One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  border: 3px solid #4c2d1a;
-  padding: 0.2rem 0.8rem;
-  border-radius: 2rem;
-  position: absolute;
-  bottom: 1rem;
-  right: 9rem;
+.instructions-container .player-name {
+  margin: 0;
+}
+@media (max-width: 400px) {
+  .instructions-container .player-name {
+    width: 130px;
+  }
 }
 
 .versus {

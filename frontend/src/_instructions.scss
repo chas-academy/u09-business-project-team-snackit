@@ -1,12 +1,4 @@
 @use "library" as L;
-// * {
-//     @include L.lilita;
-// }
-
-// html, body {
-//   margin: 0;
-//   overflow: hidden;
-// }
 
 .instructions-container { 
   display: flex;
@@ -32,18 +24,11 @@
     margin-bottom: 0.8rem;
   }
 }
-  .game-id {
-    background-color: L.$font-white;
-    color: L.$brown;
-    font-weight: bold;
-    font-size: 1rem;
-    @include L.lilita;
-    border: 3px solid L.$brown;
-    padding: 0.2rem 0.8rem;
-    border-radius: 2rem;
-    position: absolute;
-    bottom: 1rem;
-    right: 9rem;
+  .player-name {
+    @include L.mobile {
+      width: 130px;
+    }
+    margin: 0;
   }
 
 }
