@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useFetchUser } from "../hooks/useFetchUser";
 import { useFetchGuest } from "../hooks/useFetchGuest";
 
@@ -11,7 +10,7 @@ const {guest, loadingGuest, errorGuest} = useFetchGuest();
   if (errorGuest) return <p>Error: {errorGuest.message}</p>;
   if (!user) return <p>User not found</p>;
   if (!guest) return <p>Player Two not found</p>
-  // console.log(user)
+  
 
   return (
     <>

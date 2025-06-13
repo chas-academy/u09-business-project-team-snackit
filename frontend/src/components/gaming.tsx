@@ -1,5 +1,3 @@
-
-
 function Gaming() {
 
     const ingredient: string = "fish";

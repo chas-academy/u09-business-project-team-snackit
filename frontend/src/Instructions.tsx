@@ -9,7 +9,7 @@ function Instructions() {
     const { user, loadingUser, errorUser} = useFetchUser();
     const playerOne = user?._id;
     const {game, loadingGame, errorGame} = useGame(playerOne);
-    // console.log(game)
+
 
     if (loadingUser || loadingGame) return <p> Loading...</p>;
     if (errorUser) return <p>Error with user: {errorUser.message}</p>;
@@ -33,9 +33,9 @@ function Instructions() {
                     Ready to find out who is the foodie?</p>
                 </section>
                 {/* ändra till Link */}
-                <Link to={"/game"} className="primary-btn">START</Link>
+                <Link to={`/game?gameId=${game.gameId}`} className="primary-btn">START</Link>
         </main>
-        <GameId />
+        {game && <GameId gameId = {game.gameId} />}
         </>
     );
 }

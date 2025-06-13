@@ -3,15 +3,16 @@ import { useFetchUser } from "./hooks/useFetchUser";
 import Versus from "./components/versus";
 import GameId from "./components/gameId";
 import Gaming from "./components/gaming";
-import { useGame } from "./hooks/useGame";
 
 
 function Game() {
-    const { user, loading, error} = useFetchUser();
+    const params = new URLSearchParams(window.location.search);
+    const gameId = params.get("gameId")
+    const { user, loadingUser, errorUser} = useFetchUser();
     
     
-    if (loading) return <p> Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
+    if (loadingUser) return <p> Loading...</p>;
+    if (errorUser) return <p>Error: {errorUser.message}</p>;
     if (!user) return <p>User not found</p>;
     
     
@@ -25,7 +26,7 @@ function Game() {
             <Versus />
             <Gaming />
         </main>
-        <GameId />
+        {gameId && <GameId gameId = {gameId} />}
         </>
     );
 }

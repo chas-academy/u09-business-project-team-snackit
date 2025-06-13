@@ -1,15 +1,13 @@
-import { useFetchUser } from "../hooks/useFetchUser";
-import { useGame } from "../hooks/useGame";
 
-function GameId() {
-        const { user } = useFetchUser();
-        const playerOne = user?._id;
-        const {game} = useGame(playerOne);
-        if(!game) return <p>Game not found</p>
+// type GameIdProps = {
+//     gameId: string
+// }
+function GameId({gameId}: {gameId: string}) {
+
     return (
         <>
         <footer>
-        <p className="game-id">GAME ID: {game.gameId}</p>
+        <p className="game-id">GAME ID: {gameId}</p>
         </footer>
         </>
     )
