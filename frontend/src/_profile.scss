@@ -10,7 +10,6 @@
     @include L.mobile {
         width: 165px;
     }
-
 }
 #delete-account {
     font-size: 1.5rem;
@@ -27,6 +26,9 @@
     font-size: 1.25rem;
     background-color: L.$green;
     color: L.$font-white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #stats {
     border: solid L.$brown 6px;

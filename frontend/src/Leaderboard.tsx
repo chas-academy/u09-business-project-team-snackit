@@ -55,17 +55,17 @@ function Leaderboard() {
           <h1 className="title">Leaderboard</h1>
           <div className="top3-pics">
             <img id="second-place"
-              className="leader-pic"
+              className="smaller-pic"
               src={playerTwo}
               alt="players profile pic"
             />
             <img id="first-place"
-              className="leader-pic"
+              className="smaller-pic"
               src={playerOne}
               alt="players profile pic"
             />
             <img id="third-place"
-              className="leader-pic"
+              className="smaller-pic"
               src={playerThree}
               alt="players profile pic"
             />

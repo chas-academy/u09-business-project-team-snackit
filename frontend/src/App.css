@@ -133,6 +133,9 @@
   font-size: 1.25rem;
   background-color: #979e37;
   color: #e0e2c3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #stats {
@@ -189,39 +192,24 @@ h2 {
 }
 
 .instructions-container {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
   padding: 2rem;
 }
-.instructions-container .players {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
-}
-.instructions-container .players .player {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-.instructions-container .players .vs-icon {
-  font-size: 2.2rem;
-  color: #9a4d52;
-  font-weight: bold;
-  font-family: "Lilita One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
 .instructions-container .instruction-text {
-  max-width: 500px;
-  margin: 2rem auto;
   text-align: center;
   color: #4c2d1a;
-  font-size: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+.instructions-container .instruction-text > p {
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: 1rem;
 }
 .instructions-container .instruction-text strong {
   display: block;
@@ -243,6 +231,27 @@ h2 {
   position: absolute;
   bottom: 1rem;
   right: 9rem;
+}
+
+.versus {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 15rem;
+}
+
+#vsImg {
+  position: relative;
+  top: 2rem;
+  margin: 10rem 0;
+  width: 80px;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .top3-pics {
@@ -267,13 +276,6 @@ h2 {
 .leaderboard {
   width: 400px;
   margin: 0 auto;
-}
-
-.leader-pic {
-  width: 100px;
-  margin: 0.4rem;
-  border-radius: 50px;
-  box-shadow: inset 0px 0px 10px #504f4f;
 }
 
 .leader-stage {
@@ -441,6 +443,13 @@ section {
   margin: 1rem;
 }
 
+.smaller-pic {
+  width: 100px;
+  margin: 0.4rem;
+  border-radius: 50px;
+  box-shadow: inset 0px 0px 10px #504f4f;
+}
+
 nav {
   display: flex;
   flex-direction: column;
@@ -510,4 +519,24 @@ nav {
   transform: translate(-50%, -50%);
   color: #4c2d1a;
   text-align: center;
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+}
+footer .game-id {
+  background-color: #e0e2c3;
+  color: #4c2d1a;
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  border: 3px solid #4c2d1a;
+  padding: 0.2rem 0.8rem;
+  border-radius: 2rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
 }/*# sourceMappingURL=app.css.map */
