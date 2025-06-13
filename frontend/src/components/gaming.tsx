@@ -1,4 +1,7 @@
+
+
 function Gaming() {
+
     const ingredient: string = "fish";
     const opponents_turn = true;
     if (opponents_turn) {

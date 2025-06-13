@@ -3,17 +3,18 @@ import { useFetchUser } from "./hooks/useFetchUser";
 import Versus from "./components/versus";
 import GameId from "./components/gameId";
 import Gaming from "./components/gaming";
+import { useGame } from "./hooks/useGame";
 
 
 function Game() {
     const { user, loading, error} = useFetchUser();
-
-
+    
+    
     if (loading) return <p> Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
     if (!user) return <p>User not found</p>;
-
-
+    
+    
     return (
         <>
         <header>

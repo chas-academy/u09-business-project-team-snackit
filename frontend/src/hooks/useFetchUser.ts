@@ -16,8 +16,8 @@ type User = {
 }
 export const useFetchUser = () => {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
+  const [loadingUser, setLoadingUser] = useState(true);
+  const [errorUser, setErrorUser] = useState<Error | null>(null);
 
   const fetchUser = async () => {
     try {
@@ -40,11 +40,11 @@ export const useFetchUser = () => {
     } catch (err: unknown) {
         if(err instanceof Error) {
             console.error(err);
-            setError(err);
+            setErrorUser(err);
 
         }
     } finally {
-        setLoading(false);
+        setLoadingUser(false);
     }
   };
 
@@ -52,5 +52,5 @@ export const useFetchUser = () => {
     fetchUser();
   }, []);
 
-  return {user, loading, error };
+  return {user, loadingUser, errorUser };
 };

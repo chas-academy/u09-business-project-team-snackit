@@ -7,7 +7,7 @@ function Versus() {
     if (loading) return <p> Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
     if (!user) return <p>User not found</p>;
-    console.log(user)
+    // console.log(user)
     const guest = {
         name: "Guest",
         profilePic: "img_1.svg",

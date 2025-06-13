@@ -3,14 +3,19 @@ import { useFetchUser } from "./hooks/useFetchUser";
 import Versus from "./components/versus";
 import { Link } from "react-router-dom";
 import GameId from "./components/gameId";
+import { useGame } from "./hooks/useGame";
 
 function Instructions() {
-    const { user, loading, error} = useFetchUser();
+    const { user, loadingUser, errorUser} = useFetchUser();
+    const playerOne = user?._id;
+    const {game, loadingGame, errorGame} = useGame(playerOne);
+    // console.log(game)
 
-
-    if (loading) return <p> Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
+    if (loadingUser || loadingGame) return <p> Loading...</p>;
+    if (errorUser) return <p>Error with user: {errorUser.message}</p>;
+    if (errorGame) return <p>Error with game: {errorGame.message}</p>
     if (!user) return <p>User not found</p>;
+    if(!game) return <p>No game found</p>
 
 
     return (
