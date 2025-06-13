@@ -3,6 +3,8 @@
 @use "profile" as *;
 @use "instructions" as *;
 @use "leaderboard" as *;
+@use "game" as *;
+
 * {
     margin: 0;
     box-sizing: border-box;
@@ -49,6 +51,9 @@ section {
     height: 82px;
     text-decoration: none;
     color: L.$font-white;
+    &:hover {
+        color: L.$brown;
+    }
     font-size: 35px;
     border-radius: 20px;
     border: solid L.$brown 6px;
@@ -103,6 +108,9 @@ nav {
         height: 54px;
         font-size: 24px;
         
+    }
+    &:hover {
+        background-color: L.$hover-red;
     }
 }
 #error {

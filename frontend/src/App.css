@@ -43,14 +43,14 @@
   justify-content: center;
 }
 
-.register-form, .update-form {
+.register-form, .update-form, .submission {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
 }
-.register-form > input, .update-form > input {
+.register-form > input, .update-form > input, .submission > input {
   width: 324px;
   height: 49px;
   border-radius: 20px;
@@ -209,6 +209,7 @@ h2 {
   color: #4c2d1a;
   margin: 1rem;
   padding: 1rem;
+  max-width: 450px;
 }
 .instructions-container .instruction-text > p {
   font-family: "Baloo 2", sans-serif;
@@ -371,6 +372,35 @@ h2 {
   background-color: #d9d9d9;
 }
 
+.player-turn {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+}
+
+.ingredient-container {
+  color: #4c2d1a;
+  border: solid 4px #4c2d1a;
+  border-radius: 20px;
+  width: 180px;
+  height: 98px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem;
+  background-color: #d9d9d9;
+}
+.ingredient-container > h3 {
+  border-bottom: solid #4c2d1a 1px;
+}
+
+.submission {
+  margin: 1rem;
+  gap: 1rem;
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -436,6 +466,9 @@ section {
   border-radius: 20px;
   border: solid #4c2d1a 6px;
 }
+.lobby-btn:hover {
+  color: #4c2d1a;
+}
 
 .lobby-img {
   width: 54px;
@@ -498,6 +531,9 @@ nav {
     height: 54px;
     font-size: 24px;
   }
+}
+.back-btn:hover {
+  background-color: #D13118;
 }
 
 #error {

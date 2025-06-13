@@ -2,6 +2,7 @@ import BackBtn from "./components/back-btn";
 import { useFetchUser } from "./hooks/useFetchUser";
 import Versus from "./components/versus";
 import GameId from "./components/gameId";
+import Gaming from "./components/gaming";
 
 
 function Game() {
@@ -21,6 +22,7 @@ function Game() {
         <main className="instructions-container">
             <h1 className="title">Welcome {user.name}!</h1>
             <Versus />
+            <Gaming />
         </main>
         <GameId />
         </>

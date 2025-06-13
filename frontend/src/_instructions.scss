@@ -12,6 +12,7 @@
     color: L.$brown;
     margin: 1rem;
     padding: 1rem;
+    max-width: 450px;
     >p {
       @include L.baloo;
       margin-top: 1rem;

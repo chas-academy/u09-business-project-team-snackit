@@ -1,0 +1,29 @@
+@use "library" as L;
+
+.player-turn {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    }
+.ingredient-container {
+    color: L.$brown;
+    >h3 {
+        border-bottom: solid L.$brown 1px;
+        
+    }
+    border: solid 4px L.$brown;
+    border-radius: 20px;
+    width: 180px;
+    height: 98px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem;
+    background-color: L.$grey;
+}
+.submission {
+    margin: 1rem;
+    gap: 1rem;
+}
