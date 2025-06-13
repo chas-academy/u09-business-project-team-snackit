@@ -24,7 +24,7 @@ function Leaderboard() {
       
       const fetchLeaderboard = async () => {
           try {
-              const res = await fetch(`${API_URL}/api/v1/games/leaderboard`);
+              const res = await fetch(`${API_URL}/api/games/leaderboard`);
               const data = await res.json();
               console.log("Fetched players:", data);
               setPlayerOne(data[0].profilePic)

@@ -9,7 +9,7 @@
 + ```npm install```
 + ```npm run build```
 + ```cp .env.example .env```
-generate api key?
++ Create an account on at [Spoonacular](https://spoonacular.com/food-api/docs)
 
 ## Links
 [Endpoints](backend\design.md)  
