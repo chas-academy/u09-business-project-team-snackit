@@ -22,12 +22,13 @@ const clientID= process.env.GOOGLE_CLIENT_ID!;  // med "!" så säger det till T
 const clientSecret= process.env.GOOGLE_CLIENT_SECRET!;
 
 const server = process.env.NODE_ENV === "prod" ? process.env.API_URL_PROD : process.env.API_URL_LOCAL
+console.log(server)
 passport.use( 
     new GoogleStrategy(
         {
-        clientID: clientID,
-        clientSecret: clientSecret,
-        callbackURL: `https://u09backend.vercel.app/api/auth/google/callback`,
+            clientID: clientID,
+            clientSecret: clientSecret,
+            callbackURL: `${server}/auth/google/callback`,
         },
         async (accesstoken, refreshToken, profile, done) => {
             try{

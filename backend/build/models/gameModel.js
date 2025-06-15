@@ -36,7 +36,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const gameSchema = new mongoose_1.Schema({
-    winner: { type: String, requred: true },
-    loser: { type: String, required: true },
+    players: { type: [String], required: true },
+    currentTurn: { type: String, required: true },
+    currentIngredient: { type: String, required: false },
+    lives: { type: Object, required: true, default: {} }, // visar antalet liv spelare har kvar 
+    score: { type: Number, required: true, default: 0 },
+    status: { type: String, enum: ["waiting", "playing", "finished"], default: "waiting" }, // visar spelets tilstånd 
+    winner: { type: String, default: "" },
+    loser: { type: String, default: "" },
 });
 exports.Game = mongoose_1.default.model("Game", gameSchema);

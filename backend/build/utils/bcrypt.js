@@ -8,23 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getLeaderboard = void 0;
-const userModel_1 = require("../models/userModel");
-const getLeaderboard = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const topPlayers = yield userModel_1.User.find()
-            .limit(6)
-            .sort({ wins: -1 });
-        res.status(200).json(topPlayers);
-    }
-    catch (err) {
-        if (err instanceof Error) {
-            res.status(500).json({ error: err.message });
-            return;
-        }
-    }
-    // find all users
-    // sort by where win is the highest
+exports.hashPassword = void 0;
+const bcrypt_1 = __importDefault(require("bcrypt"));
+const saltRounds = 10;
+const hashPassword = (password) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield bcrypt_1.default.hash(password, saltRounds);
 });
-exports.getLeaderboard = getLeaderboard;
+exports.hashPassword = hashPassword;
