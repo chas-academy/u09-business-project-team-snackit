@@ -26,7 +26,7 @@ passport.use(
         {
         clientID: clientID,
         clientSecret: clientSecret,
-        callbackURL: "http://localhost:3003/auth/google/callback",
+        callbackURL: "https://u09backend-5cqpbx0cy-chokladglasyrs-projects.vercel.app/auth/google/callback",
         },
         async (accesstoken, refreshToken, profile, done) => {
             try{
@@ -50,7 +50,7 @@ passport.deserializeUser(function (object, done) {
 })
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://whoisthefoodie.netlify.app/",  //det skavara frontend länken här
     credentials: true
 }));
 
@@ -75,8 +75,8 @@ app.get("/auth/google", passport.authenticate("google", {
 
 app.get("/auth/google/callback", 
     passport.authenticate("google", {
-        failureRedirect: "http://localhost:5173",
-        successRedirect: "http://localhost:5173/lobby"
+        failureRedirect: "https://whoisthefoodie.netlify.app/",    //det skavara frontend länken här
+        successRedirect: "https://whoisthefoodie.netlify.app/lobby"  //det skavara frontend länken här
     })
 );
 
