@@ -1,10 +1,11 @@
 import express from "express";
 import { getLeaderboard } from "../controllers/leaderboardController";
-import { createGame, startGame, checkSubmission, nextIngredient, forfeitGame, restartGame  } from "../controllers/gameController";
+import { createGame, startGame, checkSubmission, nextIngredient, forfeitGame, restartGame, getGameById  } from "../controllers/gameController";
 const router = express.Router();
 
 router.get("/leaderboard", getLeaderboard);
 router.post("/", createGame);
+router.get("/:gameId", getGameById)
 router.post("/Start/:gameId",startGame);
 router.post("/:gameId/submit", checkSubmission);
 router.post("/:gameId/next", nextIngredient);

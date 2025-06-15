@@ -107,6 +107,6 @@ app.use("/api", spooncularRoutes);
 
 app.use("/api/games", gameRoutes);
 
-app.use('/test', searchRecipe);
+app.use('/search', searchRecipe);
 
 export default app;

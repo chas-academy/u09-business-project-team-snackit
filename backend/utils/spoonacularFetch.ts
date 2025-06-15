@@ -16,7 +16,7 @@ export const getRandomIngredients = async (): Promise<{
 
     const recipe = data.recipes[0];
     const ingredients = recipe.extendedIngredients;
-    console.log(recipe)
+    // console.log(recipe)
 
     //Filtrerar bort dem här ingredienserna
 

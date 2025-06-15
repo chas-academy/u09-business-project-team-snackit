@@ -6,14 +6,16 @@ import Gaming from "./components/gaming";
 
 
 function Game() {
-    const { user, loading, error} = useFetchUser();
-
-
-    if (loading) return <p> Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
+    const params = new URLSearchParams(window.location.search);
+    const gameId = params.get("gameId")
+    const { user, loadingUser, errorUser} = useFetchUser();
+    
+    
+    if (loadingUser) return <p> Loading...</p>;
+    if (errorUser) return <p>Error: {errorUser.message}</p>;
     if (!user) return <p>User not found</p>;
-
-
+    
+    
     return (
         <>
         <header>
@@ -21,10 +23,10 @@ function Game() {
         </header>
         <main className="instructions-container">
             <h1 className="title">Welcome {user.name}!</h1>
-            <Versus />
+            {gameId && <Versus gameId = {gameId} />}
             <Gaming />
         </main>
-        <GameId />
+        {gameId && <GameId gameId = {gameId} />}
         </>
     );
 }
