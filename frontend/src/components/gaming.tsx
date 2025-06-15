@@ -1,8 +1,8 @@
 import { useFetchGame } from "../hooks/useStartGame";
 
 function Gaming() {
-    const params = new URLSearchParams(window.location.search);
-    const gameId = params.get("gameId")
+    // const params = new URLSearchParams(window.location.search);
+    // const gameId = params.get("gameId")
     // console.log(gameId)
     // const {game, loadingGame, errorGame} = useFetchGame(gameId!);
     // console.log(game)

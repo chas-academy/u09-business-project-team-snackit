@@ -10,7 +10,7 @@ type Game = {
     players: string[],
     currentTurn: string,
     currentIngredient: string,
-    lives: object,
+    lives: Record<string, number>,
     score: number,
     status: string,
     winner: string,

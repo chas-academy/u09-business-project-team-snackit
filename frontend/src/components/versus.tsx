@@ -7,7 +7,6 @@ const { user, loadingUser, errorUser } = useFetchUser();
 const {game, loadingGame, errorGame} = useFetchGame(gameId!);
 
 const playerTwo = game?.players[1]
-console.log(playerTwo)
 const {guest, loadingGuest, errorGuest} = useFetchGuest(playerTwo!);
 
 if (loadingUser) return <p> Loading...</p>;
@@ -25,19 +24,24 @@ if(errorGame) return <p>Error</p>
 
 const ingredient: string = game.currentIngredient;
 console.log(ingredient)
-console.log(guest)
+console.log(game.lives[guest._id])
+
+
 
   return (
     <>
       <section className="versus">
         <div className="player">
-          {/* <p className="player-name">{user.name}</p> */}
+          <p className="player-name">{user.name}</p>
           <img
             className="smaller-pic"
-            // src={user.profilePic}
+            src={user.profilePic}
             alt="player profile pic"
           />
-          <div className="hearts">{"❤️".repeat(3)}</div>
+          {game.lives && user._id in game.lives && (
+            
+            <div className="hearts">{"❤️".repeat(game.lives[user._id])}</div>
+          )}
         </div>
 
         <div className="vs-icon">
@@ -45,13 +49,13 @@ console.log(guest)
         </div>
 
         <div className="player">
-          {/* <p className="player-name">{guest.name}</p> */}
+          <p className="player-name">{guest.name}</p>
           <img
             className="smaller-pic"
-            // src={guest.profilePic}
+            src={guest.profilePic}
             alt="opponent profile pic"
           />
-          <div className="hearts">{"❤️".repeat(3)}</div>
+          <div className="hearts">{"❤️".repeat(game.lives[guest._id])}</div>
         </div>
       </section>
     </>
