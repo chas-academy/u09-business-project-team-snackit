@@ -22,7 +22,8 @@ app.use(express.json());
 const clientID= process.env.GOOGLE_CLIENT_ID!;  // med "!" så säger det till TypeScript att variabeln definitivt finns
 const clientSecret= process.env.GOOGLE_CLIENT_SECRET!;
 
-const server = process.env.NODE_ENV === "prod" ? process.env.API_URL_PROD : process.env.API_URL_LOCAL
+const server = process.env.NODE_ENV === "prod" ? process.env.API_URL_PROD : process.env.API_URL_LOCAL;
+const redirect = process.env.NODE_ENV === "prod" ? process.env.REDIRECT_PROD : process.env.REDIRECT_LOCAL;
 console.log(server)
 passport.use( 
     new GoogleStrategy(
@@ -77,8 +78,8 @@ app.get("/auth/google", passport.authenticate("google", {
 }));
 app.get("/auth/google/callback", 
     passport.authenticate("google", {
-        failureRedirect: `${process.env.REDIRECT}`,
-        successRedirect: `${process.env.REDIRECT}/lobby`
+        failureRedirect: `${redirect}`,
+        successRedirect: `${redirect}/lobby`
     })
 );
 
