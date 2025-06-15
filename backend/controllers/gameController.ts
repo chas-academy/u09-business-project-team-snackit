@@ -40,7 +40,22 @@ export const createGame = async (req: Request, res: Response) => {
     };
 };
     
-
+export const getGameById = async (req: Request, res: Response) => {
+    try {
+        const gameId = req.params.gameId
+        const game = await Game.findById(gameId)
+        if(!game) {
+            res.status(404).json({message: "Game not found"});
+            return
+        }
+        res.json(game)
+    } catch(err: unknown) {
+        if (err instanceof Error) {
+            res.status(500).json({error: err.message});
+            return;
+        }
+    }
+}
 
 export const startGame = async (req: Request, res: Response) => {
 
