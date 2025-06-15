@@ -14,14 +14,16 @@ type Guest = {
   profilePic: string;
   lives: string;
 };
-export const useFetchGuest = () => {
+export const useFetchGuest = (playerTwoId: string) => {
   const [guest, setGuest] = useState<Guest | null>(null);
     const [loadingGuest, setLoadingGuest] = useState(true);
     const [errorGuest, setErrorGuest] = useState<Error | null>(null);
+useEffect(() => {
+  if(!playerTwoId) return;
 
   const fetchGuest = async () => {
     try {
-      const res = await fetch(`${API_URL}/users/683d9a05a9cbce37c219c55b`, {
+      const res = await fetch(`${API_URL}/users/${playerTwoId}`, {
         credentials: "include",
       });
       if (!res.ok) throw new Error("Failed to fetch guest");
@@ -37,8 +39,9 @@ export const useFetchGuest = () => {
         setLoadingGuest(false);
     }
   };
-  useEffect(() => {
+ 
     fetchGuest();
-  },[])
+  },[playerTwoId]);
+
   return {guest, loadingGuest, errorGuest}
 };

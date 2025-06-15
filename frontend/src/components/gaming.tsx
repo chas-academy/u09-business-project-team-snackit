@@ -4,14 +4,14 @@ function Gaming() {
     const params = new URLSearchParams(window.location.search);
     const gameId = params.get("gameId")
     // console.log(gameId)
-    const {game, loadingGame, errorGame} = useFetchGame(gameId!);
+    // const {game, loadingGame, errorGame} = useFetchGame(gameId!);
     // console.log(game)
-    if(!game) return <p>Game not found</p>
-    if(loadingGame) return <p>Loading game...</p>
-    if(errorGame) return <p>Error</p>
+    // if(!game) return <p>Game not found</p>
+    // if(loadingGame) return <p>Loading game...</p>
+    // if(errorGame) return <p>Error</p>
 
-    const ingredient: string = game.currentIngredient;
-    console.log(ingredient)
+    // const ingredient: string = game.currentIngredient;
+    // console.log(ingredient)
     const opponents_turn = true;
     if (opponents_turn) {
         document.getElementById("playerTwo")?.setAttribute("style", "visibility: hidden;")

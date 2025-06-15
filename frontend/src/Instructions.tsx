@@ -25,7 +25,7 @@ function Instructions() {
         </header>
         <main className="instructions-container">
             <h1 className="title">Welcome {user.name}!</h1>
-            <Versus />
+            {newGame && <Versus gameId = {newGame.gameId} />}
             <section className="instruction-text">
                     <h3>HOW TO PLAY:</h3>
                     <p>Enter a recipe that uses the given ingredient.
