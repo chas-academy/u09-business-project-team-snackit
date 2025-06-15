@@ -1,7 +1,3 @@
-
-// type GameIdProps = {
-//     gameId: string
-// }
 function GameId({gameId}: {gameId: string}) {
 
     return (

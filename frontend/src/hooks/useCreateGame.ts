@@ -5,14 +5,14 @@ const API_URL =
     ? import.meta.env.VITE_API_BASE_URL_PROD
     : import.meta.env.VITE_API_BASE_URL_LOCAL;
 
-type Game = {
+type newGame = {
     gameId: string,
 }
 
 export const useCreateGame = (playerOne: string) => {
-    const [game, setGame] = useState<Game | null>(null);
-    const [loadingGame, setLoadingGame] = useState(true);
-    const [errorGame, setErrorGame] = useState<Error | null>(null);
+    const [newGame, setNewGame] = useState<newGame | null>(null);
+    const [loadingNewGame, setLoadingNewGame] = useState(true);
+    const [errorNewGame, setErrorNewGame] = useState<Error | null>(null);
 
     useEffect(() => {
         const fetchGame = async() => {
@@ -28,19 +28,19 @@ export const useCreateGame = (playerOne: string) => {
                 if(!res.ok) throw new Error("Failed to create game");
                 const data = await res.json();
                 console.log(data)
-                setGame(data);
+                setNewGame(data);
             } catch(err: unknown) {
                 if(err instanceof Error) {
                     console.error(err);
-                    setErrorGame(err)
+                    setErrorNewGame(err)
                 }
             } finally {
-                setLoadingGame(false);
+                setLoadingNewGame(false);
             }
         }
         if(playerOne){
             fetchGame();
         }
     }, [playerOne])
-        return {game, loadingGame, errorGame};
+        return {newGame, loadingNewGame, errorNewGame};
     }

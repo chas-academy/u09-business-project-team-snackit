@@ -3,19 +3,19 @@ import { useFetchUser } from "./hooks/useFetchUser";
 import Versus from "./components/versus";
 import { Link } from "react-router-dom";
 import GameId from "./components/gameId";
-import { useGame } from "./hooks/useGame";
+import { useCreateGame } from "./hooks/useCreateGame";
 
 function Instructions() {
     const { user, loadingUser, errorUser} = useFetchUser();
     const playerOne = user?._id;
-    const {game, loadingGame, errorGame} = useGame(playerOne!);
+    const {newGame, loadingNewGame, errorNewGame} = useCreateGame(playerOne!);
 
 
-    if (loadingUser || loadingGame) return <p> Loading...</p>;
+    if (loadingUser || loadingNewGame) return <p> Loading...</p>;
     if (errorUser) return <p>Error with user: {errorUser.message}</p>;
-    if (errorGame) return <p>Error with game: {errorGame.message}</p>
+    if (errorNewGame) return <p>Error with game: {errorNewGame.message}</p>
     if (!user) return <p>User not found</p>;
-    if(!game) return <p>No game found</p>
+    if(!newGame) return <p>No game found</p>
 
 
     return (
@@ -33,9 +33,9 @@ function Instructions() {
                     Ready to find out who is the foodie?</p>
                 </section>
                 {/* ändra till Link */}
-                <Link to={`/game?gameId=${game.gameId}`} className="primary-btn">START</Link>
+                <Link to={`/game?gameId=${newGame.gameId}`} className="primary-btn">START</Link>
         </main>
-        {game && <GameId gameId = {game.gameId} />}
+        {newGame && <GameId gameId = {newGame.gameId} />}
         </>
     );
 }
