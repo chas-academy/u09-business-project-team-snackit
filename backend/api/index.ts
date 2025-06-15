@@ -53,7 +53,7 @@ passport.deserializeUser(function (object, done) {
 })
 
 app.use(cors({
-    origin: ["https://whoisthefoodie.netlify.app/", "http://localhost:5173"], 
+    origin: ["https://whoisthefoodie.netlify.app", "http://localhost:5173"], 
     credentials: true
 }));
 
