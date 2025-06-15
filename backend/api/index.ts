@@ -15,6 +15,7 @@ import { searchRecipe } from "../utils/spoonacularFetch";
 dotenv.config();
 connectDB();
 const app: Express = express();
+// console.log(process.env.REDIRECT)
 
 const PORT: string | number = process.env.PORT || 3003;
 app.use(express.json());
@@ -74,11 +75,10 @@ app.get('/', (req: Request, res: Response) => {
 app.get("/auth/google", passport.authenticate("google", {
     scope: ["profile", "email"], 
 }));
-
 app.get("/auth/google/callback", 
     passport.authenticate("google", {
-        failureRedirect: `${process.env.REDIRECT}`,    //det skavara frontend länken här
-        successRedirect: `${process.env.REDIRECT}/lobby`  //det skavara frontend länken här
+        failureRedirect: `${process.env.REDIRECT}`,
+        successRedirect: `${process.env.REDIRECT}/lobby`
     })
 );
 
