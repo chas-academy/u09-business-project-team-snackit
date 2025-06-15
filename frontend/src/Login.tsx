@@ -7,7 +7,7 @@ function Login() {
   document.getElementById("root-body")?.setAttribute("id", "login-body");
   console.log(API_URL)
   const login = () => {
-    window.open(`https://u09backend.vercel.app/auth/google`, "_self");
+    window.open(`https://u09-business-project-team-snackit.onrender.com/auth/google`, "_self");
   };
 
   return (
