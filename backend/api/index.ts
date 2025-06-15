@@ -95,6 +95,7 @@ app.get("/auth/logout", (req: Request, res: Response, next) => {
 
 //---------------HÄMTA INLOGGAD ANV------------
 app.get("/auth/user", (req: Request, res: Response) => {
+    console.log(req.user)
     res.json(req.user || null);
 });
 
