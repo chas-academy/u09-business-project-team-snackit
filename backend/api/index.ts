@@ -21,12 +21,13 @@ app.use(express.json());
 const clientID= process.env.GOOGLE_CLIENT_ID!;  // med "!" så säger det till TypeScript att variabeln definitivt finns
 const clientSecret= process.env.GOOGLE_CLIENT_SECRET!;
 
+const server = process.env.NODE_ENV === "prod" ? process.env.API_URL_PROD : process.env.API_URL_LOCAL
 passport.use( 
     new GoogleStrategy(
         {
         clientID: clientID,
         clientSecret: clientSecret,
-        callbackURL: "http://localhost:3003/auth/google/callback",
+        callbackURL: `${server}/auth/google/callback`,
         },
         async (accesstoken, refreshToken, profile, done) => {
             try{
@@ -50,7 +51,7 @@ passport.deserializeUser(function (object, done) {
 })
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: ["https://whoisthefoodie.netlify.app/", "http://localhost:5173"], 
     credentials: true
 }));
 
@@ -75,8 +76,8 @@ app.get("/auth/google", passport.authenticate("google", {
 
 app.get("/auth/google/callback", 
     passport.authenticate("google", {
-        failureRedirect: "http://localhost:5173",
-        successRedirect: "http://localhost:5173/lobby"
+        failureRedirect: `${process.env.REDIRECT}`,    //det skavara frontend länken här
+        successRedirect: `${process.env.REDIRECT}/lobby`  //det skavara frontend länken här
     })
 );
 
@@ -107,6 +108,6 @@ app.use("/api", spooncularRoutes);
 
 app.use("/api/games", gameRoutes);
 
-app.use('/test', searchRecipe);
+app.use('/search', searchRecipe);
 
 export default app;

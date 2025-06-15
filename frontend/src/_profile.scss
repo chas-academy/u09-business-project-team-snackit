@@ -5,12 +5,11 @@
     justify-content: space-between;
 }
 .profile-pic {
-    width: 200px;
+    width: 150px;
     margin-top: 2rem;
     @include L.mobile {
         width: 165px;
     }
-
 }
 #delete-account {
     font-size: 1.5rem;
@@ -27,6 +26,14 @@
     font-size: 1.25rem;
     background-color: L.$green;
     color: L.$font-white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    &:hover {
+        color: L.$brown;
+    }
+    cursor: pointer;
 }
 #stats {
     border: solid L.$brown 6px;
@@ -71,6 +78,7 @@ h2 {
     position: relative;
     bottom: 4rem;
     left: 4rem;
+    cursor: pointer;
 }
 .chose-pic {
     margin-bottom: 2rem;

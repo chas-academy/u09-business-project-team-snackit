@@ -16,7 +16,7 @@ function Profile() {
       ? import.meta.env.VITE_API_BASE_URL_PROD
       : import.meta.env.VITE_API_BASE_URL_LOCAL;
 
-  const { user, loading, error } = useFetchUser();
+  const { user, loadingUser, errorUser } = useFetchUser();
   useEffect(() => {
     if (user) {
       setFormData({
@@ -26,8 +26,8 @@ function Profile() {
       setSelectedImage(user.profilePic);
     }
   }, [user]);
-  if (loading) return <h3>Loading...</h3>;
-  if (error) return <h3>Error</h3>;
+  if (loadingUser) return <h3>Loading...</h3>;
+  if (errorUser) return <h3>Error</h3>;
   if (!user) return <h3>User not found</h3>;
   // console.log(user)
   const deleteUser = async () => {

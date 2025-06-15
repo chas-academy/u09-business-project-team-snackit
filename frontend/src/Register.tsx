@@ -39,7 +39,7 @@ function Register() {
 
     try {
         console.log(selectedImage)
-      await fetch("http://localhost:3003/users/", {
+      await fetch("https://u09backend-5cqpbx0cy-chokladglasyrs-projects.vercel.app/users/", {
         credentials: "include",
         method: "POST",
         headers: { "Content-Type": "application/json" },
