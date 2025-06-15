@@ -23,7 +23,7 @@ function Game() {
         </header>
         <main className="instructions-container">
             <h1 className="title">Welcome {user.name}!</h1>
-            <Versus />
+            {gameId && <Versus gameId = {gameId} />}
             <Gaming />
         </main>
         {gameId && <GameId gameId = {gameId} />}
