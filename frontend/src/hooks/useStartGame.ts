@@ -16,7 +16,7 @@ type Game = {
     winner: string,
     loser: string
 }
-export const useFetchGame = (gameId: string) => {
+export const useFetchGameStart = (gameId: string) => {
     const [game, setGame] = useState<Game | null>(null);
     const [loadingGame, setLoadingGame] = useState(true);
     const [errorGame, setErrorGame] = useState<Error | null>(null)

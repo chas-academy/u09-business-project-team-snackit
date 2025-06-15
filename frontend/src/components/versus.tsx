@@ -1,10 +1,10 @@
 import { useFetchUser } from "../hooks/useFetchUser";
 import { useFetchGuest } from "../hooks/useFetchGuest";
-import { useFetchGame } from "../hooks/useStartGame";
+import { useFetchGameStart } from "../hooks/useStartGame";
 
 function Versus({gameId}: {gameId: string}) {
 const { user, loadingUser, errorUser } = useFetchUser();
-const {game, loadingGame, errorGame} = useFetchGame(gameId!);
+const {game, loadingGame, errorGame} = useFetchGameStart(gameId!);
 
 const playerTwo = game?.players[1]
 const {guest, loadingGuest, errorGuest} = useFetchGuest(playerTwo!);

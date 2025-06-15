@@ -1,11 +1,11 @@
-import { useFetchGame } from "../hooks/useStartGame";
+import { useFetchGame } from "../hooks/useFetchGame";
 
 function Gaming() {
-    // const params = new URLSearchParams(window.location.search);
-    // const gameId = params.get("gameId")
+    const params = new URLSearchParams(window.location.search);
+    const gameId = params.get("gameId")
     // console.log(gameId)
-    // const {game, loadingGame, errorGame} = useFetchGame(gameId!);
-    // console.log(game)
+    const {ongoingGame, loadingOngoingGame, errorOngoingGame} = useFetchGame(gameId!);
+    console.log(ongoingGame)
     // if(!game) return <p>Game not found</p>
     // if(loadingGame) return <p>Loading game...</p>
     // if(errorGame) return <p>Error</p>
@@ -25,7 +25,7 @@ function Gaming() {
         <section>
             <div className="ingredient-container">
                 <h3>INGREDIENT</h3>
-                <p>{ingredient.toUpperCase()}</p>
+                {/* <p>{ingredient.toUpperCase()}</p> */}
             </div>
         </section>
         <div className="submission">
