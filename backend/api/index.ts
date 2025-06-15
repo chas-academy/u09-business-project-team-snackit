@@ -27,7 +27,7 @@ passport.use(
         {
         clientID: clientID,
         clientSecret: clientSecret,
-        callbackURL: `${server}/auth/google/callback`,
+        callbackURL: `https://u09backend.vercel.app/api/auth/google/callback`,
         },
         async (accesstoken, refreshToken, profile, done) => {
             try{
