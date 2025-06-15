@@ -1,32 +1,19 @@
 import { useFetchUser } from "../hooks/useFetchUser";
 import { useFetchGuest } from "../hooks/useFetchGuest";
-import { useFetchGameStart } from "../hooks/useStartGame";
+import Lives from "./lives";
+import OpponentLives from "./opponent-lives";
 
 function Versus({gameId}: {gameId: string}) {
+const playerTwoId = "683d9a05a9cbce37c219c55b";
+
 const { user, loadingUser, errorUser } = useFetchUser();
-const {game, loadingGame, errorGame} = useFetchGameStart(gameId!);
+const {guest, loadingGuest, errorGuest} = useFetchGuest(playerTwoId);
 
-const playerTwo = game?.players[1]
-const {guest, loadingGuest, errorGuest} = useFetchGuest(playerTwo!);
-
-if (loadingUser) return <p> Loading...</p>;
-if (errorUser) return <p>Error: {errorUser.message}</p>;
-if (!user) return <p>User not found</p>;
-
-if (errorGuest) return <p>Error: {errorGuest.message}</p>;
-if (!guest) return <p>Player Two not found</p>
-if (loadingGuest) return <p> Loading...</p>;
-
-console.log(game)
-if(!game) return <p>Game not found</p>
-if(loadingGame) return <p>Loading game...</p>
-if(errorGame) return <p>Error</p>
-
-const ingredient: string = game.currentIngredient;
-console.log(ingredient)
-console.log(game.lives[guest._id])
-
-
+  if (loadingUser || loadingGuest) return <p> Loading...</p>;
+  if (errorUser) return <p>Error: {errorUser.message}</p>;
+  if (errorGuest) return <p>Error: {errorGuest.message}</p>;
+  if (!user) return <p>User not found</p>;
+  if (!guest) return <p>Player Two not found</p>
 
   return (
     <>
@@ -38,10 +25,8 @@ console.log(game.lives[guest._id])
             src={user.profilePic}
             alt="player profile pic"
           />
-          {game.lives && user._id in game.lives && (
-            
-            <div className="hearts">{"❤️".repeat(game.lives[user._id])}</div>
-          )}
+          <Lives  gameId = {gameId} />
+            {/* <div className="hearts">{"❤️".repeat(3)}</div> */}
         </div>
 
         <div className="vs-icon">
@@ -55,7 +40,8 @@ console.log(game.lives[guest._id])
             src={guest.profilePic}
             alt="opponent profile pic"
           />
-          <div className="hearts">{"❤️".repeat(game.lives[guest._id])}</div>
+          <OpponentLives gameId ={gameId} />
+          {/* <div className="hearts">{"❤️".repeat(3)}</div> */}
         </div>
       </section>
     </>
