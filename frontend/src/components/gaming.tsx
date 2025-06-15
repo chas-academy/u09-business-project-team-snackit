@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useFetchGame } from "../hooks/useFetchGame";
 import { useFetchUser } from "../hooks/useFetchUser";
 import { useFetchGameStart } from "../hooks/useStartGame";
 
