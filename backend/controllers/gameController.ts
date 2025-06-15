@@ -38,12 +38,24 @@ export const createGame = async (req: Request, res: Response) => {
             return;
         }
     };
-        // create an instance for game (?)
-        // if user press start call startGame
-        // if user press go back to lobby, end game and redirect to lobby
 };
     
-
+export const getGameById = async (req: Request, res: Response) => {
+    try {
+        const gameId = req.params.gameId
+        const game = await Game.findById(gameId)
+        if(!game) {
+            res.status(404).json({message: "Game not found"});
+            return
+        }
+        res.json(game)
+    } catch(err: unknown) {
+        if (err instanceof Error) {
+            res.status(500).json({error: err.message});
+            return;
+        }
+    }
+}
 
 export const startGame = async (req: Request, res: Response) => {
 
@@ -60,24 +72,13 @@ export const startGame = async (req: Request, res: Response) => {
         if (!game) {
             return res.json(404).json({error: "This game not found"});
         }
-        // const correctRecipe = spoonData.title
-        // const ingredient = spoonData.usedIngredient;
-        // console.log(spoonData.usedIngredient)
-        res.status(200).json(game);
-        // lägga till svarsalternativ
-        // två random
-        // const incorrectRecipe1 = await getRandomRecipe(ingredient);
-        // const incorrectRecipe2 = await getRandomRecipe(ingredient);
-    
+        res.status(200).json(game);    
     } catch (err: unknown) {
         if (err instanceof Error) {
             res.status(500).json({error: err.message});
             return;
         }
     };
-    // get a random recipe
-    // get a random ingredient from random chosen recipe
-    // print out random ingredient
 };
 
 export const checkSubmission = async (req: Request, res: Response) => {
@@ -179,11 +180,6 @@ export const checkSubmission = async (req: Request, res: Response) => {
         }
         
     };
-    // find recipe by users entered submission
-    // if not found print out "lost" and "winner" to the opponent
-    // win++ for user who is winner
-    // if recipe found print out "correct" and add to score (if 3 recipes is in chain, score is 3)
-    // give turn to next
 };
 
 export const nextIngredient = async (req: Request, res: Response) => {                    
@@ -214,10 +210,6 @@ export const nextIngredient = async (req: Request, res: Response) => {
             return;
         }
     }
-    
-    // find recipes by ingredient
-    // select a random ingredient from players chosen recipe
-    // print out new random ingredient
 };
 
     
