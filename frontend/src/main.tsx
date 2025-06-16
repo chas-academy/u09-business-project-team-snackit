@@ -14,30 +14,37 @@ import ErrorElement from './404.tsx'
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorElement />,
     element: <Login />
   },
   {
     path: "/lobby",
+    errorElement: <ErrorElement />,
     element: <App />
   },
   {
   path: "/instructions",
+  errorElement: <ErrorElement />,
   element: <Instructions />,
   },
   {
     path: "/game",
+    errorElement: <ErrorElement />,
     element: <Game />
   },
   {
     path: "/leaderboard",
+    errorElement: <ErrorElement />,
     element: <Leaderboard />
   },
   {
     path: "/profile",
+    errorElement: <ErrorElement />,
     element: <Profile />
   },
   {
     path: "*",
+    errorElement: <ErrorElement />,
     element: <ErrorElement />
   }
 ])

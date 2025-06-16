@@ -4,10 +4,10 @@ import Register from "./Register";
 import ExitBtn from "./components/exit-btn";
 
 function Lobby() {
-  const { user, loadingUser} = useFetchUser();
+  const { user, loadingUser, errorUser} = useFetchUser();
   if (loadingUser) return <p>Loading...</p>;
-  // if (errorUser) return <p>Error</p>;
-  console.log(user);
+  if (errorUser) return <p>Error</p>;
+  // console.log(user);
   if (user === null) {
     return (
       <>
