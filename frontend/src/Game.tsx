@@ -8,6 +8,7 @@ import PauseBtn from "./components/pauseBtn";
 function Game() {
     const params = new URLSearchParams(window.location.search);
     const gameId = params.get("gameId")
+    console.log(gameId)
     const { user, loadingUser, errorUser} = useFetchUser();
     
     
@@ -19,7 +20,7 @@ function Game() {
     return (
         <>
         <header>
-            <PauseBtn />
+        {gameId && <PauseBtn gameId = {gameId} />}
         </header>
         <main className="instructions-container">
             <h1 className="title">Welcome {user.name}!</h1>

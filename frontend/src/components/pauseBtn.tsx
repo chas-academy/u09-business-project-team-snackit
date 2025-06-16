@@ -1,7 +1,8 @@
 import { useState } from "react";
 import PauseContainer from "./pauseContainer";
 
-function PauseBtn() {
+
+function PauseBtn({gameId}: {gameId: string}) {
 const [paused, setPaused] = useState(false);
 
 const pauseGame = () => {
@@ -10,11 +11,10 @@ const pauseGame = () => {
 const resumeGame = () => {
     setPaused(false)
 }
-    console.log(paused)
     return (
         <>
         <button onClick={pauseGame} className="back-btn">BACK</button>
-        {paused && <PauseContainer resume={resumeGame} />}
+        {paused && <PauseContainer resume={resumeGame} gameId={gameId}  />}
         <div id="pause-container" className="pause-container"></div> 
         </>
     )

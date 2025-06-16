@@ -21,7 +21,8 @@ function Instructions() {
     return (
         <>
         <header>
-            <PauseBtn />
+        {newGame && <PauseBtn gameId = {newGame.gameId} />}
+        
         </header>
         <main className="instructions-container">
             <h1 className="title">Welcome {user.name}!</h1>
