@@ -39,9 +39,10 @@ const userSchema = new mongoose_1.Schema({
     name: { type: String, required: true, },
     email: { type: String, required: true },
     password: { type: String, required: true },
-    wins: { Type: Number, default: 0 },
-    losses: { Type: Number, default: 0 },
-    superadmin: { type: Boolean, default: false },
+    wins: { type: Number, default: 0 },
+    losses: { type: Number, default: 0 },
+    googleId: { type: String, required: true },
+    profilePic: { type: String, default: "backend\assets\img_1.svg" }
     // gamesPlayed: { type: Number, default: 0 }
 });
 exports.User = mongoose_1.default.model("User", userSchema);

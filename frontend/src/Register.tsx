@@ -4,6 +4,7 @@ import ExitBtn from "./components/exit-btn";
 import ProfilePic from "./components/profilePic";
 
 function Register() {
+  const BACKEND_URL = import.meta.env.MODE === "production" ? import.meta.env.VITE_API_BASE_URL_PROD : import.meta.env.VITE_API_BASE_URL_LOCAL;
   const [selectedImage, setSelectedImage] = useState("img_1.svg");
 
   const [formData, setFormData] = useState({
@@ -39,7 +40,7 @@ function Register() {
 
     try {
         console.log(selectedImage)
-      await fetch("https://u09backend-5cqpbx0cy-chokladglasyrs-projects.vercel.app/users/", {
+      await fetch(`${BACKEND_URL}/users/`, {
         credentials: "include",
         method: "POST",
         headers: { "Content-Type": "application/json" },

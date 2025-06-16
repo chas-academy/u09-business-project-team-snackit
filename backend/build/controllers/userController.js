@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteUser = exports.updateUser = exports.createUser = exports.getUser = exports.getUsers = void 0;
 const userModel_1 = require("../models/userModel");
+const bcrypt_1 = require("../utils/bcrypt");
 const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const users = yield userModel_1.User.find().select("-password -confirmed_password");
@@ -31,7 +32,7 @@ exports.getUsers = getUsers;
 const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         //change this to get userId from the logged in information
-        const user = yield userModel_1.User.findById(req.params.userId);
+        const user = yield userModel_1.User.findOne({ googleId: req.params.userId });
         if (!user) {
             res.status(404).json({ message: "User not found." });
             return;
@@ -48,13 +49,18 @@ const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getUser = getUser;
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { name, email, password, confirmed_password } = req.body;
+        const { name, email, password, confirmed_password, googleId, profilePic } = req.body;
         const userExists = yield userModel_1.User.findOne({ email: email });
         if (userExists) {
             res.status(400).json({ message: "User already exists." });
             return;
         }
-        const newUser = new userModel_1.User({ name, email, password, confirmed_password });
+        if (password !== confirmed_password) { // checks if password and confirmation match
+            return res.status(400).json({ message: "Your passwords does not match" });
+        }
+        const hashedPassword = yield (0, bcrypt_1.hashPassword)(password);
+        const newUser = new userModel_1.User({ name, email, password: hashedPassword, confirmed_password, googleId, profilePic });
+        console.log(newUser);
         yield newUser.save();
         res.status(201).json({ message: "New user created." });
     }
@@ -87,7 +93,7 @@ exports.updateUser = updateUser;
 const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // Change to logged in userId
-        const user = yield userModel_1.User.findByIdAndDelete(req.params.id);
+        const user = yield userModel_1.User.findByIdAndDelete(req.params.userId);
         if (!user) {
             res.status(404).json({ message: "User not found" });
             return;

@@ -8,23 +8,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getLeaderboard = void 0;
-const userModel_1 = require("../models/userModel");
-const getLeaderboard = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const express_1 = __importDefault(require("express"));
+const spoonacularFetch_1 = require("../utils/spoonacularFetch");
+const router = express_1.default.Router();
+router.get("/recipes", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const topPlayers = yield userModel_1.User.find()
-            .limit(6)
-            .sort({ wins: -1 });
-        res.status(200).json(topPlayers);
+        const ingrediantData = yield (0, spoonacularFetch_1.getRandomIngredients)();
+        res.json(ingrediantData);
     }
-    catch (err) {
-        if (err instanceof Error) {
-            res.status(500).json({ error: err.message });
-            return;
-        }
+    catch (error) {
+        console.error("Theres been an error with Spooncular API", error);
+        res.status(500).json({ error: "We failed to fetch random recipe" });
     }
-    // find all users
-    // sort by where win is the highest
-});
-exports.getLeaderboard = getLeaderboard;
+}));
+exports.default = router;

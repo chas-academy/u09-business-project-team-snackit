@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
 const API_URL =
-  import.meta.env.NODE_ENV === "prod"
+  import.meta.env.MODE === "production"
     ? import.meta.env.VITE_API_BASE_URL_PROD
     : import.meta.env.VITE_API_BASE_URL_LOCAL;
-    
+
 type User = {
     _id: string;
     name: string;
@@ -29,7 +29,7 @@ export const useFetchUser = () => {
       const data = await res.json();
       // console.log(data)
       const userData = await fetch(`${API_URL}/users/${data.id}`);
-      // console.log(userData.status)
+      console.log(userData.status)
       if (userData.status === 404) {
         setUser(null)
       } else {

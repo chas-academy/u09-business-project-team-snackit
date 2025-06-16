@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { useFetchGame } from "../hooks/useFetchGame";
 import { useFetchUser } from "../hooks/useFetchUser";
 import { useFetchGameStart } from "../hooks/useStartGame";
 
 function Gaming() {
     const API_URL =
-  import.meta.env.NODE_ENV === "prod"
+  import.meta.env.MODE === "production"
     ? import.meta.env.VITE_API_BASE_URL_PROD
     : import.meta.env.VITE_API_BASE_URL_LOCAL;
 
