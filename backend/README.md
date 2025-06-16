@@ -9,7 +9,7 @@
 + ```npm install```
 + ```npm run build```
 + ```cp .env.example .env```
-+ Create an account on at [Spoonacular](https://spoonacular.com/food-api/docs)
++ Create an account on at [Spoonacular](https://spoonacular.com/food-api/console#Dashboard)
 
 ## Links
 [Endpoints](backend\design.md)  
@@ -28,4 +28,4 @@ The leaderboard fetches all users and displays them in ascending order.
 
 ## Script for Insomnia
 If you want to try out our game endpoints, you can download this script and use it with insomnia.
-[Insomnia script](./Insomnia_2025-06-10.yaml "download")
+[Insomnia script](./Insomnia_2025-06-10.yaml)
