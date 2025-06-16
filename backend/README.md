@@ -26,3 +26,6 @@ This will continue until a player forfeits the game, or a player loses a game. T
 
 The leaderboard fetches all users and displays them in ascending order.  
 
+## Script for Insomnia
+If you want to try out our game endpoints, you can download this script and use it with insomnia.
+[Insomnia script](./Insomnia_2025-06-10.yaml)
