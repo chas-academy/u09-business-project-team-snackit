@@ -27,7 +27,7 @@ export const useFetchGame = (gameId: string) => {
                 credentials: "include"
             })
             const data = await res.json();
-            // console.log(data)
+
             setOngoingGame(data)
         } catch(err: unknown) {
             if(err instanceof Error) {
