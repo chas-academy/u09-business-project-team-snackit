@@ -19,13 +19,13 @@
 /:gameId            Get one
 /games              GET all  
 
-/Start/:gameId/:id                       GET play game       startgame()  
-/:gameId/:id/turn/submit                  PUT check           checkSubmission()  
-/:gameId/:id?player=:username/next      GET next turn       nextIngredient() 
-/:gameId/:id/forfeit               PUT end game        forfeitGame()
-   
-## Examples  
-/users              GET all    
+/Start/:gameId/                         GET play game       startgame()  
+/:gameId/submit                         PUT check           checkSubmission()  
+/:gameId/next                           GET next turn       nextIngredient()
+/:gameId/forfeit                        PUT end game        forfeitGame()
+
+## Examples
+/users              GET all
 ```
 {
     users: [
