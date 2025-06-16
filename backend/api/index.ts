@@ -15,7 +15,7 @@ import { searchRecipe } from "../utils/spoonacularFetch";
 dotenv.config();
 connectDB();
 const app: Express = express();
-// console.log(process.env.REDIRECT)
+
 app.set("trust proxy", 1);
 
 const PORT: string | number = process.env.PORT || 3003;
