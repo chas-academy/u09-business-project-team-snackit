@@ -48,3 +48,7 @@ To see more specific documentation of backend go [here](backend\README.md)
 
 ## Frontend
 To see more specific documentation of frontend go [here](frontend\README.md)
+
+## Deployed version
+Heres is the link to the deployed version on netlify: [Whoisfoodie](https://whoisthefoodie.netlify.app)
+

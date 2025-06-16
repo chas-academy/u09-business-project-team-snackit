@@ -1,0 +1,303 @@
+type: collection.insomnia.rest/5.0
+name: Who is the foodie
+meta:
+  id: wrk_8e90679c2180476f96108848a0a96640
+  created: 1749586772704
+  modified: 1749586772704
+  description: ""
+collection:
+  - url: http://localhost:3003/users
+    name: Create a user
+    meta:
+      id: req_0ddf8c5a46184ea481efdb19a706f8a3
+      created: 1748862983019
+      modified: 1749586231063
+      isPrivate: false
+      description: ""
+      sortKey: -1748862983019
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "name": "pedro ",
+          "email": "pedro@example.com",
+          "password": "pescado123",
+          "confirmed_password": "pescado123",
+          "googleId": "234234"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3003/users
+    name: Get all users
+    meta:
+      id: req_e1ddacb5f1694233ae7e23cb13d50b33
+      created: 1749058677428
+      modified: 1749586333755
+      isPrivate: false
+      description: ""
+      sortKey: -1749058677428
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3003/api/games/leaderboard
+    name: Get leaderboard
+    meta:
+      id: req_5d6e070bc93244fdbc6bdd53298d27e6
+      created: 1749075901218
+      modified: 1749504530576
+      isPrivate: false
+      description: ""
+      sortKey: -1749075901218
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3003/api/games
+    name: Game create
+    meta:
+      id: req_79e14a82772a433e9f44c949de0f546c
+      created: 1749407117575
+      modified: 1749586507191
+      isPrivate: false
+      description: ""
+      sortKey: -1749407117575
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"player1": "6839a1f833bcb3930e072e2a",
+        	"player2": "683d8dedcc06417ac3d07782"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    scripts:
+      preRequest: ""
+      afterResponse: |-
+        const jsonBody = insomnia.response.json();
+        insomnia.environment.set("gameId", jsonBody.gameId);
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3003/api/games/start/{{ _.gameId }}
+    name: Game start
+    meta:
+      id: req_c888977f183547b0823f9efdc0497006
+      created: 1749454268046
+      modified: 1749587053723
+      isPrivate: false
+      description: ""
+      sortKey: -1749454268046
+    method: POST
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    scripts:
+      preRequest: ""
+      afterResponse: |-
+        const jsonBody = insomnia.response.json();
+        insomnia.environment.set("playerId", jsonBody.currentTurn);
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3003/api/games/{{ _.gameId }}/submit
+    name: Game submit answer
+    meta:
+      id: req_9b618a1274694fbbb997c7ba7c4b0390
+      created: 1749455147329
+      modified: 1749586495347
+      isPrivate: false
+      description: ""
+      sortKey: -1749455147329
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"playerId": "{{ _.playerId }}",
+        	"submittedRecipe": "bolognese"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3003/api/games/{{ _.gameId }}/next
+    name: Game next
+    meta:
+      id: req_0810a281b9ea42b0a90871b8c3ee93e6
+      created: 1749455624814
+      modified: 1749586092069
+      isPrivate: false
+      description: ""
+      sortKey: -1749455624814
+    method: POST
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    scripts:
+      preRequest: ""
+      afterResponse: |-
+        const jsonBody = insomnia.response.json();
+        insomnia.environment.set("playerId", jsonBody.nextTurn);
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3003/api/games/{{ _.gameId }}/forfeit
+    name: Game forfeit
+    meta:
+      id: req_aef1d63a1c9a4cfb96656e0191479219
+      created: 1749455703348
+      modified: 1749586400396
+      isPrivate: false
+      description: ""
+      sortKey: -1749455703348
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"playerId": "{{ _.playerId }}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3003/test
+    name: Autocomplete (suggestion on what you are searching)
+    meta:
+      id: req_66cb8ae7c39645a4972e4fb2c3baefa7
+      created: 1749548470502
+      modified: 1749586970969
+      isPrivate: false
+      description: ""
+      sortKey: -1749548470502
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"input": "cheeseca"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_8d22f6314b134051a5b0ad6c63844845
+    created: 1748862977121
+    modified: 1749587080421
+environments:
+  name: Base Environment
+  meta:
+    id: env_a89a4b83bf9f45849686120da5a2275f
+    created: 1748862977116
+    modified: 1749587080425
+    isPrivate: false
+  data:
+    gameId: 6848920c7f03b67f4eed3156
+    playerId: 683d8dedcc06417ac3d07782
+  subEnvironments:
+    - name: New Environment
+      meta:
+        id: env_e0efc31497d54998835ac4d4979b7656
+        created: 1749586560649
+        modified: 1749587080423
+        isPrivate: false
+        sortKey: 1749586560649
+      data:
+        gameId: 684893f17f03b67f4eed315f
+        playerId: 683d8dedcc06417ac3d07782
