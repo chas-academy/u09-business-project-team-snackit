@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const API_URL =
   import.meta.env.MODE === "production"
@@ -21,7 +21,7 @@ export const useFetchGame = (gameId: string) => {
     const [loadingOngoingGame, setLoadingOngoingGame] = useState(true)
     const [errorOngoingGame, setErrorOngoingGame] = useState<Error | null>(null)
 
-    const fetchGame = async() => {
+    const fetchGame = useCallback(async() => {
         try {
             const res = await fetch(`${API_URL}/api/games/${gameId}`, {
                 credentials: "include"
@@ -37,9 +37,9 @@ export const useFetchGame = (gameId: string) => {
         } finally {
             setLoadingOngoingGame(false);
         }
-    }
+    }, [gameId])
     useEffect(() => {
         fetchGame()
-    }, [])
+    }, [fetchGame])
     return {ongoingGame, loadingOngoingGame, errorOngoingGame}
 }
