@@ -49,7 +49,7 @@ passport.serializeUser(function (user,done) {
 
 
 passport.deserializeUser(function (object, done) {
-    // console.log(object);
+    console.log(object);
     done(null, object as Express.User)    
 })
 
@@ -100,7 +100,8 @@ app.get("/auth/logout", (req: Request, res: Response, next) => {
 
 //---------------HÄMTA INLOGGAD ANV------------
 app.get("/auth/user", (req: Request, res: Response) => {
-    console.log(req.user)
+    console.log("session", req.session)
+    console.log("user", req.user)
     res.json(req.user || null);
 });
 
