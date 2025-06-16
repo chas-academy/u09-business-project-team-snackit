@@ -1,8 +1,8 @@
-import BackBtn from "./components/back-btn";
 import { useFetchUser } from "./hooks/useFetchUser";
 import Versus from "./components/versus";
 import GameId from "./components/gameId";
 import Gaming from "./components/gaming";
+import PauseBtn from "./components/pauseBtn";
 
 
 function Game() {
@@ -19,7 +19,7 @@ function Game() {
     return (
         <>
         <header>
-            <BackBtn />
+            <PauseBtn />
         </header>
         <main className="instructions-container">
             <h1 className="title">Welcome {user.name}!</h1>
