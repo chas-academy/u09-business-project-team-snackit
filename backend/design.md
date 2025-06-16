@@ -15,16 +15,17 @@
 /users/:userId      PUT one  
 /users/:userId      DELETE one  
   
-/game               POST one (create)  
+/game               POST one (create)
+/:gameId            Get one
 /games              GET all  
 
-/play/:id                       GET play game       startgame()  
-/play/:id/turn                  PUT check           checkSubmission()  
-/play/:id?player=:username      GET next turn       nextIngredient() 
-/play/:id/forfeit               PUT end game        forfeitGame()
-   
-## Examples  
-/users              GET all    
+/Start/:gameId/                         GET play game       startgame()  
+/:gameId/submit                         PUT check           checkSubmission()  
+/:gameId/next                           GET next turn       nextIngredient()
+/:gameId/forfeit                        PUT end game        forfeitGame()
+
+## Examples
+/users              GET all
 ```
 {
     users: [
