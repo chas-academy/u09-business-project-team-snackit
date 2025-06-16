@@ -26,7 +26,6 @@ function Register() {
   if (loading) return <h3>Loading...</h3>;
   if (error) return <h3>Error</h3>;
   if (!user) return <h3>User not found</h3>;
-  //   console.log(selectedImage);
 
   const googleId = user.id;
 
