@@ -29,8 +29,8 @@ export const getRandomIngredients = async (): Promise<{
     const filteredIngredients = ingredients.filter((ing: { aisle: string }) => {
       //Filtrerar bort basic ingredienser som skrivet uppe.
       const aisle = ing.aisle.toLowerCase().trim();
-    //   console.log(aisle)
-    //   console.log(excludedAisles.includes(aisle))
+      //   console.log(aisle)
+      //   console.log(excludedAisles.includes(aisle))
       // Gör om namnet på ingredienseran till småbokstäver och tarbort mellanrumm
       return !excludedAisles.includes(aisle); // Returerar true om namnet inte finns med i excludedIngredients annars falsk.
     });
@@ -56,7 +56,7 @@ export const getRandomIngredients = async (): Promise<{
 
 export const searchRecipe = async (req: Request, res: Response) => {
   const apiKey = process.env.SPOONCULAR_API_KEY;
-    const { input } = req.body
+  const { input } = req.body;
 
   try {
     const data = await fetch(
@@ -64,12 +64,9 @@ export const searchRecipe = async (req: Request, res: Response) => {
     );
 
     const recipes = await data.json();
-    const recipeTitles = recipes.map((data: { title: any; }) => data.title);
-   
-    // console.log(recipeTitles)
+    const recipeTitles = recipes.map((data: { title: any }) => data.title);
 
-    return res.status(200).json({Titles: recipeTitles});
-
+    return res.status(200).json({ Titles: recipeTitles });
   } catch (err: unknown) {
     if (err instanceof Error) {
       console.error("No recipe found: ", err);

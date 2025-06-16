@@ -32,7 +32,6 @@ function Instructions() {
                     If the recipe does not exist, or the ingredient is not included in the submitted recipe you lose!
                     Ready to find out who is the foodie?</p>
                 </section>
-                {/* ändra till Link */}
                 <Link to={`/game?gameId=${newGame.gameId}`} className="primary-btn">START</Link>
         </main>
         {newGame && <GameId gameId = {newGame.gameId} />}

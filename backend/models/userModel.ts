@@ -8,7 +8,6 @@ export interface IUser extends Document {
     losses: number;
     googleId: string;
     profilePic: string;
-    // gamesPlayed?: number;
 }
 
 const userSchema: Schema = new Schema ({
@@ -19,7 +18,6 @@ const userSchema: Schema = new Schema ({
     losses: {type: Number, default: 0},
     googleId: {type: String, required: true},
     profilePic: {type: String, default: "backend\assets\img_1.svg"}
-    // gamesPlayed: { type: Number, default: 0 }
 })
 
 export const User = mongoose.model<IUser>("User", userSchema);

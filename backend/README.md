@@ -9,7 +9,7 @@
 + ```npm install```
 + ```npm run build```
 + ```cp .env.example .env```
-+ Create an account on at [Spoonacular](https://spoonacular.com/food-api/docs)
++ Create an account on at [Spoonacular](https://spoonacular.com/food-api/console#Dashboard)
 
 ## Links
 [Endpoints](backend\design.md)  

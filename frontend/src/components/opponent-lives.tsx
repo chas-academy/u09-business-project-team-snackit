@@ -5,7 +5,7 @@ function OpponentLives({gameId}: {gameId: string}) {
         const {ongoingGame, loadingOngoingGame, errorOngoingGame} = useFetchGame(gameId!);
     
         const playerTwo = ongoingGame?.players[1]
-        // console.log(playerTwo)
+
         const {guest, loadingGuest, errorGuest} = useFetchGuest(playerTwo!);
 
         if (errorGuest) return <p>Error: {errorGuest.message}</p>;

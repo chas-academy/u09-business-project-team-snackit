@@ -6,14 +6,13 @@ const API_URL =
     : import.meta.env.VITE_API_BASE_URL_LOCAL;
 
 type User = {
-    _id: string;
-    name: string;
-    email: string;
-    wins: number;
-    losses: number;
-    profilePic: string;
-
-}
+  _id: string;
+  name: string;
+  email: string;
+  wins: number;
+  losses: number;
+  profilePic: string;
+};
 export const useFetchUser = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loadingUser, setLoadingUser] = useState(true);
@@ -27,24 +26,22 @@ export const useFetchUser = () => {
       if (!res.ok) throw new Error("Failed to fetch user from auth.");
 
       const data = await res.json();
-      // console.log(data)
+
       const userData = await fetch(`${API_URL}/users/${data.id}`);
-      console.log(userData.status)
+
       if (userData.status === 404) {
-        setUser(null)
+        setUser(null);
       } else {
         const user = await userData.json();
         setUser(user);
       }
-      // console.log(user);
     } catch (err: unknown) {
-        if(err instanceof Error) {
-            console.error(err);
-            setErrorUser(err);
-
-        }
+      if (err instanceof Error) {
+        console.error(err);
+        setErrorUser(err);
+      }
     } finally {
-        setLoadingUser(false);
+      setLoadingUser(false);
     }
   };
 
@@ -52,5 +49,5 @@ export const useFetchUser = () => {
     fetchUser();
   }, []);
 
-  return {user, loadingUser, errorUser };
+  return { user, loadingUser, errorUser };
 };

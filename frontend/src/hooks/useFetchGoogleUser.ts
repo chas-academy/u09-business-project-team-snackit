@@ -8,11 +8,11 @@ const API_URL =
 type User = {
   name: {
     givenName: string;
-  }
+  };
   id: string;
   _json: {
     email: string;
-  }
+  };
 };
 
 export const useFetchGoogleUser = () => {
@@ -26,7 +26,6 @@ export const useFetchGoogleUser = () => {
         credentials: "include",
       });
       if (!res.ok) throw new Error("Failed to fetch user from auth");
-      
 
       const data = await res.json();
       setUser(data);

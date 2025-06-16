@@ -26,7 +26,6 @@ const {guest, loadingGuest, errorGuest} = useFetchGuest(playerTwoId);
             alt="player profile pic"
           />
           <Lives  gameId = {gameId} />
-            {/* <div className="hearts">{"❤️".repeat(3)}</div> */}
         </div>
 
         <div className="vs-icon">
@@ -41,7 +40,6 @@ const {guest, loadingGuest, errorGuest} = useFetchGuest(playerTwoId);
             alt="opponent profile pic"
           />
           <OpponentLives gameId ={gameId} />
-          {/* <div className="hearts">{"❤️".repeat(3)}</div> */}
         </div>
       </section>
     </>

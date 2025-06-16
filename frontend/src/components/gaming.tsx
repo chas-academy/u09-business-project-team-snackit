@@ -10,7 +10,7 @@ function Gaming() {
 
     const params = new URLSearchParams(window.location.search);
     const gameId = params.get("gameId")
-    // console.log(gameId)
+
     const [results, setResults] = useState<string[]>([]);
     const { user, loadingUser, errorUser } = useFetchUser();
     const {game, loadingGame, errorGame} = useFetchGameStart(gameId!);
@@ -22,13 +22,12 @@ function Gaming() {
     if (errorUser) return <p>Error: {errorUser.message}</p>;
     if (!user) return <p>User not found</p>;
 
-    console.log(game)
     if(!game) return <p>Game not found</p>
     if(loadingGame) return <p>Loading game...</p>
     if(errorGame) return <p>Error</p>
 
     const ingredient: string = game.currentIngredient;
-    console.log(game.currentTurn)
+ 
     if (game.currentTurn == user._id) {
         document.getElementById("playerTwo")?.setAttribute("style", "visibility: hidden;")
     } else {
@@ -38,7 +37,7 @@ function Gaming() {
     const showResults = async() => {
         const resultBox = document.getElementById("resultbox")
         if(!resultBox) return;
-        console.log(formData.submission)
+  
         const res = await fetch(`${API_URL}/search`, {
             credentials: "include",
             method: "POST",
