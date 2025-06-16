@@ -52,7 +52,7 @@ export const createUser = async (req: Request, res: Response): Promise<Response 
         }
         const hashedPassword = await hashPassword(password);
 
-        const newUser = new User ({ name, email, password: hashedPassword, confirmed_password, googleId, profilePic })
+        const newUser = new User ({ name, email, password: hashedPassword, googleId, profilePic })
         console.log(newUser)
         await newUser.save();
         res.status(201).json({message: "New user created."});

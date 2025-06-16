@@ -29,7 +29,7 @@ export const useFetchUser = () => {
       const data = await res.json();
       // console.log(data)
       const userData = await fetch(`${API_URL}/users/${data.id}`);
-      // console.log(userData.status)
+      console.log(userData.status)
       if (userData.status === 404) {
         setUser(null)
       } else {
