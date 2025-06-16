@@ -27,7 +27,7 @@ export const useCreateGame = (playerOne: string) => {
                 });
                 if(!res.ok) throw new Error("Failed to create game");
                 const data = await res.json();
-                console.log(data)
+
                 setNewGame(data);
             } catch(err: unknown) {
                 if(err instanceof Error) {
