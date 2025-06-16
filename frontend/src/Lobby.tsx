@@ -7,7 +7,7 @@ function Lobby() {
   const { user, loadingUser} = useFetchUser();
   if (loadingUser) return <p>Loading...</p>;
   // if (errorUser) return <p>Error</p>;
-  // console.log(user);
+  console.log(user);
   if (user === null) {
     return (
       <>
