@@ -68,7 +68,7 @@ function Gaming() {
         </form>
             <div id="resultbox" className="resultbox">
             {results.map((r, i) => (
-      <p key={i}>{r}</p>
+      <p key={i} className="result-item" onClick={() => setFormData({ submission: r })}>{r}</p>
     ))}
             </div>
         </>
