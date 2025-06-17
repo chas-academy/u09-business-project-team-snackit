@@ -402,6 +402,20 @@ h2 {
   gap: 1rem;
 }
 
+.resultbox {
+  margin: 0.5rem;
+}
+.resultbox .result-item {
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+.resultbox .result-item:hover {
+  background-color: #c1af2e;
+  transform: scale(1.02);
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
