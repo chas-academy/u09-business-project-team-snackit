@@ -32,6 +32,7 @@ header {
 .title {
     font-size: 4rem;
     opacity: 70%;
+    text-align: center;
     @include L.mobile {
         font-size: 2rem;
     }
@@ -42,6 +43,7 @@ section {
     align-items: center;
     @include L.mobile {
         width: 400px;
+        margin: 0 auto;
     }
 }
 .lobby-btn {

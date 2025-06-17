@@ -109,7 +109,7 @@
   width: 150px;
   margin-top: 2rem;
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .profile-pic {
     width: 165px;
   }
@@ -119,7 +119,7 @@
   font-size: 1.5rem;
   text-align: center;
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   #delete-account {
     font-size: 1rem;
   }
@@ -217,6 +217,7 @@ h2 {
   font-weight: 400;
   font-style: normal;
   margin-top: 1rem;
+  text-align: center;
 }
 .instructions-container .instruction-text strong {
   display: block;
@@ -227,7 +228,7 @@ h2 {
 .instructions-container .player-name {
   margin: 0;
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .instructions-container .player-name {
     width: 130px;
   }
@@ -267,7 +268,7 @@ h2 {
   position: relative;
   top: 60px;
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .top3-pics {
     top: 9rem;
   }
@@ -428,7 +429,7 @@ header {
   justify-content: flex-end;
   margin: 32px 32px 0px 32px;
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   header {
     margin: 32px 16px 16px 16px;
   }
@@ -437,8 +438,9 @@ header {
 .title {
   font-size: 4rem;
   opacity: 70%;
+  text-align: center;
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .title {
     font-size: 2rem;
   }
@@ -449,9 +451,10 @@ section {
   flex-direction: column;
   align-items: center;
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   section {
     width: 400px;
+    margin: 0 auto;
   }
 }
 
@@ -506,7 +509,7 @@ nav {
   justify-content: flex-end;
   margin: 32px;
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   #exit-btn {
     margin: 16px;
   }
@@ -525,7 +528,7 @@ nav {
   text-decoration: none;
   color: #4c2d1a;
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .back-btn {
     width: 90px;
     height: 54px;
