@@ -416,6 +416,56 @@ h2 {
   transform: scale(1.02);
 }
 
+.pause-container {
+  background-color: #f6b255;
+  width: 400px;
+  height: 480px;
+  border-radius: 120px 120px 20px 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  border: solid 6px #4c2d1a;
+}
+.pause-container > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+.pause-container > div > button {
+  width: 228px;
+  height: 63px;
+  font-size: 32px;
+  border-radius: 40px;
+}
+
+#pause {
+  background-color: #9a4d52;
+  width: 195px;
+  height: 85px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  border: solid #4c2d1a 6px;
+  color: #e0e2c3;
+  position: absolute;
+  top: 24%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+#pause-quit {
+  background-color: #e25937;
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
