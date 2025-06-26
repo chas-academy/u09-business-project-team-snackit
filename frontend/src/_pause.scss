@@ -1,0 +1,49 @@
+@use "library" as L;
+
+.pause-container {
+    background-color: L.$yellow;
+    width: 400px;
+    height: 480px;
+    border-radius: 120px 120px 20px 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    border: solid 6px L.$brown;
+    >div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        >button {
+            width: 228px;
+            height: 63px;
+            font-size: 32px;
+            border-radius: 40px;
+        }
+    }
+}
+#pause {
+    background-color: L.$maroon;
+    width: 195px;
+    height: 85px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    border: solid L.$brown 6px;
+    color: L.$font-white;
+    position: absolute;
+    top: 24%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+#pause-quit {
+    background-color: L.$red;
+}

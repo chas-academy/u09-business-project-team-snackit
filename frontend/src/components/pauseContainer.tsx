@@ -37,13 +37,17 @@ function PauseContainer({gameId, resume}: PauseContainerProps) {
     }
     return(
         <>
-        <div className="pause-container">
             {!message && (
-                <><button onClick={resume}>RESUME</button>
-            <button className="back-btn" onClick={forfeitGame}>QUIT</button>
+                <>
+                <h3 id="pause">PAUSE</h3>
+        <div className="pause-container">
+                <div>
+                <button className="primary-btn" onClick={resume}>RESUME</button>
+            <button id="pause-quit" className="primary-btn" onClick={forfeitGame}>QUIT</button>
+            </div>
+        </div>
                 </>
             )}
-        </div>
         {message && <div>{message}</div>}
         
         </>

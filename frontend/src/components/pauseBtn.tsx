@@ -15,7 +15,6 @@ const resumeGame = () => {
         <>
         <button onClick={pauseGame} className="back-btn">BACK</button>
         {paused && <PauseContainer resume={resumeGame} gameId={gameId}  />}
-        <div id="pause-container" className="pause-container"></div> 
         </>
     )
 }
